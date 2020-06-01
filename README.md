@@ -34,5 +34,4 @@
 <https://docs.google.com/spreadsheets/d/1M4XeZ0kt7uCihE128pJFCk9TRG_HDsjc3r_7B-guCro/edit#gid=147803766>
 
 ## 画面設計
-<uiflow>
 <https://app.diagrams.net/#G1--i_-zJoWmL4gRkLPwYZd3HT---v3pnn>
