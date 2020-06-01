@@ -33,5 +33,12 @@
 ### 機能一覧
 <https://docs.google.com/spreadsheets/d/1M4XeZ0kt7uCihE128pJFCk9TRG_HDsjc3r_7B-guCro/edit#gid=147803766>
 
-## 画面設計
+### 画面設計
+ui flow
 <https://app.diagrams.net/#G1--i_-zJoWmL4gRkLPwYZd3HT---v3pnn>
+⚠︎後々PDFに変更
+
+### データベース設計
+ER図
+<https://app.diagrams.net/#G1sk-qX3fsfSNrHTcWDTgeguqpJFaXV_OG>
+⚠︎後々PDFに変更
