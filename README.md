@@ -50,3 +50,6 @@ ER図
 <https://docs.google.com/spreadsheets/d/1bE-YjK_6ukgz5ENptIF4zcZ4ivoxZduq62yLR7aoDpQ/edit#gid=0>
 ⚠︎後々PDFに変更
 
+###　アプリケーション詳細設計
+<https://docs.google.com/spreadsheets/d/1DuPEKw7HyPDUGQB7xBvqreo9MDcRRhFgOOfhM0vBsPY/edit#gid=94063978>
+
