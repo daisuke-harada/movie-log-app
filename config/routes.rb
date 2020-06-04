@@ -12,8 +12,8 @@ Rails.application.routes.draw do
     get '/favorete/:review_id/users' => 'favorite#index', as: 'favorite_index'
     post '/favorite/:review_id' => 'favorites#favorite', as: 'favorite'
     delete '/favorite/:review_id' => 'favorites#unfavorite', as: 'unfavorite'
-    get 'followers/:id'=>'followers#show', as:'followers'
-    get 'followings/:id'=>'followings#show', as:'followings'
+    get 'followers/:id' => 'followers#show', as: 'followers'
+    get 'followings/:id' => 'followings#show', as: 'followings'
     resources :users, only: [:show, :edit, :update, :index] do
       member do
         get :quit
