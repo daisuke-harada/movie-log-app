@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  get 'homes/top'
+  root 'homes#top'
   get 'homes/about'
   devise_for :admins
   namespace :admin do
@@ -7,7 +7,11 @@ Rails.application.routes.draw do
     resources :genres, only: [:index, :edit, :create, :update, :destroy]
   end
 
-  devise_for :users
+  devise_for :users, controllers: {
+        sessions: 'users/sessions',
+        registrations: 'users/registrations'
+  }
+
   namespace :user do
     get '/favorete/:review_id/users' => 'favorite#index', as: 'favorite_index'
     post '/favorite/:review_id' => 'favorites#favorite', as: 'favorite'
