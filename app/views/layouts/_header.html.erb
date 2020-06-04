@@ -10,8 +10,8 @@
         <% if admin_signed_in? %>
           <li><%= link_to '映画一覧', admin_movies_path %></li>
           <li><%= link_to '映画新規投稿', new_admin_movie_path %></li>
-          <li><%= link_to 'ジャンル一覧', admin_genres %></li>
-          <li><%= link_to 'ログアウト', destroy_admin_session %></li>
+          <li><%= link_to 'ジャンル一覧', admin_genres_path %></li>
+          <li><%= link_to 'ログアウト', destroy_admin_session_path, method: :delete %></li>
         <% elsif user_signed_in? %>
         <% else %>
           <li><%= link_to ' home', root_path, class: 'glyphicon glyphicon-home home' %></li>

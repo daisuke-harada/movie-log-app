@@ -11,9 +11,9 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  # sign_out後のredirect先変更する。rootパスへ。rootパスはhome topを設定済み。
+  # sign_out後のredirect先変更する。rootパスへ。rootパスはhomes topを設定済み。
   def after_sign_out_path_for(resource)
-    homes_top_path
+    root_path
   end
 
   def configure_permitted_parameters
