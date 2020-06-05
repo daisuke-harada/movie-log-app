@@ -28,3 +28,28 @@ header .navbar-left span {
 body {
   margin-top: 60px;
 }
+
+.box {
+  border: 2px solid #ddd;
+}
+
+.genre-title {
+  border-bottom: 2px solid #ddd;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+ul {
+  list-style: none;
+}
+
+li {
+  padding: 5px;
+}
+
+.genre-box {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: fles-start;
+  align-content: flex-start;
+}

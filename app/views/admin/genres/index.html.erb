@@ -1,2 +1,23 @@
 <h1>ジャンル一覧</h1>
 
+<div class="col-md-4">
+  <%= form_with(model: @genre, url:admin_genres_path, local: true) do |f| %>
+      <%= f.text_field :name %>
+      <%= f.submit %>
+  <% end %>
+</div>
+
+<div class="col-md-8">
+  <div class="box">
+    <h2 class="genre-title">ジャンル</h2>
+      <ul class="genre-box">
+        <% @genres.each do |genre| %>
+          <li>
+            <%= link_to edit_admin_genre_path(genre.id) do%>
+              <%= genre.name %>
+            <% end %>/
+          </li>
+        <% end %>
+      </ul>
+  </div>
+</div>
