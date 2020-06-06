@@ -34,7 +34,7 @@ class Admin::MoviesController < ApplicationController
   def movie_params
     # movieとアソシエーション関係にあるactor,superviser,writerも保存できるようにする。
     params.require(:movie).permit(:movie_image, :title, :summary, :a_movie_released, :show_time,
-                                  supervisers_attributes: [:superviser_name],
+                                  supervisers_attributes: [:id, :superviser_name, :_destroy],
                                   actors_attributes: [:actor_name],
                                   writers_attributes: [:writer_name])
     end

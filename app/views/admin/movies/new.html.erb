@@ -15,10 +15,14 @@
     <%= f.label :show_time %><br />
     <%= f.text_field :show_time %><br />
 
-    <%= f.fields_for :supervisers do |s| %>
-      <%= s.label "監督" %><br />
-      <%= s.text_field :superviser_name %>
+    <%= f.nested_fields_for :supervisers, wrapper_tag: :div do |superviser| %>
+      <div class="form-group">
+        <%= superviser.label "監督" %><br />
+        <%= superviser.text_field :superviser_name %><br/>
+        <%= superviser.remove_nested_fields_link '削除', role: 'button' %>
+      </div>
     <% end %><br />
+    <%= f.add_nested_fields_link :supervisers, '監督を追加', role: 'button' %><br />
 
     <%= f.fields_for :writers do |w| %>
       <%= w.label "脚本家" %><br />
