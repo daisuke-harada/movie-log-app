@@ -14,7 +14,7 @@ ActiveRecord::Schema.define(version: 2020_06_06_010917) do
 
   create_table "actors", force: :cascade do |t|
     t.integer "movie_id"
-    t.string "name"
+    t.string "actor_name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["movie_id"], name: "index_actors_on_movie_id"
@@ -87,7 +87,7 @@ ActiveRecord::Schema.define(version: 2020_06_06_010917) do
 
   create_table "supervisers", force: :cascade do |t|
     t.integer "movie_id"
-    t.string "name"
+    t.string "superviser_name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["movie_id"], name: "index_supervisers_on_movie_id"
@@ -110,7 +110,7 @@ ActiveRecord::Schema.define(version: 2020_06_06_010917) do
 
   create_table "writers", force: :cascade do |t|
     t.integer "movie_id"
-    t.string "name"
+    t.string "writer_name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["movie_id"], name: "index_writers_on_movie_id"
