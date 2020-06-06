@@ -1,2 +1,39 @@
-<h1>Admin::Movies#new</h1>
-<p>Find me in app/views/admin/movies/new.html.erb</p>
+<h1>作品新規投稿</h1>
+
+<%= form_with(model: @movie, url:admin_movies_path, local:true) do |f| %>
+  <div class="col-md-5">
+    <%= image_tag attachment_url(@movie, :movie_image, :fill, 300, 300, format: "jpg", fallback: "no_image.jpg") %>
+    <%= f.attachment_field :movie_image %>
+  </div>
+  <div class="col-md-7">
+    <%= f.label :title %><br />
+    <%= f.text_field :title %><br />
+
+    <%= f.label :a_movie_released %><br />
+    <%= f.text_field :a_movie_released %><br />
+
+    <%= f.label :show_time %><br />
+    <%= f.text_field :show_time %><br />
+
+    <%= f.fields_for :supervisers do |s| %>
+      <%= s.label "監督" %><br />
+      <%= s.text_field :superviser_name %>
+    <% end %><br />
+
+    <%= f.fields_for :writers do |w| %>
+      <%= w.label "脚本家" %><br />
+      <%= w.text_field :writer_name %>
+    <% end %><br />
+
+    <%= f.fields_for :actors do |a| %>
+      <%= a.label "俳優" %><br />
+      <%= a.text_field :actor_name %>
+    <% end %><br />
+
+    <%= f.label :summary %><br />
+    <%= f.text_area :summary %><br />
+
+    <%= f.submit %>
+  </div>
+<% end %>
+

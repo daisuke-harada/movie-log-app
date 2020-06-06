@@ -6,9 +6,11 @@ RSpec.describe "Admin::Genres", type: :request do
       before do
         get admin_genres_path
       end
+
       it "リクエストは200 OKとなること" do
         expect(response.status).to eq 200
       end
+
       it 'タイトルが正しく表示されていること' do
         expect(response.body).to include("ジャンル一覧")
       end
@@ -19,13 +21,16 @@ RSpec.describe "Admin::Genres", type: :request do
     before do
       @genre = { id: 1, name: 'ラブロマンス'}
     end
+
     context "管理者/ジャンル編集ページが正しく表示される。" do
       before do
         get edit_admin_genre_path(@genre.id)
       end
+
       it "リクエストは200 OKとなること" do
         expect(response.status).to eq 200
       end
+
       it 'タイトルが正しく表示されていること' do
         expect(response.body).to include("ジャンル編集")
       end

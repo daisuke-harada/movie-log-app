@@ -7,6 +7,7 @@ RSpec.describe Genre, type: :model do
       @genre.name = "アクション"
       @genre.save
     end
+
     it "全て入力されてあるので保存される" do
       expect(@genre).to be_valid
     end
@@ -18,6 +19,7 @@ RSpec.describe Genre, type: :model do
       @genre.name = ""
       @genre.save
     end
+
     it "titleが入力されていないので保存されない" do
       expect(@genre).to be_invalid
       expect(@genre.errors[:name]).to include("can't be blank")
