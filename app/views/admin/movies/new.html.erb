@@ -6,33 +6,41 @@
     <%= f.attachment_field :movie_image %>
   </div>
   <div class="col-md-7">
-    <%= f.label :title %><br />
+    <%= f.label "タイトル" %><br />
     <%= f.text_field :title %><br />
 
-    <%= f.label :a_movie_released %><br />
+    <%= f.label "公開日" %><br />
     <%= f.text_field :a_movie_released %><br />
 
-    <%= f.label :show_time %><br />
+    <%= f.label "上映時間" %><br />
     <%= f.text_field :show_time %><br />
 
-    <%= f.nested_fields_for :supervisers, wrapper_tag: :div do |superviser| %>
-      <div class="form-group">
+    <div class="form-group">
+      <%= f.nested_fields_for :supervisers, wrapper_tag: :div do |superviser| %>
         <%= superviser.label "監督" %><br />
         <%= superviser.text_field :superviser_name %><br/>
         <%= superviser.remove_nested_fields_link '削除', role: 'button' %>
-      </div>
-    <% end %><br />
-    <%= f.add_nested_fields_link :supervisers, '監督を追加', role: 'button' %><br />
+      <% end %>
+      <%= f.add_nested_fields_link :supervisers, '監督を追加', role: 'button' %><br />
+    </div>
 
-    <%= f.fields_for :writers do |w| %>
-      <%= w.label "脚本家" %><br />
-      <%= w.text_field :writer_name %>
-    <% end %><br />
+    <div class="form-group">
+      <%= f.nested_fields_for :writers, wrapper_tag: :div do |writer| %>
+        <%= writer.label "脚本家" %><br />
+        <%= writer.text_field :writer_name %><br/>
+        <%= writer.remove_nested_fields_link '削除', role: 'button' %>
+      <% end %>
+      <%= f.add_nested_fields_link :writers, '脚本家を追加', role: 'button' %><br />
+    </div>
 
-    <%= f.fields_for :actors do |a| %>
-      <%= a.label "俳優" %><br />
-      <%= a.text_field :actor_name %>
-    <% end %><br />
+    <div class="form-group">
+      <%= f.nested_fields_for :actors, wrapper_tag: :div do |actor| %>
+        <%= actor.label "キャスト" %><br />
+        <%= actor.text_field :actor_name %><br/>
+        <%= actor.remove_nested_fields_link '削除', role: 'button' %>
+      <% end %>
+      <%= f.add_nested_fields_link :actors, 'キャストを追加', role: 'button' %><br />
+    </div>
 
     <%= f.label :summary %><br />
     <%= f.text_area :summary %><br />
