@@ -16,6 +16,15 @@
     <%= f.text_field :show_time %><br />
 
     <div class="form-group">
+      <%= f.nested_fields_for :movie_genres, wrapper_tag: :div do |genres| %>
+        <%= genres.label "ジャンル" %><br/>
+        <%= genres.collection_select(:genre_id, @genres, :id, :name, prompt: "-- 選択してください --") %>
+        <%= genres.remove_nested_fields_link '削除', role: 'button' %>
+      <% end %>
+      <%= f.add_nested_fields_link :movie_genres, 'ジャンルを追加', role: 'button' %><br />
+    </div>
+
+    <div class="form-group">
       <%= f.nested_fields_for :supervisers, wrapper_tag: :div do |superviser| %>
         <%= superviser.label "監督" %><br />
         <%= superviser.text_field :superviser_name %><br/>

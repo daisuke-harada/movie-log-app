@@ -3,9 +3,11 @@ class Admin::MoviesController < ApplicationController
 
   def new
     @movie = Movie.new
-    superviser = @movie.supervisers.build
-    actor = @movie.actors.build
-    writer = @movie.writers.build
+    @genres = Genre.all
+    @movie.movie_genres.build
+    @movie.supervisers.build
+    @movie.actors.build
+    @movie.writers.build
   end
 
   def create
@@ -32,9 +34,10 @@ class Admin::MoviesController < ApplicationController
   private
 
   def movie_params
-    # movieとアソシエーション関係にあるactor,superviser,writerも保存できるようにする。
+    # movieとアソシエーション関係にある。movie_genres、actor,superviser,writerも保存できるようにする。
     params.require(:movie).permit(:movie_image, :title, :summary, :a_movie_released, :show_time,
-                                  supervisers_attributes: [:id, :superviser_name, :_destroy],
+                                  movie_genres_attributes: [:genre_id],
+                                  supervisers_attributes: [:superviser_name],
                                   actors_attributes: [:actor_name],
                                   writers_attributes: [:writer_name])
     end
