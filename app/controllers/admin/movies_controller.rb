@@ -3,6 +3,7 @@ class Admin::MoviesController < ApplicationController
 
   def new
     @movie = Movie.new
+    # collection_selectにより選択するジャンルを持ってくる。
     @genres = Genre.all
     @movie.movie_genres.build
     @movie.supervisers.build
@@ -23,9 +24,12 @@ class Admin::MoviesController < ApplicationController
   end
 
   def edit
+    @genres = Genre.all
   end
 
   def update
+    @movie.update(movie_params)
+    redirect_to admin_movie_path(@movie)
   end
 
   def destroy
@@ -36,10 +40,10 @@ class Admin::MoviesController < ApplicationController
   def movie_params
     # movieとアソシエーション関係にある。movie_genres、actor,superviser,writerも保存できるようにする。
     params.require(:movie).permit(:movie_image, :title, :summary, :a_movie_released, :show_time,
-                                  movie_genres_attributes: [:genre_id],
-                                  supervisers_attributes: [:superviser_name],
-                                  actors_attributes: [:actor_name],
-                                  writers_attributes: [:writer_name])
+                                  movie_genres_attributes: [:id, :genre_id, :_destroy],
+                                  supervisers_attributes: [:id, :superviser_name, :_destroy],
+                                  actors_attributes: [:id, :actor_name, :_destroy],
+                                  writers_attributes: [:id, :writer_name, :_destroy])
     end
 
   def set_movies

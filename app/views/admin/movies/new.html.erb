@@ -1,8 +1,8 @@
 <h1>作品新規投稿</h1>
 
-<%= form_with(model: @movie, url:admin_movies_path, local:true) do |f| %>
+<%= form_with(model: @movie, url:admin_movies_path(@movie), local:true) do |f| %>
   <div class="col-md-5">
-    <%= image_tag attachment_url(@movie, :movie_image, :fill, 300, 300, format: "jpg", fallback: "no_image.jpg") %>
+    <%= image_tag attachment_url(@movie, :movie_image, :fill, 300, 420, format: "jpg", fallback: "no_image.jpg") %>
     <%= f.attachment_field :movie_image %>
   </div>
   <div class="col-md-7">
