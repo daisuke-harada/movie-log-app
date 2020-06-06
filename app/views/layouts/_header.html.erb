@@ -8,8 +8,8 @@
       <ul class="nav navbar-nav navbar-right">
         <!--if文でサインインとアウト時の表示を変更-->
         <% if admin_signed_in? %>
-          <li><%= link_to '映画一覧', admin_movies_path %></li>
-          <li><%= link_to '映画新規投稿', new_admin_movie_path %></li>
+          <li><%= link_to '作品一覧', admin_movies_path %></li>
+          <li><%= link_to '作品新規投稿', new_admin_movie_path %></li>
           <li><%= link_to 'ジャンル一覧', admin_genres_path %></li>
           <li><%= link_to 'ログアウト', destroy_admin_session_path, method: :delete %></li>
         <% elsif user_signed_in? %>
