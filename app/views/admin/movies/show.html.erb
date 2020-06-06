@@ -13,6 +13,11 @@
   <div>上映時間</div>
   <div><%= @movie.show_time %></div><br/>
 
+  <div>ジャンル</div>
+  <% @movie.movie_genres.each do |movie_genre| %>
+    <div><%= movie_genre.genre.name %></div>
+  <% end %><br/>
+
   <div>監督</div>
   <% @movie.supervisers.each do |superviser| %>
     <div><%= superviser.superviser_name %></div>
