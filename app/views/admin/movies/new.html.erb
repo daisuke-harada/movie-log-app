@@ -6,8 +6,10 @@
     <%= f.attachment_field :movie_image %>
   </div>
   <div class="col-md-7">
-    <%= f.label "タイトル" %><br />
-    <%= f.text_field :title %><br />
+    <div class="form-group">
+      <%= f.label "タイトル" %><br />
+      <%= f.text_field :title %><br />
+    </div>
 
     <%= f.label "公開日" %><br />
     <%= f.text_field :a_movie_released %><br />

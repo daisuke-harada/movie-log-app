@@ -18,6 +18,7 @@ class Admin::MoviesController < ApplicationController
   end
 
   def index
+    @movies = Movie.all
   end
 
   def show

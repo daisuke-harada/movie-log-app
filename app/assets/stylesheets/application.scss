@@ -29,8 +29,12 @@ body {
   margin-top: 60px;
 }
 
-.box {
+.genre-box {
   border: 2px solid #ddd;
+}
+
+.movie-box {
+  width: 33%;
 }
 
 .genre-title {
@@ -48,10 +52,10 @@ li {
   padding: 5px;
 }
 
-.genre-box {
+.box {
   display: flex;
   flex-flow: row wrap;
-  align-items: fles-start;
+  align-items: flex-start;
   align-content: flex-start;
 }
 

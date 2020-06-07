@@ -19,9 +19,9 @@
 </div>
 
 <div class="col-md-8">
-  <div class="box">
+  <div class="genre-box">
     <h2 class="genre-title">ジャンル</h2>
-      <ul class="genre-box">
+      <ul class="box">
         <% @genres.each do |genre| %>
           <li>
             <%= link_to edit_admin_genre_path(genre.id) do%>
