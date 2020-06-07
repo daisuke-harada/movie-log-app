@@ -13,6 +13,12 @@
           <li><%= link_to 'ジャンル一覧', admin_genres_path %></li>
           <li><%= link_to 'ログアウト', destroy_admin_session_path, method: :delete %></li>
         <% elsif user_signed_in? %>
+          <li><%= link_to '作品一覧', user_movies_path %></li>
+          <li><%= link_to '作品検索' %></li>
+          <li><%= link_to 'ジャンル一覧', user_genres_path %></li>
+          <li><%= link_to 'ユーザー一覧', user_users_path %></li>
+          <li><%= link_to 'マイページ', user_user_path(current_user) %></li>
+          <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete %></li>
         <% else %>
           <li><%= link_to ' home', root_path, class: 'glyphicon glyphicon-home home' %></li>
           <li><%= link_to ' about', homes_about_path, class: 'glyphicon glyphicon-link about' %></li>
