@@ -16,6 +16,12 @@
 @import "bootstrap-sprockets";  /*bootstrapを読み込む*/
 @import "bootstrap";            /*bootstrapを読み込む*/
 
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 header {
   color:white;
 }

@@ -34,6 +34,8 @@ class Admin::MoviesController < ApplicationController
   end
 
   def destroy
+    @movie.destroy
+    redirect_to admin_movies_path
   end
 
   private
@@ -45,7 +47,7 @@ class Admin::MoviesController < ApplicationController
                                   supervisers_attributes: [:id, :superviser_name, :_destroy],
                                   actors_attributes: [:id, :actor_name, :_destroy],
                                   writers_attributes: [:id, :writer_name, :_destroy])
-    end
+  end
 
   def set_movies
     @movie = Movie.find(params[:id])
