@@ -9,6 +9,7 @@
   Admin.create!( name: 'admin', email: 'admin@admin.com', password: '04030403')
 
   User.create!( name: 'daisuke', email: 'daisuke_h940403@icloud.com', password: '04030403')
+  User.create!( name: 'tomoki', email: 'tomoki_h940403@icloud.com', password: '10031003')
 
   Genre.create!( name: 'アクション')
   Genre.create!( name: 'ドラマ')
