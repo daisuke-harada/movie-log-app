@@ -1,2 +1,21 @@
-<h1>User::Users#show</h1>
-<p>Find me in app/views/user/users/show.html.erb</p>
+<h1>マイページ</h1>
+
+<div class="col-md-8">
+  <%= attachment_image_tag @user, :profile_image, :fill, 150, 150, format: "jpg", fallback: "no_image.jpg" %><br/>
+  <h2><%= @user.name %></h2><br/>
+  <table class="table">
+    <tr>
+      <td>レビュー数<%= %></td>
+      <td><%= @user.name %>さんの映画ランキングBEST3</td>
+      <td>フォロワー数<%= %></td>
+      <td>フォロー数<%= %></td>
+      <td><%= link_to 'マイページを編集する。', edit_user_user_path(@user), class: 'btn btn-primary'%></td>
+    </tr>
+  </table>
+</div>
+
+<div class="col-md-4">
+</div>
+
+<div class="col-md-12">
+</div>
