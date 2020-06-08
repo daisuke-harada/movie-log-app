@@ -7,18 +7,16 @@
     <tr>
       <td>レビュー数<%= %></td>
       <td><%= @user.name %>さんの映画ランキングBEST3</td>
-      <td class="follower">
-        <%= link_to followers_user_user_path(@user) do %>
-          フォロワー数<%=@user.followers.count %>人
-        <% end %>
+      <td id="follower">
+        <%= render "followers_count", user: @user %>
       </td>
-      <td class= "follow">
+      <td class="follow">
         <%= link_to following_user_user_path(@user) do %>
-          フォロー数<%=@user.following.count %>人
+          フォロー数<%= @user.following.count %>人
         <% end %>
       </td>
       <td>
-        <%= render "follow_form" %>
+        <%= render "follow_form", user: @user %>
       </td>
       <td><%= link_to 'マイページを編集する。', edit_user_user_path(@user), class: 'btn btn-primary'%></td>
     </tr>
