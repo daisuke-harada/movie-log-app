@@ -1,5 +1,5 @@
 class User::UsersController < ApplicationController
-  before_action :set_users, only: [:show, :edit]
+  before_action :set_users, only: [:show, :edit, :following, :followers]
   def index
     @users = User.all
   end
@@ -8,6 +8,16 @@ class User::UsersController < ApplicationController
   end
 
   def edit
+  end
+
+  def following
+    # @userがフォローしているユーザー
+    @users = @user.following
+  end
+
+  def followers
+    # @userをフォローしているユーザー
+    @users = @user.followers
   end
 
   def quit
