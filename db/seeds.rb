@@ -19,7 +19,6 @@
     movie_image_id: 'avengers_endgame.jpg',
     a_movie_released: '2019年4月26日',
     show_time: '181',
-    movie_genres_attributes: {}
     )
 
 
