@@ -1,0 +1,20 @@
+<h1>ジャンル編集</h1>
+
+<% if @genre.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= @genre.errors.count %> errors prohibited this book from being saved:</h2>
+      <ul>
+        <% @genre.errors.full_messages.each do|message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+  </div>
+<% end %>
+
+<div class="col-md-4">
+  <%= form_with(model: @genre, url:admin_genre_path, local: true) do |f| %>
+      <%= f.text_field :name %>
+      <%= f.submit "更新する", class:"btn-success" %>
+      <%= link_to "削除", admin_genre_path(@genre), method: :delete, "data-confirm" => "本当に削除しますか？", class:"btn-sm btn-danger" %>
+  <% end %>
+</div>
