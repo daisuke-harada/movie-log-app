@@ -1,0 +1,30 @@
+<h1>マイページ</h1>
+
+<div class="col-md-8">
+  <%= attachment_image_tag @user, :profile_image, size: "150x150", format: "jpg", fallback: "no_image.jpg" %><br/>
+  <h2><%= @user.name %></h2><br/>
+  <table class="table">
+    <tr>
+      <td>レビュー数<%= %></td>
+      <td><%= @user.name %>さんの映画ランキングBEST3</td>
+      <td id="follower">
+        <%= render "followers_count", user: @user %>
+      </td>
+      <td class="follow">
+        <%= link_to following_user_user_path(@user) do %>
+          フォロー数<%= @user.following.count %>人
+        <% end %>
+      </td>
+      <td>
+        <%= render "follow_form", user: @user %>
+      </td>
+      <td><%= link_to 'マイページを編集する。', edit_user_user_path(@user), class: 'btn btn-primary'%></td>
+    </tr>
+  </table>
+</div>
+
+<div class="col-md-4">
+</div>
+
+<div class="col-md-12">
+</div>

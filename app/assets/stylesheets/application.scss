@@ -1,0 +1,78 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+@import "bootstrap-sprockets";  /*bootstrapを読み込む*/
+@import "bootstrap";            /*bootstrapを読み込む*/
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+header {
+  color:white;
+}
+
+header .navbar-left span {
+  font-size: 30px;
+  padding-top: 10px;
+}
+
+body {
+  margin-top: 60px;
+}
+
+.genre-box {
+  border: 2px solid #ddd;
+}
+
+.movie-box {
+  width: 33%;
+}
+
+.genre-title {
+  border-bottom: 2px solid #ddd;
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+  text-align: center;
+}
+
+ul {
+  list-style: none;
+}
+
+li {
+  padding: 5px;
+}
+
+.box {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: flex-start;
+  align-content: flex-start;
+}
+
+.form-group {
+  margin-bottom: 0;
+}
+
+.user-box {
+  width: 25%;
+}
+
+.user-minibox{
+  width: auto;
+}
