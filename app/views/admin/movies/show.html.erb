@@ -1,7 +1,7 @@
 <h1>映画詳細</h1>
 
 <div class="col-md-5">
-  <%= attachment_image_tag @movie, :movie_image, :fill, 300, 420, format: "jpg", fallback: "no_image.jpg" %><br/>
+  <%= attachment_image_tag @movie, :movie_image, size: "300x420", format: "jpg", fallback: "no_image.jpg" %><br/>
   <%= link_to '編集ページへいく', edit_admin_movie_path(@movie), class: 'btn btn-primary' %>
 </div>
 <div class="col-md-7">
