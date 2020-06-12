@@ -17,7 +17,6 @@ ActiveRecord::Schema.define(version: 2020_06_07_032838) do
     t.string "actor_name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["movie_id"], name: "index_actors_on_movie_id"
   end
 
   create_table "admins", force: :cascade do |t|
@@ -39,8 +38,6 @@ ActiveRecord::Schema.define(version: 2020_06_07_032838) do
     t.text "body"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["review_id"], name: "index_comments_on_review_id"
-    t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
   create_table "favorites", force: :cascade do |t|
@@ -48,8 +45,6 @@ ActiveRecord::Schema.define(version: 2020_06_07_032838) do
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["review_id"], name: "index_favorites_on_review_id"
-    t.index ["user_id"], name: "index_favorites_on_user_id"
   end
 
   create_table "genres", force: :cascade do |t|
@@ -63,8 +58,6 @@ ActiveRecord::Schema.define(version: 2020_06_07_032838) do
     t.integer "genre_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["genre_id"], name: "index_movie_genres_on_genre_id"
-    t.index ["movie_id"], name: "index_movie_genres_on_movie_id"
   end
 
   create_table "movies", force: :cascade do |t|
@@ -90,7 +83,6 @@ ActiveRecord::Schema.define(version: 2020_06_07_032838) do
     t.string "superviser_name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["movie_id"], name: "index_supervisers_on_movie_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -113,7 +105,6 @@ ActiveRecord::Schema.define(version: 2020_06_07_032838) do
     t.string "writer_name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["movie_id"], name: "index_writers_on_movie_id"
   end
 
 end
