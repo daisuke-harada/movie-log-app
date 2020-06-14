@@ -82,6 +82,7 @@ ActiveRecord::Schema.define(version: 2020_06_07_032838) do
     t.integer "movie_id"
     t.integer "user_id"
     t.float "rate", default: 0.0, null: false
+    t.text "content"
     t.boolean "is_spoil"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

@@ -9,5 +9,6 @@ class Movie < ApplicationRecord
   accepts_nested_attributes_for :actors, allow_destroy: true
   has_many :writers, dependent: :destroy
   accepts_nested_attributes_for :writers
+  has_many :reviews, dependent: :destroy
   attachment :movie_image
 end
