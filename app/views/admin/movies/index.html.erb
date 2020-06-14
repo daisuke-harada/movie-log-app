@@ -3,7 +3,7 @@
 <ul class="box">
   <% @movies.each do |movie| %>
     <li class="movie-box">
-      <%= attachment_image_tag movie, :movie_image, :fill, 180, 230, format: "jpg", fallback: "no_image.jpg" %><br/>
+      <%= attachment_image_tag movie, :movie_image, size: "180x230", format: "jpg", fallback: "no_image.jpg" %><br/>
       <%= movie.title %><br/>
       <%= movie.a_movie_released %><br/>
       <%= movie.show_time %><br/>

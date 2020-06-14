@@ -78,6 +78,16 @@ ActiveRecord::Schema.define(version: 2020_06_07_032838) do
     t.index ["follower_id", "following_id"], name: "index_relationships_on_follower_id_and_following_id", unique: true
   end
 
+  create_table "reviews", force: :cascade do |t|
+    t.integer "movie_id"
+    t.integer "user_id"
+    t.float "rate", default: 0.0, null: false
+    t.text "content"
+    t.boolean "is_spoil"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "supervisers", force: :cascade do |t|
     t.integer "movie_id"
     t.string "superviser_name"

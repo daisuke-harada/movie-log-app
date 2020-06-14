@@ -1,2 +1,13 @@
-<h1>User::Movies#index</h1>
-<p>Find me in app/views/user/movies/index.html.erb</p>
+<h1>作品一覧</h1>
+
+<ul class="box">
+  <% @movies.each do |movie| %>
+    <li class="movie-box">
+      <%= attachment_image_tag movie, :movie_image, size: "180x230", format: "jpg", fallback: "no_image.jpg" %><br/>
+      <%= movie.title %><br/>
+      <%= movie.a_movie_released %><br/>
+      <%= movie.show_time %><br/>
+      <%= link_to '詳細を見る', user_movie_path(movie) %>
+    </li>
+  <% end %>
+</ul>

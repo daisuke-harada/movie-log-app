@@ -17,3 +17,4 @@
 //= require_tree .
 //= require nested_form_fields
 //= require jquery_ujs
+//= require jquery_raty.js
