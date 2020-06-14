@@ -1,0 +1,26 @@
+<h1>レビュー編集ページ</h1>
+
+<%= form_with(model: [@movie, @review], url:user_movie_review_path, local:true) do |f| %>
+
+  <div id="star">
+    <%= f.label :rate %><br/>
+    <%= f.hidden_field :rate, id: :review_star %>
+  </div>
+
+  <%= f.text_area :content %>
+  <%= f.submit class: 'btn btn-primary' %>
+
+<% end %>
+
+<script>
+  $(document).ready(function() {
+    $('#star').raty({
+      size: 36,
+      starOff: '<%= "#{asset_path('star-off.png')}" %>',
+      starOn: '<%= "#{asset_path('star-on.png')}" %>',
+      starHalf: '<%= "#{asset_path('star-half.png')}" %>',
+      scoreName: 'review[rate]',
+      half: true
+    });
+  });
+</script>

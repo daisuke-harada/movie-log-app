@@ -2,6 +2,10 @@
 
 <div class="col-md-5">
   <%= attachment_image_tag @movie, :movie_image, size: "300x420", format: "jpg", fallback: "no_image.jpg" %><br/>
+  総合スコア<br/>
+  <p id='star-average-rate-<%= @movie.id %>'></p><%= @movie.reviews.average(:rate).to_f.round(1) %><br/>
+   口コミ<%= @movie.reviews.count %> 件<br/>
+  <%= link_to 'レビューを投稿する', new_user_movie_review_path(@movie) %>
 </div>
 <div class="col-md-7">
   <h2><%= @movie.title %></h2><br/>
@@ -35,3 +39,58 @@
     <div><%= actor.actor_name %></div>
   <% end %><br/>
 </div>
+
+<div class="col-md-12" >
+  <table>
+    <thead>
+      <th>レビュー一覧</th>
+    </thead>
+    <tbody>
+      <% @reviews.each do |review| %>
+        <tr>
+          <td>
+            <%= attachment_image_tag review.user, :profile_image, size: "150x150", format: "jpg", fallback: "no_image.jpg" %><br/>
+            <%= review.user.name%>
+          </td>
+          <td>
+            <%= review.created_at %><br/>
+            <p id="star-rate-<%= review.id %>"></p><br/>
+            <%= review.content %>
+          </td>
+          <td>
+            <% if review.user.id == current_user.id %>
+              <%= link_to '編集する', edit_user_movie_review_path(review.id) %>
+            <% end %>
+          </td>
+        <tr>
+      <% end %>
+  　　</tbody>
+  </table>
+</div>
+
+<script>
+  $(document).ready(function() {
+    <% @reviews.each do |review| %>
+      $('#star-rate-<%= review.id %>').raty({
+        score: <%= review.rate %>,
+        size: 36,
+        starOff: '<%= "#{asset_path('star-off.png')}" %>',
+        starOn: '<%= "#{asset_path('star-on.png')}" %>',
+        starHalf: '<%= "#{asset_path('star-half.png')}" %>',
+        half: true,
+        readOnly: true,
+      });
+    <% end %>
+
+    $('#star-average-rate-<%= @movie.id %>').raty({
+      score: '<%= "#{@movie.reviews.average(:rate).to_f.round(1)}" %>',
+      size: 36,
+      starOff: '<%= "#{asset_path('star-off.png')}" %>',
+      starOn: '<%= "#{asset_path('star-on.png')}" %>',
+      starHalf: '<%= "#{asset_path('star-half.png')}" %>',
+      half: true,
+      readOnly: true
+      //注目ポイント↑ 平均点を算出し、round関数で切り上げ
+    });
+  });
+</script>
