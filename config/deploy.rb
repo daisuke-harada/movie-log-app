@@ -2,7 +2,7 @@
 lock "~> 3.14.1"
 
 set :application, "movieslog"
-set :repo_url, "github.com/daisuke-harada/movieslog"
+set :repo_url, "git@github.com:daisuke-harada/movieslog.git"
 set :deploy_to, "/home/ec2-user/movieslog"
 set :rbenv_ruby, '2.5.7'
 set :linked_files, %w{config/master.key .env}
