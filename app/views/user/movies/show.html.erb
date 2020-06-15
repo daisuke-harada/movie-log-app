@@ -5,7 +5,9 @@
   総合スコア<br/>
   <p id='star-average-rate-<%= @movie.id %>'></p><%= @movie.reviews.average(:rate).to_f.round(1) %><br/>
    口コミ<%= @movie.reviews.count %> 件<br/>
-  <%= link_to 'レビューを投稿する', new_user_movie_review_path(@movie) %>
+  <% if user_signed_in? %>
+    <%= link_to 'レビューを投稿する', new_user_movie_review_path(@movie) %>
+  <% end %>
 </div>
 <div class="col-md-7">
   <h2><%= @movie.title %></h2><br/>
