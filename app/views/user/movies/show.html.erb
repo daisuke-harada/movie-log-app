@@ -45,6 +45,7 @@
     <thead>
       <th>レビュー一覧</th>
     </thead>
+
     <tbody>
       <% @reviews.each do |review| %>
         <tr>
@@ -59,7 +60,7 @@
           </td>
           <td>
             <% if review.user.id == current_user.id %>
-              <%= link_to '編集する', edit_user_movie_review_path(review.id) %>
+              <%= link_to '編集する', edit_user_movie_review_path(@movie, review) %>
             <% end %>
           </td>
         <tr>

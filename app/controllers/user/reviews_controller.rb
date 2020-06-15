@@ -5,19 +5,21 @@ class User::ReviewsController < ApplicationController
 
   def new
     @review = Review.new
+    @movie = Movie.find(params[:movie_id])
   end
 
   def update
     @movie = Movie.find(params[:movie_id])
-    @review = @movie.reviews.build(review_params)
+    reviews = Review.find(params[:id])
+    @review = @movie.reviews.find_by(movie_id: @movie.id, id: reviews.id)
     @review.user_id = current_user.id
-    @review.update
+    @review.update(review_params)
     redirect_to user_movie_path(@movie)
   end
 
   def create
     @movie = Movie.find(params[:movie_id])
-    @review = @movie.reviews.build(params[:movie_id][:review_id])
+    @review = @movie.reviews.build(review_params)
     @review.user_id = current_user.id
     @review.save
     redirect_to user_movie_path(@movie)
@@ -28,6 +30,6 @@ class User::ReviewsController < ApplicationController
 
   private
   def review_params
-    params.require(:review).permit(:movie_id, :user_id, :rate, :content, :is_spoil)
+    params.require(:review).permit(:id, :movie_id, :user_id, :rate, :content, :is_spoil)
   end
 end
