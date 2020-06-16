@@ -13,8 +13,8 @@
 //= require activestorage
 //= require turbolinks
 //= require jquery
+//= require jquery_ujs
 //= require bootstrap-sprockets
 //= require_tree .
 //= require nested_form_fields
-//= require jquery_ujs
 //= require jquery_raty.js

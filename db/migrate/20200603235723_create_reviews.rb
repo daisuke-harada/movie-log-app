@@ -6,6 +6,7 @@ class CreateReviews < ActiveRecord::Migration[5.2]
       t.float :rate, null: false, default: 0
       t.text :content
       t.boolean :is_spoil
+      t.integer :favorites_count
 
       t.timestamps
     end

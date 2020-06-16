@@ -77,3 +77,31 @@ li {
 .user-minibox{
   width: auto;
 }
+
+.review {
+  border: 2px solid #EEEEEE;
+  margin-bottom: 20px;
+}
+
+.review-box {
+  width: 100%;
+  border-bottom: 2px solid #EEEEEE;
+}
+
+.review-mini-box {
+  display: inline-block;
+  height: auto;
+  width: auto;
+  vertical-align: top;
+}
+
+.favorite-and-comments-box {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.favorite-layouts {
+  margin: 5px;
+  padding: 5px;
+}
+
