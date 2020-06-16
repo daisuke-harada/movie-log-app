@@ -44,7 +44,7 @@
 
 
 <div class= "col-md-12">
-  <% @reviews.each do |review| %>
+  <% @movie.reviews.each do |review| %>
   <div class="review">
     <div class="review-box">
       <ul class="review-mini-box">
@@ -54,10 +54,10 @@
             <% if review.user.id == current_user.id %>
               <%= link_to 'レビューを編集する', edit_user_movie_review_path(@movie, review) %><br/>
               <%= link_to 'マイページへいく', user_user_path(current_user.id) %>
-            <% else %>
-              <%= link_to user_user_path(review.user.id) do %>
-                <%= review.user.name %>さんのページへ行く
-              <% end %>
+            <% end %>
+          <% else %>
+            <%= link_to user_user_path(review.user.id) do %>
+              <%= review.user.name %>さんのページへ行く
             <% end %>
           <% end %>
         </li>
@@ -71,19 +71,34 @@
     </div>
     <div class= "favorite-and-comments-box">
       <% if user_signed_in? %>
-          <div class="favorite-layouts" id="favorite-<%= review.id%>">
-            <%= render 'user/favorites/favorite', review: review %>
+        <div class="favorite-layouts" id="favorite-<%= review.id%>">
+          <%= render 'user/favorites/favorite', review: review %>
+        </div>
+      <% else %>
+        <% if review.favorites.count == 0 %>
+          <div class="favorite-layouts">
+            <%= link_to new_user_registration_path do %>
+              <i class="fa fa-heart-o" aria-hidden="true"></i>
+              <%= review.favorites.count %> いいね
+            <% end %>
+          </div>
+        <% else %>
+          <div class="favorite-layouts">
+            <%= link_to new_user_registration_path do %>
+              <i class="fa fa-heart" aria-hidden="true" style="color: red;"></i>
+              <%= review.favorites.count %>いいね
+            <% end %>
           </div>
         <% end %>
+      <% end %>
     </div>
   </div>
   <% end %>
 </div>
 
-
 <script>
   $(document).ready(function() {
-    <% @reviews.each do |review| %>
+    <% @movie.reviews.each do |review| %>
       $('#star-rate-<%= review.id %>').raty({
         score: <%= review.rate %>,
         size: 36,

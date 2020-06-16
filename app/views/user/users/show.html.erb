@@ -18,7 +18,11 @@
       <td>
         <%= render "follow_form", user: @user %>
       </td>
-      <td><%= link_to 'マイページを編集する。', edit_user_user_path(@user), class: 'btn btn-primary'%></td>
+      <% if user_signed_in? %>
+        <% if @user.id == current_user.id %>
+          <td><%= link_to 'マイページを編集する。', edit_user_user_path(@user), class: 'btn btn-primary'%></td>
+        <% end %>
+      <% end %>
     </tr>
   </table>
 </div>
