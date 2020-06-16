@@ -1,0 +1,9 @@
+<h1>コメント投稿ページ</h1>
+
+<%= form_with (model: [@review, @comment], url:user_movie_review_comments, local:true) do |f| %>
+  <p>コメント入力</p>
+  <div class="comment-form">
+    <%= f.text_area :body %>
+    <%= f.submit '投稿する' %>
+  </div>
+<% end %>

@@ -27,7 +27,7 @@ Rails.application.routes.draw do
     resources :relationships, only: [:create, :destroy]
     resources :movies, only: [:index, :show] do
       resources :reviews, only: [:edit, :update, :create, :new, :destroy] do
-        resources :comments, only: [:new, :create, :edit, :update, :destroy]
+        resources :comments, only: [:new, :create, :destroy]
       end
     end
     resources :genres, only: [:index, :show]
