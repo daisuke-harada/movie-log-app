@@ -42,34 +42,44 @@
   <% end %><br/>
 </div>
 
-<div class="col-md-12" >
-  <table>
-    <thead>
-      <th>レビュー一覧</th>
-    </thead>
 
-    <tbody>
-      <% @reviews.each do |review| %>
-        <tr>
-          <td>
-            <%= attachment_image_tag review.user, :profile_image, size: "150x150", format: "jpg", fallback: "no_image.jpg" %><br/>
-            <%= review.user.name%>
-          </td>
-          <td>
-            <%= review.created_at %><br/>
-            <p id="star-rate-<%= review.id %>"></p><br/>
-            <%= review.content %>
-          </td>
-          <td>
+<div class= "col-md-12">
+  <% @reviews.each do |review| %>
+  <div class="review">
+    <div class="review-box">
+      <ul class="review-mini-box">
+        <li><%= attachment_image_tag review.user, :profile_image, size: "150x150", format: "jpg", fallback: "no_image.jpg" %></li>
+        <li>
+          <% if user_signed_in? %>
             <% if review.user.id == current_user.id %>
-              <%= link_to '編集する', edit_user_movie_review_path(@movie, review) %>
+              <%= link_to 'レビューを編集する', edit_user_movie_review_path(@movie, review) %><br/>
+              <%= link_to 'マイページへいく', user_user_path(current_user.id) %>
+            <% else %>
+              <%= link_to user_user_path(review.user.id) do %>
+                <%= review.user.name %>さんのページへ行く
+              <% end %>
             <% end %>
-          </td>
-        <tr>
-      <% end %>
-  　　</tbody>
-  </table>
+          <% end %>
+        </li>
+      </ul>
+      <ul class="review-mini-box">
+        <li><%= review.user.name%>さんの感想と評価。</li>
+        <li><%= review.created_at %></li>
+        <li id="star-rate-<%= review.id %>"></li>
+        <li><%= review.content %></li>
+      </ul>
+    </div>
+    <div class= "favorite-and-comments-box">
+      <% if user_signed_in? %>
+          <div class="favorite-layouts" id="favorite-<%= review.id%>">
+            <%= render 'user/favorites/favorite', review: review %>
+          </div>
+        <% end %>
+    </div>
+  </div>
+  <% end %>
 </div>
+
 
 <script>
   $(document).ready(function() {
