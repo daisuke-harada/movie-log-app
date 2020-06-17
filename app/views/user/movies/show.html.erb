@@ -79,6 +79,11 @@
         <div class="favorite-layouts" id="favorite-<%= review.id%>">
           <%= render 'user/favorites/favorite', review: review %>
         </div>
+        <div class="comment-layouts">
+          <%= link_to user_movie_review_path(@movie, review) do %>
+            コメント<%= review.comments.count  %>件
+          <% end %>
+        </div>
       <% else %>
         <% if review.favorites.count == 0 %>
           <div class="favorite-layouts">

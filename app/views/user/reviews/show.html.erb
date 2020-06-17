@@ -1,0 +1,14 @@
+<h1><%= @review.user.name %>さんの<%= @movie.title %>の感想に対するコメント一覧</h1>
+
+<% @comments.each do |comment| %>
+  <div class="comment-box">
+    <ul class="comment-mini-box">
+      <li><%= attachment_image_tag comment.user, :profile_image, size: "150x150", format: "jpg", fallback: "no_image.jpg" %></li><br/>
+      <li><%= comment.user.name %></li><br/>
+    </ul>
+    <ul class="comment-mini-box">
+      <li><%= comment.created_at %></li><br/>
+      <li><%= comment.body %></li>
+    </ul>
+  </div>
+<% end %>
