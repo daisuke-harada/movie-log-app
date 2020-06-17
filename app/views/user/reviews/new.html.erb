@@ -1,16 +1,20 @@
-<h1>レビュー投稿ページ</h1>
+<div class="container">
+  <div class="row">
+    <h1>レビュー投稿ページ</h1>
 
-<%= form_with(model: @review, url:user_movie_reviews_path(@movie), local:true) do |f| %>
+    <%= form_with(model: @review, url:user_movie_reviews_path(@movie), local:true) do |f| %>
 
-  <div id="star">
-    <%= f.label :rate %><br/>
-    <%= f.hidden_field :rate, id: :review_star %>
+      <div id="star">
+        <%= f.label :rate %><br/>
+        <%= f.hidden_field :rate, id: :review_star %>
+      </div>
+
+      <%= f.text_area :content %>
+      <%= f.submit class: 'btn btn-primary' %>
+
+    <% end %>
   </div>
-
-  <%= f.text_area :content %>
-  <%= f.submit class: 'btn btn-primary' %>
-
-<% end %>
+</div>
 
 <script>
  $('#star').raty({

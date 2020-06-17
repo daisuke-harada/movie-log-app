@@ -1,34 +1,33 @@
-<h1>マイページ</h1>
+<div class="container">
+  <div class="row">
+    <h1>マイページ</h1>
 
-<div class="col-md-8">
-  <%= attachment_image_tag @user, :profile_image, size: "150x150", format: "jpg", fallback: "no_image.jpg" %><br/>
-  <h2><%= @user.name %></h2><br/>
-  <table class="table">
-    <tr>
-      <td>レビュー数<%= %></td>
-      <td><%= @user.name %>さんの映画ランキングBEST3</td>
-      <td id="follower">
-        <%= render "followers_count", user: @user %>
-      </td>
-      <td class="follow">
-        <%= link_to following_user_user_path(@user) do %>
-          フォロー数<%= @user.following.count %>人
+    <div class="col-md-4">
+      <%= attachment_image_tag @user, :profile_image, size: "150x150", format: "jpg", fallback: "no_image.jpg" %><br/>
+      <h2><%= @user.name %></h2><br/>
+    </div>
+    <div class="col-md-12">
+      <div class="my-box">
+        <p class="my-mini-box">レビュー数<%= %></p>
+        <p class="my-mini-box"><%= @user.name %>さんの映画ランキングBEST3</p>
+        <p class="my-mini-box" id="follower">
+          <%= render "followers_count", user: @user %>
+        </p>
+        <p class="follow my-mini-box">
+          <%= link_to following_user_user_path(@user) do %>
+            フォロー数<%= @user.following.count %>人
+          <% end %>
+        </p>
+        <p class="my-mini-box">
+          <%= render "follow_form", user: @user %>
+        </p>
+        <% if user_signed_in? %>
+          <% if @user.id == current_user.id %>
+            <%= link_to 'マイページを編集する。', edit_user_user_path(@user), class: "btn btn-primary my-mini-box" %>
+          <% end %>
         <% end %>
-      </td>
-      <td>
-        <%= render "follow_form", user: @user %>
-      </td>
-      <% if user_signed_in? %>
-        <% if @user.id == current_user.id %>
-          <td><%= link_to 'マイページを編集する。', edit_user_user_path(@user), class: 'btn btn-primary'%></td>
-        <% end %>
-      <% end %>
-    </tr>
-  </table>
+      </div>
+    </div>
+  </div>
 </div>
 
-<div class="col-md-4">
-</div>
-
-<div class="col-md-12">
-</div>
