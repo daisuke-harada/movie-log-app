@@ -9,8 +9,8 @@ class User::ReviewsController < ApplicationController
   end
 
   def show
-    @review = Review.find(params[:id])
     @movie = Movie.find(params[:movie_id])
+    @review = Review.find(params[:id])
     @comments = @review.comments.all
   end
 

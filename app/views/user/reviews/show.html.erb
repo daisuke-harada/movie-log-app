@@ -1,14 +1,21 @@
 <h1><%= @review.user.name %>さんの<%= @movie.title %>の感想に対するコメント一覧</h1>
 
 <% @comments.each do |comment| %>
-  <div class="comment-box">
-    <ul class="comment-mini-box">
-      <li><%= attachment_image_tag comment.user, :profile_image, size: "150x150", format: "jpg", fallback: "no_image.jpg" %></li><br/>
-      <li><%= comment.user.name %></li><br/>
-    </ul>
-    <ul class="comment-mini-box">
-      <li><%= comment.created_at %></li><br/>
-      <li><%= comment.body %></li>
-    </ul>
+  <div class="layout" id="comment-<%= comment.id %>">
+    <div class="layout-box">
+      <ul class="layout-mini-box">
+        <li><%= attachment_image_tag comment.user, :profile_image, size: "150x150", format: "jpg", fallback: "no_image.jpg" %></li><br/>
+        <li><%= comment.user.name %></li><br/>
+      </ul>
+      <ul class="layout-mini-box">
+        <li><%= comment.created_at.to_s(:datetime_jp) %></li><br/>
+    　　　　　<li><%= comment.body %></li>
+      </ul>
+    </div>
+    <div class= "comment-destroy-box">
+      <% if current_user.id == comment.user.id %>
+        <%= link_to "削除",user_movie_review_comment_path(@review.movie_id, comment.review_id, comment), method: :delete, remote: true , data: {confirm: "本当に削除してもよろしいですか？"}, class: "btn-sm btn-danger"%>
+      <% end %>
+    </div>
   </div>
 <% end %>
