@@ -78,17 +78,17 @@ li {
   width: auto;
 }
 
-.review {
+.layout {
   border: 2px solid #EEEEEE;
   margin-bottom: 20px;
 }
 
-.review-box {
+.layout-box {
   width: 100%;
   border-bottom: 2px solid #EEEEEE;
 }
 
-.review-mini-box {
+.layout-mini-box {
   display: inline-block;
   height: auto;
   width: auto;
@@ -100,8 +100,17 @@ li {
   justify-content: flex-end;
 }
 
+.comment-destroy-box {
+  display: flex;
+  justify-content: flex-end;
+}
+
 .favorite-layouts {
   margin: 5px;
   padding: 5px;
 }
 
+.comment-layouts {
+  margin: 5px;
+  padding: 5px;
+}
