@@ -6,8 +6,34 @@
   width: 25%;
 }
 
-.user-minibox{
+.user-minibox {
   width: auto;
 }
 
+.my-box {
+  display: flex;
+  border-bottom: 1px solid;
+  border-top: 1px solid;
+}
 
+.my-mini-box {
+  text-align: center;
+  padding: 20px;
+  margin-bottom: 0px;
+}
+
+.btn-border {
+  display: inline-block;
+  border-right: 1px solid;
+  border-color: black;
+  font-size: 16px;
+  text-decoration: none;
+  font-weight: bold;
+  padding: 8px 16px;
+  transition: .4s;
+}
+
+.btn-border:hover {
+  background-color: #FF8C00 ;
+  border-color: #cbe585;
+}

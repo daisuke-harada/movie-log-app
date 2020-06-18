@@ -1,19 +1,6 @@
 <div class="container">
   <div class="row">
     <h1>ユーザー一覧ページ</h1>
-
-    <ul class="box">
-      <% @users.each do |user| %>
-        <li class="user-box">
-          <%= attachment_image_tag user, :profile_image, size: "150x150", format: "jpg", fallback: "no_image.jpg" %><br/>
-          <%= user.name %><br/>
-          <p>レビュー数<%= %></p>
-          <p><%= user.name %>さんの映画ランキングBEST3</p>
-          <p>フォロワー数<%= %></p>
-          <p>フォロー数<%= %></p>
-          <%= link_to '詳細を見る', user_user_path(user) %>
-        </li>
-      <% end %>
-    </ul>
+    <%= render "user/users/users", users: @users %>
   </div>
 </div>
