@@ -51,9 +51,9 @@
 
     <div class= "col-md-12">
       <% @movie.reviews.each do |review| %>
-      <div class="layout">
-        <div class="layout-box">
-          <ul class="layout-mini-box">
+      <div class="review">
+        <div class="review-box">
+          <ul class="review-mini-box">
             <li><%= attachment_image_tag review.user, :profile_image, size: "150x150", format: "jpg", fallback: "no_image.jpg" %></li>
             <li>
               <% if user_signed_in? %>
@@ -73,9 +73,9 @@
               <% end %>
             </li>
           </ul>
-          <ul class="layout-mini-box">
+          <ul class="review-mini-box">
             <li><%= review.user.name%>さんの感想と評価。</li>
-            <li><%= review.created_at.to_s(:datetime_jp) %></li>
+            <li><%= review.updated_at.to_s(:datetime_jp) %></li>
             <li id="star-rate-<%= review.id %>"></li>
             <li><%= review.content %></li>
           </ul>

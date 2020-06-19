@@ -22,5 +22,75 @@
     <% end %>
   </div>
 
+  <% @user.reviews.each do |review| %>
+      <div class="review">
+        <div class="review-box">
+          <ul class="review-mini-box">
+            <li><%= attachment_image_tag review.movie, :movie_image, size: "135x200", format: "jpg", fallback: "no_image.jpg" %></li>
+            <li>
+              <% if user_signed_in? %>
+                <% if review.user.id == current_user.id %>
+                  <%= link_to '映画の登録を編集する', edit_user_movie_review_path(review.movie, review) %><br/>
+                <% else %>
+                  <%= link_to 'コメントを投稿する', new_user_movie_review_comment_path(review.movie, review) %>
+                <% end %>
+              <% end %>
+            </li>
+          </ul>
+          <ul class="review-mini-box">
+            <li><%= review.movie.title%></li>
+            <li><%= review.created_at.to_s(:datetime_jp) %></li>
+            <li id="star-rate-<%= review.id %>"></li>
+            <li><%= review.content %></li>
+          </ul>
+        </div>
+        <div class= "favorite-and-comments-box">
+          <% if user_signed_in? %>
+            <div class="favorite-layouts" id="favorite-<%= review.id%>">
+              <%= render 'user/favorites/favorite', review: review %>
+            </div>
+            <div class="comment-layouts">
+              <%= link_to user_movie_review_path(review.movie, review) do %>
+                コメント<%= review.comments.count  %>件
+              <% end %>
+            </div>
+          <% else %>
+            <% if review.favorites.count == 0 %>
+              <div class="favorite-layouts">
+                <%= link_to new_user_registration_path do %>
+                  <i class="fa fa-heart-o" aria-hidden="true"></i>
+                  <%= review.favorites.count %> いいね
+                <% end %>
+              </div>
+            <% else %>
+              <div class="favorite-layouts">
+                <%= link_to new_user_registration_path do %>
+                  <i class="fa fa-heart" aria-hidden="true" style="color: red;"></i>
+                  <%= review.favorites.count %>いいね
+                <% end %>
+              </div>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+      <% end %>
+
+<script>
+  $(document).ready(function() {
+    <% @user.reviews.each do |review| %>
+      $('#star-rate-<%= review.id %>').raty({
+        score: <%= review.rate %>,
+        size: 36,
+        starOff: '<%= "#{asset_path('star-off.png')}" %>',
+        starOn: '<%= "#{asset_path('star-on.png')}" %>',
+        starHalf: '<%= "#{asset_path('star-half.png')}" %>',
+        half: true,
+        readOnly: true,
+      });
+    <% end %>
+  });
+</script>
+
+
 
 
