@@ -1,3 +1,7 @@
+<div class='new-review-modal-wrapper' id='new-review-modal'>
+  <%= render 'review_new', review: @review_new %>
+</div>
+
 <div class="container">
   <div class="row">
     <h1>映画詳細</h1>
@@ -11,7 +15,7 @@
         <% if current_user.reviews.find_by(movie_id: @movie) %>
           <%= link_to '映画の登録を編集する', edit_user_movie_review_path(@movie, @review) %><br/>
         <% else %>
-          <%= link_to '映画を登録する', new_user_movie_review_path(@movie) %>
+          <div class="btn btn-info" id="new-review-show">映画を登録する。</div>
         <% end %>
       <% else %>
       <% end %>
