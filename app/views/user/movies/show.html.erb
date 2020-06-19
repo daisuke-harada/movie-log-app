@@ -13,6 +13,7 @@
         <% else %>
           <%= link_to '映画を登録する', new_user_movie_review_path(@movie) %>
         <% end %>
+      <% else %>
       <% end %>
     </div>
     <div class="col-md-7">
@@ -51,7 +52,7 @@
 
     <div class= "col-md-12">
       <% @movie.reviews.each do |review| %>
-      <div class="review">
+      <div class="review" id="review-<%= review.id %>">
         <div class="review-box">
           <ul class="review-mini-box">
             <li><%= attachment_image_tag review.user, :profile_image, size: "150x150", format: "jpg", fallback: "no_image.jpg" %></li>
@@ -88,6 +89,11 @@
             <div class="comment-layouts">
               <%= link_to user_movie_review_path(@movie, review) do %>
                 コメント<%= review.comments.count  %>件
+              <% end %>
+            </div>
+            <div class="favorite-layouts">
+              <% if current_user.id == review.user.id %>
+                <%= link_to "削除",user_movie_review_path(@movie.id, review.id), method: :delete, remote: true , data: {confirm: "本当に削除してもよろしいですか？"}, class: "btn-sm btn-danger" %>
               <% end %>
             </div>
           <% else %>
