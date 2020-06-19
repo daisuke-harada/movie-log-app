@@ -27,4 +27,12 @@ class User < ApplicationRecord
   def unfollow(user)
     following_relationships.find_by(following_id: user.id).destroy
   end
+
+  def self.search(method,word)
+      if method == "perfect_match"
+        User.where("name LIKE?","#{word}")
+      else method == "partial_match"
+        User.where("name LIKE?","%#{word}%")
+      end
+  end
 end
