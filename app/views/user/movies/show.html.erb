@@ -1,113 +1,117 @@
-<h1>映画詳細</h1>
+<div class="container">
+  <div class="row">
+    <h1>映画詳細</h1>
 
-<div class="col-md-5">
-  <%= attachment_image_tag @movie, :movie_image, size: "300x420", format: "jpg", fallback: "no_image.jpg" %><br/>
-  総合スコア<br/>
-  <p id='star-average-rate-<%= @movie.id %>'></p><%= @movie.reviews.average(:rate).to_f.round(1) %><br/>
-    登録数<%= @movie.reviews.count %> 件<br/>
-  <% if user_signed_in? %>
-    <% if current_user.reviews.find_by(movie_id: @movie) %>
-      <%= link_to '映画の登録を編集する', edit_user_movie_review_path(@movie, @review) %><br/>
-    <% else %>
-      <%= link_to '映画を登録する', new_user_movie_review_path(@movie) %>
-    <% end %>
-  <% end %>
-</div>
-<div class="col-md-7">
-  <h2><%= @movie.title %></h2><br/>
-
-  <div class="box" >
-    <h4>上映日:</h4><div class="text"><%= @movie.a_movie_released %></div><h4>上映時間:</h4><div class="text"><%= @movie.show_time %></div>
-  </div><br/>
-
-  <div class="box">
-    <h4>ジャンル</h4>
-    <% @movie.movie_genres.each do |movie_genre| %>
-      <div class="text">:<%= movie_genre.genre.name %></div>
-    <% end %>
-  </div><br/>
-
-  <h4>あらすじ</h4>
-  <div><%= @movie.summary %></div><br/>
-
-  <h4>監督</h4>
-  <% @movie.supervisers.each do |superviser| %>
-    <div><%= superviser.superviser_name %></div>
-  <% end %><br/>
-
-  <h4>脚本</h4>
-  <% @movie.writers.each do |writer| %>
-    <div><%= writer.writer_name %></div>
-  <% end %><br/>
-
-  <h4>キャスト</h4>
-  <% @movie.actors.each do |actor| %>
-    <div><%= actor.actor_name %></div>
-  <% end %><br/>
-</div>
-
-
-<div class= "col-md-12">
-  <% @movie.reviews.each do |review| %>
-  <div class="layout">
-    <div class="layout-box">
-      <ul class="layout-mini-box">
-        <li><%= attachment_image_tag review.user, :profile_image, size: "150x150", format: "jpg", fallback: "no_image.jpg" %></li>
-        <li>
-          <% if user_signed_in? %>
-            <% if review.user.id == current_user.id %>
-              <%= link_to '映画の登録を編集する', edit_user_movie_review_path(@movie, review) %><br/>
-              <%= link_to 'マイページへいく', user_user_path(current_user.id) %>
-            <% else %>
-              <%= link_to user_user_path(review.user.id) do %>
-                <%= review.user.name %>さんのページへ行く
-              <% end %><br/>
-              <%= link_to 'コメントを投稿する', new_user_movie_review_comment_path(@movie, review) %>
-            <% end %>
-          <% else %>
-            <%= link_to user_user_path(review.user.id) do %>
-              <%= review.user.name %>さんのページへ行く
-            <% end %>
-          <% end %>
-        </li>
-      </ul>
-      <ul class="layout-mini-box">
-        <li><%= review.user.name%>さんの感想と評価。</li>
-        <li><%= review.created_at.to_s(:datetime_jp) %></li>
-        <li id="star-rate-<%= review.id %>"></li>
-        <li><%= review.content %></li>
-      </ul>
-    </div>
-    <div class= "favorite-and-comments-box">
+    <div class="col-md-5">
+      <%= attachment_image_tag @movie, :movie_image, size: "300x420", format: "jpg", fallback: "no_image.jpg" %><br/>
+      総合スコア<br/>
+      <p id='star-average-rate-<%= @movie.id %>'></p><%= @movie.reviews.average(:rate).to_f.round(1) %><br/>
+        登録数<%= @movie.reviews.count %> 件<br/>
       <% if user_signed_in? %>
-        <div class="favorite-layouts" id="favorite-<%= review.id%>">
-          <%= render 'user/favorites/favorite', review: review %>
-        </div>
-        <div class="comment-layouts">
-          <%= link_to user_movie_review_path(@movie, review) do %>
-            コメント<%= review.comments.count  %>件
-          <% end %>
-        </div>
-      <% else %>
-        <% if review.favorites.count == 0 %>
-          <div class="favorite-layouts">
-            <%= link_to new_user_registration_path do %>
-              <i class="fa fa-heart-o" aria-hidden="true"></i>
-              <%= review.favorites.count %> いいね
-            <% end %>
-          </div>
+        <% if current_user.reviews.find_by(movie_id: @movie) %>
+          <%= link_to '映画の登録を編集する', edit_user_movie_review_path(@movie, @review) %><br/>
         <% else %>
-          <div class="favorite-layouts">
-            <%= link_to new_user_registration_path do %>
-              <i class="fa fa-heart" aria-hidden="true" style="color: red;"></i>
-              <%= review.favorites.count %>いいね
-            <% end %>
-          </div>
+          <%= link_to '映画を登録する', new_user_movie_review_path(@movie) %>
         <% end %>
       <% end %>
     </div>
+    <div class="col-md-7">
+      <h2><%= @movie.title %></h2><br/>
+
+      <div class="box" >
+        <h4>上映日:</h4><div class="text"><%= @movie.a_movie_released %></div><h4>上映時間:</h4><div class="text"><%= @movie.show_time %></div>
+      </div><br/>
+
+      <div class="box">
+        <h4>ジャンル</h4>
+        <% @movie.movie_genres.each do |movie_genre| %>
+          <div class="text">:<%= movie_genre.genre.name %></div>
+        <% end %>
+      </div><br/>
+
+      <h4>あらすじ</h4>
+      <div><%= @movie.summary %></div><br/>
+
+      <h4>監督</h4>
+      <% @movie.supervisers.each do |superviser| %>
+        <div><%= superviser.superviser_name %></div>
+      <% end %><br/>
+
+      <h4>脚本</h4>
+      <% @movie.writers.each do |writer| %>
+        <div><%= writer.writer_name %></div>
+      <% end %><br/>
+
+      <h4>キャスト</h4>
+      <% @movie.actors.each do |actor| %>
+        <div><%= actor.actor_name %></div>
+      <% end %><br/>
+    </div>
+
+
+    <div class= "col-md-12">
+      <% @movie.reviews.each do |review| %>
+      <div class="layout">
+        <div class="layout-box">
+          <ul class="layout-mini-box">
+            <li><%= attachment_image_tag review.user, :profile_image, size: "150x150", format: "jpg", fallback: "no_image.jpg" %></li>
+            <li>
+              <% if user_signed_in? %>
+                <% if review.user.id == current_user.id %>
+                  <%= link_to '映画の登録を編集する', edit_user_movie_review_path(@movie, review) %><br/>
+                  <%= link_to 'マイページへいく', user_user_path(current_user.id) %>
+                <% else %>
+                  <%= link_to user_user_path(review.user.id) do %>
+                    <%= review.user.name %>さんのページへ行く
+                  <% end %><br/>
+                  <%= link_to 'コメントを投稿する', new_user_movie_review_comment_path(@movie, review) %>
+                <% end %>
+              <% else %>
+                <%= link_to user_user_path(review.user.id) do %>
+                  <%= review.user.name %>さんのページへ行く
+                <% end %>
+              <% end %>
+            </li>
+          </ul>
+          <ul class="layout-mini-box">
+            <li><%= review.user.name%>さんの感想と評価。</li>
+            <li><%= review.created_at.to_s(:datetime_jp) %></li>
+            <li id="star-rate-<%= review.id %>"></li>
+            <li><%= review.content %></li>
+          </ul>
+        </div>
+        <div class= "favorite-and-comments-box">
+          <% if user_signed_in? %>
+            <div class="favorite-layouts" id="favorite-<%= review.id%>">
+              <%= render 'user/favorites/favorite', review: review %>
+            </div>
+            <div class="comment-layouts">
+              <%= link_to user_movie_review_path(@movie, review) do %>
+                コメント<%= review.comments.count  %>件
+              <% end %>
+            </div>
+          <% else %>
+            <% if review.favorites.count == 0 %>
+              <div class="favorite-layouts">
+                <%= link_to new_user_registration_path do %>
+                  <i class="fa fa-heart-o" aria-hidden="true"></i>
+                  <%= review.favorites.count %> いいね
+                <% end %>
+              </div>
+            <% else %>
+              <div class="favorite-layouts">
+                <%= link_to new_user_registration_path do %>
+                  <i class="fa fa-heart" aria-hidden="true" style="color: red;"></i>
+                  <%= review.favorites.count %>いいね
+                <% end %>
+              </div>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+      <% end %>
+    </div>
   </div>
-  <% end %>
 </div>
 
 <script>

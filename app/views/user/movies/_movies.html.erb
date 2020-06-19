@@ -1,11 +1,30 @@
 <ul class="box">
   <% movies.each do |movie| %>
     <li class="movie-box">
-      <%= attachment_image_tag movie, :movie_image, size: "180x230", format: "jpg", fallback: "no_image.jpg" %><br/>
+      <%= attachment_image_tag movie, :movie_image, size: "270x400", format: "jpg", fallback: "no_image.jpg" %><br/>
       <%= movie.title %><br/>
       <%= movie.a_movie_released %><br/>
-      <%= movie.show_time %><br/>
-      <%= link_to '詳細を見る', user_movie_path(movie) %>
+      上映時間:<%= movie.show_time %><br/>
+      <p id='star-average-rate-<%= movie.id %>'></p>
+      登録数<%= movie.reviews.count %> 件
+      <%= link_to 'check', user_movie_path(movie) %>
     </li>
   <% end %>
 </ul>
+
+<script>
+  $(document).ready(function() {
+    <% movies.each do |movie| %>
+      $('#star-average-rate-<%= movie.id %>').raty({
+        score: '<%= "#{movie.reviews.average(:rate).to_f.round(1)}" %>',
+        size: 36,
+        starOff: '<%= "#{asset_path('star-off.png')}" %>',
+        starOn: '<%= "#{asset_path('star-on.png')}" %>',
+        starHalf: '<%= "#{asset_path('star-half.png')}" %>',
+        half: true,
+        readOnly: true
+        //注目ポイント↑ 平均点を算出し、round関数で切り上げ
+      });
+    <% end %>
+  });
+</script>
