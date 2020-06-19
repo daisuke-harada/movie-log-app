@@ -19,21 +19,6 @@
           <%= f.submit "登録する", class:"btn-success" %>
       <% end %>
     </div>
-
-    <div class="col-md-8">
-      <div class="genre-box">
-        <h2 class="genre-title">ジャンル</h2>
-          <ul class="box">
-            <% @genres.each do |genre| %>
-              <li>
-                <%= link_to edit_admin_genre_path(genre.id) do%>
-                  <%= genre.name %>
-                <% end %>/
-              </li>
-            <% end %>
-          </ul>
-      </div>
-    </div>
-
+    <%= render 'user/genres/genres', genres: @genres %>
   </div>
 </div>
