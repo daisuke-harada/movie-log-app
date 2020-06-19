@@ -1,0 +1,11 @@
+<div class="container">
+  <div class="row">
+    <% if @model == 'user' %>
+      <%= render "user/users/users", users: @users %>
+    <% elsif @model == 'movie' %>
+      <%= render 'user/movies/movies', movies: @movies %>
+    <% end %>
+  </div>
+</div>
+
+

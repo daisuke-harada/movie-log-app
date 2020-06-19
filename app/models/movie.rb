@@ -10,5 +10,14 @@ class Movie < ApplicationRecord
   has_many :writers, dependent: :destroy
   accepts_nested_attributes_for :writers
   has_many :reviews, dependent: :destroy
+  has_many :users, through: :reviews
   attachment :movie_image
+
+  def self.search(method,word)
+      if method == "perfect_match"
+        Movie.where("title LIKE?", "#{word}")
+      else method == "partial_match"
+        Movie.where("title LIKE?","%#{word}%")
+      end
+  end
 end

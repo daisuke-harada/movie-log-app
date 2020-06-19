@@ -9,6 +9,7 @@ class User < ApplicationRecord
   has_many :follower_relationships, foreign_key: "following_id", class_name: "Relationship", dependent: :destroy
   has_many :followers, through: :follower_relationships
   has_many :reviews, dependent: :destroy
+  has_many :users, through: :reviews
   has_many :favorites, dependent: :destroy
   has_many :comments, dependent: :destroy
 
@@ -25,5 +26,13 @@ class User < ApplicationRecord
   #フォローを外すときのメソッド
   def unfollow(user)
     following_relationships.find_by(following_id: user.id).destroy
+  end
+
+  def self.search(method,word)
+      if method == "perfect_match"
+        User.where("name LIKE?","#{word}")
+      else method == "partial_match"
+        User.where("name LIKE?","%#{word}%")
+      end
   end
 end
