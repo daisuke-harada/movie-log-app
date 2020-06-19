@@ -1,0 +1,26 @@
+<div class="col-md-8">
+  <div class="genre-box">
+    <h2 class="genre-title">ジャンル</h2>
+      <% if admin_signed_in? %>
+        <ul class="box">
+          <% genres.each do |genre| %>
+            <li>
+              <%= link_to edit_admin_genre_path(genre.id) do%>
+                <%= genre.name %>
+              <% end %>/
+            </li>
+          <% end %>
+        </ul>
+      <% elsif user_signed_in? %>
+        <ul class="box">
+          <% genres.each do |genre| %>
+            <li>
+              <%= link_to user_genre_path(genre.id) do%>
+                <%= genre.name %>
+              <% end %>/
+            </li>
+          <% end %>
+        </ul>
+      <% end %>
+  </div>
+</div>
