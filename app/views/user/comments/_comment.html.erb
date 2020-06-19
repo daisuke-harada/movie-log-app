@@ -1,9 +1,9 @@
-<div class="layout-box">
-  <ul class="layout-mini-box">
+<div >
+  <ul>
     <li><%= attachment_image_tag comment.user, :profile_image, size: "150x150", format: "jpg", fallback: "no_image.jpg" %></li><br/>
     <li><%= comment.user.name %></li><br/>
   </ul>
-  <ul class="layout-mini-box">
+  <ul>
     <li><%= comment.created_at.to_s(:datetime_jp) %></li><br/>
 　　　　　<li><%= comment.body %></li>
   </ul>

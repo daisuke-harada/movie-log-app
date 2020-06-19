@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'searchs/search'
   root 'homes#top'
   get 'homes/about'
   devise_for :admins
