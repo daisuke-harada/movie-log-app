@@ -7,8 +7,8 @@ class User::MoviesController < ApplicationController
 
   def show
     @movie = Movie.find(params[:id])
-    if user_signed_in?
-      @review = current_user.reviews.find_by(params[movie_id: @movie])
-    end
+    @review_new = Review.new
+    @user = current_user
+    @review = @movie.reviews.find_by(user_id: @user.id)
   end
 end

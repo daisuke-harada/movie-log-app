@@ -1,0 +1,28 @@
+
+<div id="modal">
+  <h1>映画登録ページ</h1>
+  <div id="review-close-modal" class="btn close">
+    <i class="fa fa-2x fa-times"></i>
+  </div>
+
+  <%= form_with(model: review, url:user_movie_reviews_path(@movie), local:true) do |f| %>
+    <div id="star">
+      <%= f.label '評価' %><br/>
+      <%= f.hidden_field :rate, id: :review_star %>
+    </div>
+    <%= f.label '感想' %><br/>
+    <%= f.text_area :content, class: 'review-content'%><br/>
+    <%= f.submit '登録する', class: 'btn btn-primary' %>
+  <% end %>
+</div>
+
+<script>
+ $('#star').raty({
+   size: 36,
+   starOff: '<%= "#{asset_path('star-off.png')}" %>',
+   starOn: '<%= "#{asset_path('star-on.png')}" %>',
+   starHalf: '<%= "#{asset_path('star-half.png')}" %>',
+   scoreName: 'review[rate]',
+   half: true
+ });
+</script>

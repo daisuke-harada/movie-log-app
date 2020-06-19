@@ -18,3 +18,13 @@
 //= require_tree .
 //= require nested_form_fields
 //= require jquery_raty.js
+
+$(function() {
+  $('#new-review-show').click(function() {
+    $('#new-review-modal').fadeIn();
+  });
+
+  $('#review-close-modal').click(function(){
+    $('#new-review-modal').fadeOut();
+  });
+});
