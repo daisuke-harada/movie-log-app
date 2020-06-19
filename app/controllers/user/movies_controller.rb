@@ -1,6 +1,8 @@
 class User::MoviesController < ApplicationController
   def index
     @movies = Movie.all
+    # movie_review_rate_count = Movie.joins([:reviews]).group(:movie_id).count
+    # movie_review_rete_ids
   end
 
   def show
