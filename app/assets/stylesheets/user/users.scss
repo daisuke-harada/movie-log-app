@@ -16,6 +16,13 @@
   border-top: 1px solid;
 }
 
+.my-mini-box:first-child {
+  text-align: center;
+  padding: 20px;
+  margin-left: 20px;
+  margin-bottom: 0px;
+}
+
 .my-mini-box {
   text-align: center;
   padding: 20px;
@@ -37,3 +44,6 @@
   background-color: #FF8C00 ;
   border-color: #cbe585;
 }
+
+
+
