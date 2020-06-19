@@ -1,0 +1,19 @@
+<ul class="box">
+  <% users.each do |user| %>
+    <li class="user-box">
+      <%= attachment_image_tag user, :profile_image, size: "150x150", format: "jpg", fallback: "no_image.jpg" %><br/>
+      <%= user.name %><br/>
+      <p>レビュー数<%= %></p>
+      <p><%= user.name %>さんの映画ランキングBEST3</p>
+      <p id="follower">
+        <%= render "followers_count", user: user %>
+      </p>
+      <p>
+        <%= link_to following_user_user_path(user) do %>
+          Following<br/><%= user.following.count %>
+        <% end %>
+      </p>
+      <%= link_to '詳細を見る', user_user_path(user) %>
+    </li>
+  <% end %>
+</ul>

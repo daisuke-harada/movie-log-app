@@ -1,39 +1,43 @@
-<h1>映画詳細</h1>
+<div class="container">
+  <div class="row">
+    <h1>映画詳細</h1>
 
-<div class="col-md-5">
-  <%= attachment_image_tag @movie, :movie_image, size: "300x420", format: "jpg", fallback: "no_image.jpg" %><br/>
-  <%= link_to '編集ページへいく', edit_admin_movie_path(@movie), class: 'btn btn-primary' %>
-</div>
-<div class="col-md-7">
-  <h2><%= @movie.title %></h2><br/>
+    <div class="col-md-5">
+      <%= attachment_image_tag @movie, :movie_image, size: "300x420", format: "jpg", fallback: "no_image.jpg" %><br/>
+      <%= link_to '編集ページへいく', edit_admin_movie_path(@movie), class: 'btn btn-primary' %>
+    </div>
+    <div class="col-md-7">
+      <h2><%= @movie.title %></h2><br/>
 
-  <div class="box" >
-    <h4>上映日:</h4><div class="text"><%= @movie.a_movie_released %></div><h4>上映時間:</h4><div class="text"><%= @movie.show_time %></div>
-  </div><br/>
+      <div class="box" >
+        <h4>上映日:</h4><div class="text"><%= @movie.a_movie_released %></div><h4>上映時間:</h4><div class="text"><%= @movie.show_time %></div>
+      </div><br/>
 
-  <div class="box">
-    <h4>ジャンル</h4>
-    <% @movie.movie_genres.each do |movie_genre| %>
-      <div class="text">:<%= movie_genre.genre.name %></div>
-    <% end %>
-  </div><br/>
+      <div class="box">
+        <h4>ジャンル</h4>
+        <% @movie.movie_genres.each do |movie_genre| %>
+          <div class="text">:<%= movie_genre.genre.name %></div>
+        <% end %>
+      </div><br/>
 
-  <h4>あらすじ</h4>
-  <div><%= @movie.summary %></div><br/>
+      <h4>あらすじ</h4>
+      <div><%= @movie.summary %></div><br/>
 
-  <h4>監督</h4>
-  <% @movie.supervisers.each do |superviser| %>
-    <div><%= superviser.superviser_name %></div>
-  <% end %><br/>
+      <h4>監督</h4>
+      <% @movie.supervisers.each do |superviser| %>
+        <div><%= superviser.superviser_name %></div>
+      <% end %><br/>
 
-  <h4>脚本</h4>
-  <% @movie.writers.each do |writer| %>
-    <div><%= writer.writer_name %></div>
-  <% end %><br/>
+      <h4>脚本</h4>
+      <% @movie.writers.each do |writer| %>
+        <div><%= writer.writer_name %></div>
+      <% end %><br/>
 
-  <h4>キャスト</h4>
-  <% @movie.actors.each do |actor| %>
-    <div><%= actor.actor_name %></div>
-  <% end %><br/>
+      <h4>キャスト</h4>
+      <% @movie.actors.each do |actor| %>
+        <div><%= actor.actor_name %></div>
+      <% end %><br/>
+    </div>
+  </div>
 </div>
 
