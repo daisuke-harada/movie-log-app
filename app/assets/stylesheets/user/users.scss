@@ -9,6 +9,9 @@
 .user-minibox {
   width: auto;
 }
+.profile-box {
+  margin: 30px
+}
 
 .my-box {
   display: flex;
@@ -45,5 +48,28 @@
   border-color: #cbe585;
 }
 
+.user-reviews-modal-wrapper {
+  display: none;
+}
+
+.user-followers-modal-wrappper {
+  display: none;
+}
+
+.user-following-modal-wrappper {
+  display: none;
+}
+
+.review-big-box {
+  display: flex;
+  flex-flow: row wrap;
+  text-align: center;
+}
+
+.user-review {
+  border: 2px solid #EEEEEE;
+  margin: 20px;
+  width: 46%;
+}
 
 

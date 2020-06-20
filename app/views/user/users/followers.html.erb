@@ -1,6 +1,26 @@
 <div class="container">
   <div class="row">
-    <h1>フォローー一覧ページ</h1>
-    <%= render "user/users/users", users: @users %>
+    <h1>フォロワー一覧ページ</h1>
+      <ul class="box">
+        <% @user.followers.each do |user| %>
+          <li class="user-box">
+            <%= attachment_image_tag user, :profile_image, size: "150x150", format: "jpg", fallback: "no_image.jpg" %><br/>
+            <%= user.name %><br/>
+            <p>レビュー数<%= %></p>
+            <p><%= user.name %>さんの映画ランキングBEST3</p>
+            <p id="follower">
+              <%= link_to followers_user_user_path(user) do %>
+                <%= render "user/users/followers_count", user: user %>
+              <% end %>
+            </p>
+            <p>
+              <%= link_to following_user_user_path(user) do %>
+                Following<br/><%= user.following.count %>
+              <% end %>
+            </p>
+            <%= link_to '詳細を見る', user_user_path(user), data: {"turbolinks" => false} %>
+          </li>
+        <% end %>
+      </ul>
   </div>
 </div>

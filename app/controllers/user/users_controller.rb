@@ -12,12 +12,12 @@ class User::UsersController < ApplicationController
 
   def following
     # @userがフォローしているユーザー
-    @users = @user.following
+    @user.following
   end
 
   def followers
     # @userをフォローしているユーザー
-    @users = @user.followers
+    @user.followers
   end
 
   def quit
