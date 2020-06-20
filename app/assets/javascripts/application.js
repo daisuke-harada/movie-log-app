@@ -19,12 +19,32 @@
 //= require nested_form_fields
 //= require jquery_raty.js
 
-$(function() {
-  $('#new-review-show').click(function() {
+$(function(){
+  $('#new-review-show').click(function(){
     $('#new-review-modal').fadeIn();
   });
 
   $('#review-close-modal').click(function(){
     $('#new-review-modal').fadeOut();
+  });
+});
+
+$(function(){
+  $('#user-reviews-show').click(function(){
+    $('#user-reviews-modal').fadeIn();
+    $('#user-followers-modal').fadeOut();
+    $('#user-following-modal').fadeOut();
+  });
+
+  $('.user-followers-show').click(function(){
+    $('#user-followers-modal').fadeIn();
+    $('#user-reviews-modal').fadeOut();
+    $('#user-following-modal').fadeOut();
+  });
+
+  $('#user-following-show').click(function(){
+    $('#user-following-modal').fadeIn();
+    $('#user-followers-modal').fadeOut();
+    $('#user-reviews-modal').fadeOut();
   });
 });

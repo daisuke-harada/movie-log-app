@@ -8,7 +8,7 @@
       上映時間:<%= movie.show_time %><br/>
       <p id='star-average-rate-<%= movie.id %>'></p>
       登録数<%= movie.reviews.count %> 件
-      <%= link_to 'check', user_movie_path(movie) %>
+      <%= link_to 'check', user_movie_path(movie), data: {"turbolinks" => false} %>
     </li>
   <% end %>
 </ul>
