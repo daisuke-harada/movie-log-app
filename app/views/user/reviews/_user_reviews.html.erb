@@ -1,13 +1,14 @@
 <div class="review-big-box">
-  <% @user.reviews.each do |review| %>
+  <% user.reviews.each do |review| %>
     <div class="user-review" id="review-<%= review.id %>">
       <div class="review-box">
         <ul class="review-mini-box">
-          <li><%= attachment_image_tag review.movie, :movie_image, size: "200x300", format: "jpg", fallback: "no_image.jpg" %></li>
+          <li><%= attachment_image_tag review.movie, :movie_image, size: "270x400", format: "jpg", fallback: "no_image.jpg" %></li>
           <li>
             <% if user_signed_in? %>
               <% if review.user.id == current_user.id %>
                 <%= link_to '映画の登録を編集する', edit_user_movie_review_path(review.movie, review) %><br/>
+
               <% else %>
                 <%= link_to 'コメントを投稿する', new_user_movie_review_comment_path(review.movie, review) %><br/>
               <% end %>
@@ -16,10 +17,10 @@
           </li>
         </ul>
         <ul class="review-mini-box">
-          <li><%= review.movie.title%></li>
-          <li><%= review.created_at.to_s(:datetime_jp) %></li>
+          <h3><%= review.movie.title%></h3>
+          <li>登録日：<%= review.created_at.to_s(:datetime_jp) %></li>
           <li id="star-rate-<%= review.id %>"></li>
-          <li><%= review.content %></li>
+          <li><%= safe_join(review.content.split("\n"), tag(:br)) %></li>
         </ul>
       </div>
       <div class= "favorite-and-comments-box">

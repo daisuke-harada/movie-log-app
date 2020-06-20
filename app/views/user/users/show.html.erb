@@ -3,26 +3,26 @@
 
     <%= attachment_image_tag @user, :profile_image, size: "300x300", format: "jpg", fallback: "no_image.jpg" %><br/>
     <h2><%= @user.name %><%= render "follow_form", user: @user %></h2><br/>
+    <% if user_signed_in? %>
+      <% if @user.id == current_user.id %>
+        <%= link_to 'マイページを編集する。', edit_user_user_path(@user) %>
+      <% end %>
+    <% end %>
 </div>
 
 <div class="my-box">
   <p class="my-mini-box btn-border" id="user-reviews-show">登録映画一覧<%= %></p>
-  <p class="my-mini-box btn-border"><%= @user.name %>さんの映画ランキングBEST3</p>
+  <p class="my-mini-box btn-border" id="user-ranking-show"><%= @user.name %>さんの映画ランキングBEST3</p>
   <p class="my-mini-box btn-border user-followers-show" id="follower">
     <%= render "followers_count", user: @user %>
   </p>
   <p class="follow my-mini-box btn-border" id="user-following-show">
     Following<br/><%= @user.following.count %>
   </p>
-  <% if user_signed_in? %>
-    <% if @user.id == current_user.id %>
-      <%= link_to 'マイページを編集する。', edit_user_user_path(@user), class: "my-mini-box btn-border" %>
-    <% end %>
-  <% end %>
 </div>
 
-<div class="user-reviews-modal-wrapper" id="user-reviews-modal">
-  <%= render 'user/reviews/user_reviews' %>
+<div id="user-reviews-modal">
+  <%= render 'user/reviews/user_reviews', user: @user %>
 </div>
 
 <div class="user-followers-modal-wrappper" id="user-followers-modal">
@@ -31,6 +31,10 @@
 
 <div class="user-following-modal-wrappper" id="user-following-modal">
   <%= render 'user/users/following', users: @user.following %>
+</div>
+
+<div class="user-ranking-modal-wrappper" id="user-ranking-modal">
+  <%= render 'user/users/ranking' %>
 </div>
 
 

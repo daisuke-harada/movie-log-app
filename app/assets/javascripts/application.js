@@ -30,21 +30,59 @@ $(function(){
 });
 
 $(function(){
-  $('#user-reviews-show').click(function(){
-    $('#user-reviews-modal').fadeIn();
-    $('#user-followers-modal').fadeOut();
-    $('#user-following-modal').fadeOut();
+
+  var $reviews_show = $('#user-reviews-show');
+  var $reviews_modal = $('#user-reviews-modal');
+  var $followers_show = $('.user-followers-show');
+  var $followers_modal = $('#user-followers-modal');
+  var $following_show = $('#user-following-show');
+  var $following_modal = $('#user-following-modal');
+  var $ranking_show = $('#user-ranking-show');
+  var $ranking_modal = $('#user-ranking-modal');
+
+  $reviews_show.css('background-color', '#FF8C00');
+
+  $reviews_show.click(function(){
+    $reviews_show.css('background-color', '#FF8C00');
+    $followers_show.css('background-color', '');
+    $following_show.css('background-color', '');
+    $ranking_show.css('background-color', '');
+    $reviews_modal.fadeIn();
+    $followers_modal.fadeOut();
+    $following_modal.fadeOut();
+    $ranking_modal.fadeOut();
   });
 
-  $('.user-followers-show').click(function(){
-    $('#user-followers-modal').fadeIn();
-    $('#user-reviews-modal').fadeOut();
-    $('#user-following-modal').fadeOut();
+  $followers_show.click(function(){
+    $followers_show.css('background-color', '#FF8C00');
+    $reviews_show.css('background-color', '');
+    $following_show.css('background-color', '');
+    $ranking_show.css('background-color', '');
+    $followers_modal.fadeIn();
+    $reviews_modal.fadeOut();
+    $following_modal.fadeOut();
+    $ranking_modal.fadeOut();
   });
 
-  $('#user-following-show').click(function(){
-    $('#user-following-modal').fadeIn();
-    $('#user-followers-modal').fadeOut();
-    $('#user-reviews-modal').fadeOut();
+  $following_show.click(function(){
+    $following_show.css('background-color', '#FF8C00');
+    $ranking_show.css('background-color', '');
+    $followers_show.css('background-color', '');
+    $reviews_show.css('background-color', '');
+    $following_modal.fadeIn();
+    $followers_modal.fadeOut();
+    $reviews_modal.fadeOut();
+    $ranking_modal.fadeOut();
+  });
+
+  $ranking_show.click(function(){
+    $ranking_show.css('background-color', '#FF8C00');
+    $following_show.css('background-color', '');
+    $followers_show.css('background-color', '');
+    $reviews_show.css('background-color', '');
+    $ranking_modal.fadeIn();
+    $following_modal.fadeOut();
+    $followers_modal.fadeOut();
+    $reviews_modal.fadeOut();
   });
 });
