@@ -1,6 +1,1 @@
-<div class="container">
-  <div class="row">
-    <h1>フォロワ一覧ページ</h1>
-    <%= render "user/users/users", users: @users %>
-  </div>
-</div>
+<%= render 'user/users/following', users: @user.following %>
