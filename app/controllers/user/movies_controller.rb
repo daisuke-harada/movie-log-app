@@ -9,6 +9,8 @@ class User::MoviesController < ApplicationController
     @movie = Movie.find(params[:id])
     @review_new = Review.new
     @user = current_user
-    @review = @movie.reviews.find_by(user_id: @user.id)
+    if user_signed_in?
+      @review = @movie.reviews.find_by(user_id: @user.id)
+    end
   end
 end
