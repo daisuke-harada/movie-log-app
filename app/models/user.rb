@@ -12,7 +12,7 @@ class User < ApplicationRecord
   has_many :movies, through: :reviews
   has_many :favorites, dependent: :destroy
   has_many :comments, dependent: :destroy
-
+  has_many :movie_ranks, dependent: :destroy
   # フォローしているかを確認するメソッド
   def following?(user)
     following_relationships.find_by(following_id: user.id)

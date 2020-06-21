@@ -5,6 +5,8 @@ class User::UsersController < ApplicationController
   end
 
   def show
+    @movie_rank = MovieRank.new
+    @movie_ranks = MovieRank.all.order(:rank_status)
   end
 
   def edit

@@ -29,9 +29,12 @@ Rails.application.routes.draw do
     resources :movies, only: [:index, :show] do
       resources :reviews, only: [:edit, :update, :create, :new, :show, :destroy] do
         resources :comments, only: [:new, :create, :destroy]
+        resources :movie_ranks, only: [:create]
       end
     end
+    # resources :movie_ranks, only: [:create, :destroy]
     resources :genres, only: [:index, :show]
+    resources :movie_ranks, only: [:destroy]
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

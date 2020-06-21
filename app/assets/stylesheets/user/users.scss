@@ -22,7 +22,8 @@
 .my-mini-box:first-child {
   text-align: center;
   padding: 20px;
-  margin-left: 20px;
+  border-left: 1px solid;
+  margin-left: 30px;
   margin-bottom: 0px;
 }
 
@@ -35,7 +36,6 @@
 .btn-border {
   display: inline-block;
   border-right: 1px solid;
-  border-color: black;
   font-size: 16px;
   text-decoration: none;
   font-weight: bold;
@@ -45,11 +45,6 @@
 
 .btn-border:hover {
   background-color: #FF8C00 ;
-  border-color: #cbe585;
-}
-
-.user-reviews-modal-wrapper {
-  display: none;
 }
 
 .user-followers-modal-wrappper {
@@ -60,10 +55,13 @@
   display: none;
 }
 
+.user-ranking-modal-wrappper {
+  display: none;
+}
+
 .review-big-box {
   display: flex;
   flex-flow: row wrap;
-  text-align: center;
 }
 
 .user-review {
@@ -71,5 +69,4 @@
   margin: 20px;
   width: 46%;
 }
-
 
