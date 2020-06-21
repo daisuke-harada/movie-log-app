@@ -9,6 +9,13 @@
               <% if review.user.id == current_user.id %>
                 <%= link_to '映画の登録を編集する', edit_user_movie_review_path(review.movie, review) %><br/>
 
+                <%= form_with model: movie_rank, url:user_movie_review_movie_ranks_path(review.movie_id, review.id), method: :post, local: true do |f| %>
+                  <%= f.select :rank_status, MovieRank.rank_statuses.keys %>
+                  <%= f.hidden_field :user_id, value: current_user.id %>
+                  <%= f.hidden_field :reveiw_id, value: review.id %>
+                  <%= f.submit '登録する' %>
+                <% end %><br/>
+
               <% else %>
                 <%= link_to 'コメントを投稿する', new_user_movie_review_comment_path(review.movie, review) %><br/>
               <% end %>

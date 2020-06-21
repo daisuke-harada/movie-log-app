@@ -22,7 +22,7 @@
 </div>
 
 <div id="user-reviews-modal">
-  <%= render 'user/reviews/user_reviews', user: @user %>
+  <%= render 'user/reviews/user_reviews', user: @user, movie_rank: @movie_rank %>
 </div>
 
 <div class="user-followers-modal-wrappper" id="user-followers-modal">
@@ -34,7 +34,7 @@
 </div>
 
 <div class="user-ranking-modal-wrappper" id="user-ranking-modal">
-  <%= render 'user/users/ranking' %>
+  <%= render partial: 'ranking', locals: {movie_ranks: @movie_ranks} %>
 </div>
 
 

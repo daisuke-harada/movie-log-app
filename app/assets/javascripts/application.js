@@ -76,6 +76,7 @@ $(function(){
   });
 
   $ranking_show.click(function(){
+    console.log('ああああああああああああああああああ')
     $ranking_show.css('background-color', '#FF8C00');
     $following_show.css('background-color', '');
     $followers_show.css('background-color', '');

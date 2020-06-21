@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_20_065346) do
+ActiveRecord::Schema.define(version: 2020_06_20_102555) do
 
   create_table "actors", force: :cascade do |t|
     t.integer "movie_id"
@@ -53,13 +53,6 @@ ActiveRecord::Schema.define(version: 2020_06_20_065346) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "movie_first_ranks", force: :cascade do |t|
-    t.integer "review_id"
-    t.integer "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "movie_genres", force: :cascade do |t|
     t.integer "movie_id"
     t.integer "genre_id"
@@ -67,16 +60,10 @@ ActiveRecord::Schema.define(version: 2020_06_20_065346) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "movie_second_ranks", force: :cascade do |t|
+  create_table "movie_ranks", force: :cascade do |t|
     t.integer "review_id"
     t.integer "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "movie_third_ranks", force: :cascade do |t|
-    t.integer "review_id"
-    t.integer "user_id"
+    t.integer "rank_status", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
