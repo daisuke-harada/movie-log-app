@@ -6,7 +6,39 @@ class User::UsersController < ApplicationController
 
   def show
     @movie_rank = MovieRank.new
-    @movie_ranks = MovieRank.all.order(:rank_status)
+    @user = User.find(params[:id])
+    @movie_ranks = @user.movie_ranks.order(:rank_status)
+    @omit_first = MovieRank.rank_statuses.except(:"1位").keys
+    @omit_second = MovieRank.rank_statuses.except(:"2位").keys
+    @omit_third = MovieRank.rank_statuses.except(:"3位").keys
+    @only_first = MovieRank.rank_statuses.slice(:"Myランキングに登録する。", :"1位").keys
+    @only_second = MovieRank.rank_statuses.slice(:"Myランキングに登録する。", :"2位").keys
+    @only_third = MovieRank.rank_statuses.slice(:"Myランキングに登録する。", :"3位").keys
+    # binding.pry
+    if current_user.movie_ranks.find_by(rank_status: "1")
+      @rank = @omit_first
+      if current_user.movie_ranks.find_by(rank_status: "1位") && current_user.movie_ranks.find_by(rank_status: "2")
+        @rank = @only_third
+      elsif current_user.movie_ranks.find_by(rank_status: "1位") && current_user.movie_ranks.find_by(rank_status: "3")
+        @rank = @only_second
+      end
+    elsif current_user.movie_ranks.find_by(rank_status: "2")
+      @rank = @omit_second
+      if current_user.movie_ranks.find_by(rank_status: "1位") && current_user.movie_ranks.find_by(rank_status: "2")
+        @rank = @only_third
+      elsif current_user.movie_ranks.find_by(rank_status: "2位") && current_user.movie_ranks.find_by(rank_status: "3")
+        @rank = @only_first
+      end
+    elsif current_user.movie_ranks.find_by(rank_status: "3")
+      @rank = @omit_third
+      if current_user.movie_ranks.find_by(rank_status: "2位") && current_user.movie_ranks.find_by(rank_status: "3")
+        @rank = @only_first
+      elsif current_user.movie_ranks.find_by(rank_status: "1位") && current_user.movie_ranks.find_by(rank_status: "3")
+        @rank = @only_second
+      end
+    else
+      @rank = MovieRank.rank_statuses.keys
+    end
   end
 
   def edit
