@@ -14,7 +14,6 @@
                 <% else %>
                   <%= form_with model: movie_rank, url:user_movie_review_movie_ranks_path(review.movie_id, review.id), method: :post, local: true do |f| %>
                     <% if current_user.movie_ranks.find_by(rank_status: "1位") && current_user.movie_ranks.find_by(rank_status: "2位") && current_user.movie_ranks.find_by(rank_status: "3位") %>
-                      全て登録されています。
                     <% else %>
                       <%= f.select :rank_status, @rank %>
                       <%= f.hidden_field :user_id, value: current_user.id %>
@@ -25,8 +24,8 @@
                 <% end %>
 
               <% else %>
-                <% if review.id == movie_rank.review_id %>
-                  <h1><%= movie_rank.rank_status %></h1>
+                <% if review.movie_rank %>
+                  <h1><%= review.user.name %>さんの<%= review.movie_rank.rank_status %></h1>
                 <% end %>
                 <%= link_to 'コメントを投稿する', new_user_movie_review_comment_path(review.movie, review) %><br/>
               <% end %>
