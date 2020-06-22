@@ -3,11 +3,6 @@ class User::ReviewsController < ApplicationController
     @review = Review.find(params[:id])
   end
 
-  def new
-    @review = Review.new
-    @movie = Movie.find(params[:movie_id])
-  end
-
   def show
     @movie = Movie.find(params[:movie_id])
     @review = Review.find(params[:id])
