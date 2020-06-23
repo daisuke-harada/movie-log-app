@@ -29,7 +29,7 @@ class User::ReviewsController < ApplicationController
   def destroy
     @review = Review.find(params[:id])
     @review.destroy
-    redirect_to user_user_path(current_user)
+    redirect_back(fallback_location: root_path)
   end
 
   private

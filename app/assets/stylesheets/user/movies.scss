@@ -27,12 +27,60 @@
   text-align: left;
 }
 
-.review-content {
-  width: 600px;
-}
-
 .close {
   position: absolute;
   top: 0px;
   right: 0px;
+}
+
+.review-content {
+  width: 600px;
+}
+
+.movie-review-box {
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+}
+
+.title-box {
+  border: 1px solid;
+  text-align: center;
+}
+
+.movie-review-mini-box:first-child {
+  text-align: center;
+  padding: 20px;
+  border-left: 1px solid;
+  margin-left: 30px;
+  margin-bottom: 0px;
+}
+
+.movie-review-mini-box {
+  text-align: center;
+  padding: 20px;
+  margin-bottom: 0px;
+}
+
+.movie_reviews_wrapper {
+  display: none;
+}
+
+.spoil_reviews_wrapper {
+  display: none;
+}
+
+.btn-border {
+  display: inline-block;
+  border-right: 1px solid;
+  font-size: 16px;
+  text-decoration: none;
+  font-weight: bold;
+  padding: 8px 16px;
+  transition: .4s;
+}
+
+.btn-border:hover {
+  background-color: #FF8C00 ;
 }
