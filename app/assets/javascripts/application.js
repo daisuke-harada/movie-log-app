@@ -76,7 +76,6 @@ $(function(){
   });
 
   $ranking_show.click(function(){
-    console.log('ああああああああああああああああああ')
     $ranking_show.css('background-color', '#FF8C00');
     $following_show.css('background-color', '');
     $followers_show.css('background-color', '');
@@ -86,4 +85,44 @@ $(function(){
     $followers_modal.fadeOut();
     $reviews_modal.fadeOut();
   });
+});
+
+$(function(){
+
+  var $all_reviews_show = $('#all-reviews-show');
+  var $all_reviews_modal = $('#all-reviews-modal');
+  var $movie_reviews_show = $('#movie-reviews-show');
+  var $movie_reviews_modal = $('#movie-reviews-modal');
+  var $spoil_reviews_show = $('#spoil-reviews-show');
+  var $spoil_reviews_modal = $('#spoil-reviews-modal');
+
+  $all_reviews_show.css('background-color', '#FF8C00');
+
+  $all_reviews_show.click(function(){
+    $all_reviews_show.css('background-color', '#FF8C00');
+    $movie_reviews_show.css('background-color', '');
+    $spoil_reviews_show .css('background-color', '');
+    $all_reviews_modal.fadeIn();
+    $movie_reviews_modal.fadeOut();
+    $spoil_reviews_modal.fadeOut();
+  });
+
+  $movie_reviews_show.click(function(){
+    $movie_reviews_show.css('background-color', '#FF8C00');
+    $all_reviews_show.css('background-color', '');
+    $spoil_reviews_show .css('background-color', '');
+    $movie_reviews_modal.fadeIn();
+    $all_reviews_modal.fadeOut();
+    $spoil_reviews_modal.fadeOut();
+  });
+
+  $spoil_reviews_show.click(function(){
+    $spoil_reviews_show.css('background-color', '#FF8C00');
+    $all_reviews_show.css('background-color', '');
+    $movie_reviews_show.css('background-color', '');
+    $spoil_reviews_modal.fadeIn();
+    $all_reviews_modal.fadeOut();
+    $movie_reviews_modal.fadeOut();
+  });
+
 });

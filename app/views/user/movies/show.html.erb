@@ -1,5 +1,5 @@
 <div class='new-review-modal-wrapper' id='new-review-modal'>
-  <%= render 'review_new', review: @review_new %>
+  <%= render 'review_new', review: @review_new, movie: @movie %>
 </div>
 
 <div class="container">
@@ -12,11 +12,13 @@
       <p id='star-average-rate-<%= @movie.id %>'></p><%= @movie.reviews.average(:rate).to_f.round(1) %><br/>
         登録数<%= @movie.reviews.count %> 件<br/>
       <% if user_signed_in? %>
-        <% if current_user.reviews.find_by(movie_id: @movie) %>
-          <%= link_to '映画の登録を編集する', edit_user_movie_review_path(@movie, @review) %><br/>
-        <% else %>
-          <div class="btn btn-info" id="new-review-show">映画を登録する。</div>
-        <% end %>
+        <div id="review-link">
+          <% if current_user.reviews.find_by(movie_id: @movie) %>
+            <%= link_to '映画の登録を編集する', edit_user_movie_review_path(@movie, @review) %><br/>
+          <% else %>
+            <div class="btn btn-info" id="new-review-show">映画を登録する。</div>
+          <% end %>
+        </div>
       <% else %>
       <% end %>
     </div>
@@ -55,78 +57,33 @@
 
 
     <div class= "col-md-12">
-      <% @movie.reviews.each do |review| %>
-      <div class="review" id="review-<%= review.id %>">
-        <div class="review-box">
-          <ul class="review-mini-box">
-            <li><%= attachment_image_tag review.user, :profile_image, size: "150x150", format: "jpg", fallback: "no_image.jpg" %></li>
-            <li>
-              <% if user_signed_in? %>
-                <% if review.user.id == current_user.id %>
-                  <%= link_to '映画の登録を編集する', edit_user_movie_review_path(@movie, review) %><br/>
-                  <%= link_to 'マイページへいく', user_user_path(current_user.id) %>
-                <% else %>
-                  <%= link_to user_user_path(review.user.id) do %>
-                    <%= review.user.name %>さんのページへ行く
-                  <% end %><br/>
-                  <%= link_to 'コメントを投稿する', new_user_movie_review_comment_path(@movie, review) %>
-                <% end %>
-              <% else %>
-                <%= link_to user_user_path(review.user.id) do %>
-                  <%= review.user.name %>さんのページへ行く
-                <% end %>
-              <% end %>
-            </li>
-          </ul>
-          <ul class="review-mini-box">
-            <li><%= review.user.name%>さんの感想と評価。</li>
-            <li><%= review.updated_at.to_s(:datetime_jp) %></li>
-            <li id="star-rate-<%= review.id %>"></li>
-            <li><%= review.content %></li>
-          </ul>
-        </div>
-        <div class= "favorite-and-comments-box">
-          <% if user_signed_in? %>
-            <div class="favorite-layouts" id="favorite-<%= review.id%>">
-              <%= render 'user/favorites/favorite', review: review %>
-            </div>
-            <div class="comment-layouts">
-              <%= link_to user_movie_review_path(@movie, review) do %>
-                コメント<%= review.comments.count  %>件
-              <% end %>
-            </div>
-            <div class="favorite-layouts">
-              <% if current_user.id == review.user.id %>
-                <%= link_to "削除",user_movie_review_path(@movie.id, review.id), method: :delete, remote: true , data: {confirm: "本当に削除してもよろしいですか？"}, class: "btn-sm btn-danger" %>
-              <% end %>
-            </div>
-          <% else %>
-            <% if review.favorites.count == 0 %>
-              <div class="favorite-layouts">
-                <%= link_to new_user_registration_path do %>
-                  <i class="fa fa-heart-o" aria-hidden="true"></i>
-                  <%= review.favorites.count %> いいね
-                <% end %>
-              </div>
-            <% else %>
-              <div class="favorite-layouts">
-                <%= link_to new_user_registration_path do %>
-                  <i class="fa fa-heart" aria-hidden="true" style="color: red;"></i>
-                  <%= review.favorites.count %>いいね
-                <% end %>
-              </div>
-            <% end %>
-          <% end %>
-        </div>
+      <h2 class="title-box">「<%= @movie.title %>」に投稿されたネタバレ・内容・結末</h2><br/>
+      <div class="movie-review-box">
+        <p class="movie-review-mini-box btn-border" id="all-reviews-show">すべて</p>
+        <p class="movie-review-mini-box btn-border" id="movie-reviews-show">ネタバレなし</p>
+        <p class="movie-review-mini-box btn-border" id="spoil-reviews-show">ネタバレあり</p>
       </div>
-      <% end %>
+
+      <div class=""id='all-reviews-modal'>
+        <%= render 'all_reviews' %>
+      </div>
+
+      <div class="movie_reviews_wrapper" id='movie-reviews-modal'>
+        <%= render 'no_spoil_reviews' %>
+      </div>
+
+      <div class="spoil_reviews_wrapper" id='spoil-reviews-modal'>
+        <%= render 'spoil_reviews' %>
+      </div>
     </div>
+
   </div>
 </div>
 
 <script>
   $(document).ready(function() {
     <% @movie.reviews.each do |review| %>
+      console.log(<%= review.id %>);
       $('#star-rate-<%= review.id %>').raty({
         score: <%= review.rate %>,
         size: 36,
@@ -135,6 +92,42 @@
         starHalf: '<%= "#{asset_path('star-half.png')}" %>',
         half: true,
         readOnly: true,
+      });
+
+      $('#is_spoil_message-<%= review.id %>').click(function(){
+        $('#is_spoil_content-<%= review.id %>').fadeIn();
+        $('#is_spoil_message-<%= review.id %>').fadeOut();
+      });
+    <% end %>
+
+    <% @movie.reviews.where(is_spoil: false).each do |review| %>
+      console.log(<%= review.id %>);
+      $('#star-rate-no-spoil-<%= review.id %>').raty({
+        score: <%= review.rate %>,
+        size: 36,
+        starOff: '<%= "#{asset_path('star-off.png')}" %>',
+        starOn: '<%= "#{asset_path('star-on.png')}" %>',
+        starHalf: '<%= "#{asset_path('star-half.png')}" %>',
+        half: true,
+        readOnly: true,
+      });
+    <% end %>
+
+    <% @movie.reviews.where(is_spoil: true).each do |review| %>
+      console.log(<%= review.id %>);
+      $('#star-rate-spoil-<%= review.id %>').raty({
+        score: <%= review.rate %>,
+        size: 36,
+        starOff: '<%= "#{asset_path('star-off.png')}" %>',
+        starOn: '<%= "#{asset_path('star-on.png')}" %>',
+        starHalf: '<%= "#{asset_path('star-half.png')}" %>',
+        half: true,
+        readOnly: true,
+      });
+
+      $('#is_spoil_where_message-<%= review.id %>').click(function(){
+        $('#is_spoil_where_content-<%= review.id %>').fadeIn();
+        $('#is_spoil_where_message-<%= review.id %>').fadeOut();
       });
     <% end %>
 
@@ -150,3 +143,5 @@
     });
   });
 </script>
+
+

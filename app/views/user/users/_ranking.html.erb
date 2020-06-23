@@ -1,11 +1,9 @@
 <% movie_ranks.each do |movie_rank| %>
-  <div id="movie_rank-<%= movie_rank.id %>" >
-    <h1><%= movie_rank.rank_status %></h1>
-    <%= attachment_image_tag movie_rank.review.movie, :movie_image, size: "270x400", format: "jpg", fallback: "no_image.jpg" %>
-    <% if current_user.id == movie_rank.user_id %>
-      <%= link_to "削除", user_movie_rank_path(movie_rank), method: :delete, remote: true , data: {confirm: "本当に削除してもよろしいですか？"}, class: "btn-sm btn-danger"%>
-    <% end %>
-  </div><br/>
+  <h1><%= movie_rank.rank_status %></h1>
+  <%= attachment_image_tag movie_rank.review.movie, :movie_image, size: "270x400", format: "jpg", fallback: "no_image.jpg" %>
+  <% if current_user.id == movie_rank.user_id %>
+    <%= link_to "削除", user_movie_rank_path(movie_rank), method: :delete, remote: :true, data: {confirm: "本当に削除してもよろしいですか？"}, class: "btn-sm btn-danger"%>
+  <% end %><br/>
 <% end %>
 
 

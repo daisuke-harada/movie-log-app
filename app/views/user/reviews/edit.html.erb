@@ -7,6 +7,14 @@
       <div id="star-rate-<%= @review.id %>">
       </div><br/>
 
+      <% if @review.is_spoil = false %>
+        <%= f.check_box( :is_spoil, {:checked => false}, checked_value = "true", unchecked_value = "false") %>
+        <%= f.label :is_spoil, "⚠︎ネタバレあり", class: 'check_box_label' %><br/>
+      <% else %>
+        <%= f.check_box( :is_spoil, {:checked => true}, checked_value = "true", unchecked_value = "false") %>
+        <%= f.label :is_spoil, "⚠︎ネタバレあり", class: 'check_box_label' %><br/>
+      <% end %>
+
       <%= f.text_area :content %>
       <%= f.submit class: 'btn btn-primary' %>
 
