@@ -1,6 +1,5 @@
 <div class="profile-box">
   <h1>マイページ</h1>
-
     <%= attachment_image_tag @user, :profile_image, size: "300x300", format: "jpg", fallback: "no_image.jpg" %><br/>
     <h2><%= @user.name %><%= render "follow_form", user: @user %></h2><br/>
     <% if user_signed_in? %>
@@ -22,7 +21,7 @@
 </div>
 
 <div id="user-reviews-modal">
-  <%= render 'user/reviews/user_reviews', user: @user, movie_rank: @movie_rank %>
+  <%= render 'user/reviews/user_reviews', user: @user, movie_rank: @movie_rank, rank: @rank %>
 </div>
 
 <div class="user-followers-modal-wrappper" id="user-followers-modal">

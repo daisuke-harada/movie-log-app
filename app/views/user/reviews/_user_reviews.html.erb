@@ -10,19 +10,18 @@
                 <%= link_to '映画の登録を編集する', edit_user_movie_review_path(review.movie, review) %><br/>
 
                 <% if review.movie_rank %>
-                  <h1><%= review.user.name %>さんの<%= review.movie_rank.rank_status %></h1>
+                  <h2><%= review.user.name %>さんの<%= review.movie_rank.rank_status %></h2>
                 <% else %>
-                  <%= form_with model: movie_rank, url:user_movie_review_movie_ranks_path(review.movie_id, review.id), method: :post do |f| %>
+                  <%= form_with model: movie_rank, url:user_movie_review_movie_ranks_path(review.movie_id, review.id), method: :post, local: :true do |f| %>
                     <% if current_user.movie_ranks.find_by(rank_status: "1位") && current_user.movie_ranks.find_by(rank_status: "2位") && current_user.movie_ranks.find_by(rank_status: "3位") %>
                     <% else %>
-                      <%= f.select :rank_status, @rank %>
+                      <%= f.select :rank_status, rank %>
                       <%= f.hidden_field :user_id, value: current_user.id %>
                       <%= f.hidden_field :reveiw_id, value: review.id %>
                       <%= f.submit '登録する' %>
                     <% end %>
                   <% end %><br/>
                 <% end %>
-
               <% else %>
                 <% if review.movie_rank %>
                   <h1><%= review.user.name %>さんの<%= review.movie_rank.rank_status %></h1>
@@ -58,7 +57,7 @@
           </div>
           <div class="favorite-layouts">
             <% if current_user.id == review.user.id %>
-              <%= link_to "削除",user_movie_review_path(review.movie_id, review.id), method: :delete, remote: true , data: {confirm: "本当に削除してもよろしいですか？"}, class: "btn-sm btn-danger"%>
+              <%= link_to "削除",user_movie_review_path(review.movie_id, review.id), method: :delete, data: {confirm: "本当に削除してもよろしいですか？"}, class: "btn-sm btn-danger"%>
             <% end %>
           </div>
         <% else %>

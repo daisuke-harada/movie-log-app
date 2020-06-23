@@ -5,12 +5,13 @@ class User::MovieRanksController < ApplicationController
     @movie_rank.review_id = @review.id
     @movie_rank.user_id = current_user.id
     @movie_rank.save
-    @movie_ranks = MovieRank.all
+    redirect_to user_user_path(current_user)
   end
 
   def destroy
     @movie_rank = MovieRank.find(params[:id])
     @movie_rank.destroy
+    redirect_to user_user_path(current_user)
   end
 
   private
