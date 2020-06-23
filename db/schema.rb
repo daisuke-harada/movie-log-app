@@ -91,7 +91,7 @@ ActiveRecord::Schema.define(version: 2020_06_20_102555) do
     t.integer "user_id"
     t.float "rate", default: 0.0, null: false
     t.text "content"
-    t.boolean "is_spoil"
+    t.boolean "is_spoil", default: false, null: false
     t.integer "favorites_count"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

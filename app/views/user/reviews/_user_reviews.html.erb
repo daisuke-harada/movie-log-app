@@ -10,19 +10,18 @@
                 <%= link_to '映画の登録を編集する', edit_user_movie_review_path(review.movie, review) %><br/>
 
                 <% if review.movie_rank %>
-                  <h1><%= review.user.name %>さんの<%= review.movie_rank.rank_status %></h1>
+                  <h2><%= review.user.name %>さんの<%= review.movie_rank.rank_status %></h2>
                 <% else %>
-                  <%= form_with model: movie_rank, url:user_movie_review_movie_ranks_path(review.movie_id, review.id), method: :post, local: true do |f| %>
+                  <%= form_with model: movie_rank, url:user_movie_review_movie_ranks_path(review.movie_id, review.id), method: :post, local: :true do |f| %>
                     <% if current_user.movie_ranks.find_by(rank_status: "1位") && current_user.movie_ranks.find_by(rank_status: "2位") && current_user.movie_ranks.find_by(rank_status: "3位") %>
                     <% else %>
-                      <%= f.select :rank_status, @rank %>
+                      <%= f.select :rank_status, rank %>
                       <%= f.hidden_field :user_id, value: current_user.id %>
                       <%= f.hidden_field :reveiw_id, value: review.id %>
                       <%= f.submit '登録する' %>
                     <% end %>
                   <% end %><br/>
                 <% end %>
-
               <% else %>
                 <% if review.movie_rank %>
                   <h1><%= review.user.name %>さんの<%= review.movie_rank.rank_status %></h1>
@@ -35,11 +34,17 @@
         </ul>
         <ul class="review-mini-box">
           <h3><%= review.movie.title%></h3>
-          <li>登録日：<%= review.created_at.to_s(:datetime_jp) %></li>
+          <li>レビュー登録日：<%= review.created_at.to_s(:datetime_jp) %></li>
           <li id="star-rate-<%= review.id %>"></li>
-          <li><%= safe_join(review.content.split("\n"), tag(:br)) %></li>
+          <% if review.is_spoil == true %>
+            <li class="is_spoil_message-color" id="is_spoil_message-<%= review.id %>" >⚠︎このレビューはネタバレを含みます。</li>
+            <li class="is_spoil_content-wrappper" id="is_spoil_content-<%= review.id %>" ><%= safe_join(review.content.split("\n"), tag(:br)) %></li>
+          <% elsif review.is_spoil == false  %>
+            <li><%= safe_join(review.content.split("\n"), tag(:br)) %></li>
+          <% end %>
         </ul>
       </div>
+
       <div class= "favorite-and-comments-box">
         <% if user_signed_in? %>
           <div class="favorite-layouts" id="favorite-<%= review.id%>">
@@ -52,7 +57,7 @@
           </div>
           <div class="favorite-layouts">
             <% if current_user.id == review.user.id %>
-              <%= link_to "削除",user_movie_review_path(review.movie_id, review.id), method: :delete, remote: true , data: {confirm: "本当に削除してもよろしいですか？"}, class: "btn-sm btn-danger"%>
+              <%= link_to "削除",user_movie_review_path(review.movie_id, review.id), method: :delete, data: {confirm: "本当に削除してもよろしいですか？"}, class: "btn-sm btn-danger"%>
             <% end %>
           </div>
         <% else %>
@@ -88,6 +93,11 @@
         starHalf: '<%= "#{asset_path('star-half.png')}" %>',
         half: true,
         readOnly: true,
+      });
+
+      $('#is_spoil_message-<%= review.id %>').click(function(){
+        $('#is_spoil_content-<%= review.id %>').fadeIn();
+        $('#is_spoil_message-<%= review.id %>').fadeOut();
       });
     <% end %>
   });
