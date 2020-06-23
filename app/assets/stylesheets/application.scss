@@ -35,6 +35,10 @@ body {
   margin-top: 60px;
 }
 
+.word-wrap {
+  word-wrap: [50];
+}
+
 .genre-box {
   border: 2px solid #ddd;
 }
@@ -80,11 +84,42 @@ li {
 }
 
 .user-box {
-  width: 25%;
+  border: 1px solid;
+  height: 560px;
+  margin: 20px;
+  padding: 20px;
+}
+
+.users-user-imgage {
+  margin-left: 45px;
+  margin-right: 75px;
+  margin-bottom: 20px;
+}
+
+.movie-rank-box {
+  display: flex;
+  text-align: center;
+  margin-right:auto;
+  margin-left:auto
+}
+
+.movie-mini-rank-box {
+  padding: 5px;
 }
 
 .user-minibox{
   width: auto;
+}
+
+.review-big-box {
+  display: flex;
+  flex-flow: row wrap;
+}
+
+.user-review {
+  border: 2px solid #EEEEEE;
+  margin: 20px;
+  width: 700px;
 }
 
 .review {
@@ -94,6 +129,7 @@ li {
 
 .review-box {
   width: 100%;
+  height: 550px;
   border-bottom: 2px solid #EEEEEE;
 }
 

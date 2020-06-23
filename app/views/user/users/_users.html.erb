@@ -1,10 +1,17 @@
 <ul class="box">
   <% users.each do |user| %>
     <li class="user-box">
-      <%= attachment_image_tag user, :profile_image, size: "150x150", format: "jpg", fallback: "no_image.jpg" %><br/>
+      <%= attachment_image_tag user, :profile_image, size: "150x150", format: "jpg", fallback: "no_image.jpg", class: "users-user-imgage" %><br/>
       <%= user.name %><br/>
-      <p>レビュー数<%= %></p>
-      <p><%= user.name %>さんの映画ランキングBEST3</p>
+      <p>レビュー数<%=user.reviews.count %></p>
+      <p class="movie-rank-box">
+        <% user.movie_ranks.order(:rank_status).each do |movie_rank| %>
+          <span class="movie-mini-rank-box" >
+            <%= attachment_image_tag movie_rank.review.movie, :movie_image, size: "70x100", format: "jpg", fallback: "no_image.jpg" %><br/>
+            <%= movie_rank.rank_status %>
+          </span>
+        <% end %>
+      </p>
       <p id="follower">
         <%= link_to followers_user_user_path(user) do %>
           <%= render "user/users/followers_count", user: user %>
@@ -15,7 +22,11 @@
           Following<br/><%= user.following.count %>
         <% end %>
       </p>
-      <%= link_to '詳細を見る', user_user_path(user), data: {"turbolinks" => false} %>
+      <% if user.id == current_user.id %>
+        <%= link_to 'マイページへいく', user_user_path(user), data: {"turbolinks" => false} %>
+      <% else %>
+        <%= link_to '詳細を見る', user_user_path(user), data: {"turbolinks" => false} %>
+      <% end %>
     </li>
   <% end %>
 </ul>
