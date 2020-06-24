@@ -12,8 +12,8 @@
     <%= f.check_box( :is_spoil, {:checked => false}, checked_value = "true", unchecked_value = "false") %>
     <%= f.label :is_spoil, "⚠︎ネタバレあり", class: 'check_box_label' %><br/>
     <%= f.label '感想' %><br/>
-    <%= f.text_area :content, class: 'review-content'%><br/>
-    <%= f.submit '登録する', class: 'btn btn-primary' %>
+    <%= f.text_area :content, class: 'text-content', style: "height: 140px" %><br/>
+    <%= f.submit '登録する', class: 'btn-square-shadow' %>
   <% end %>
 </div>
 

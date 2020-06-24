@@ -1,7 +1,7 @@
 <% @movie.reviews.each do |review| %>
   <div class="review" id="review-<%= review.id %>">
     <div class="movie-review-box">
-      <ul class="review-mini-box">
+      <ul class="movie-review-profile"><
         <li><%= attachment_image_tag review.user, :profile_image, size: "180x180", format: "jpg", fallback: "no_image.jpg" %></li>
         <li>
           <% if user_signed_in? %>
@@ -21,8 +21,8 @@
           <% end %>
         </li>
       </ul>
-      <ul class="review-mini-box">
-        <li><%= review.user.name%>さんの感想と評価。</li>
+      <ul class="movie-review-status">
+        <li class="user-review-name"><%= review.user.name%>さんの感想と評価。</li>
         <li><%= review.updated_at.to_s(:datetime_jp) %></li>
         <li id="star-rate-<%= review.id %>"></li>
         <% if review.is_spoil == true %>
@@ -30,7 +30,7 @@
           <li class="is_spoil_content-wrappper" id="is_spoil_content-<%= review.id %>" ><%= safe_join(review.content.split("\n"), tag(:br)) %></li>
         <% elsif review.is_spoil == false  %>
           <li><%= safe_join(review.content.split("\n"), tag(:br)) %></li>
-      　<% end %>
+        <% end %>
       </ul>
     </div>
     <div class= "movie-favorite-and-comments-box">
@@ -43,11 +43,9 @@
             コメント<%= review.comments.count  %>件
           <% end %>
         </div>
-        <div class="favorite-layouts">
           <% if current_user.id == review.user.id %>
-            <%= link_to "削除",user_movie_review_path(@movie.id, review.id), method: :delete, data: {confirm: "本当に削除してもよろしいですか？"}, class: "btn-sm btn-danger" %>
+            <%= link_to "削除",user_movie_review_path(@movie.id, review.id), method: :delete, data: {confirm: "本当に削除してもよろしいですか？"}, class: "btn-delete-shadow" %>
           <% end %>
-        </div>
       <% else %>
         <% if review.favorites.count == 0 %>
           <div class="favorite-layouts">

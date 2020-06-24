@@ -27,7 +27,14 @@ body {
 }
 
 a {
-  color: black;
+  color: white;
+}
+
+input, button, select, textarea {
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  height: 30px;
 }
 
 .mainbar {
@@ -57,12 +64,16 @@ a {
 }
 
 .searchbar {
-  height: 40px;
+  height: 50px;
   background-color: #BBBDF2;
   border-bottom: solid 1px #0D0D0D;
   color: black;
   padding: 10px;
   text-align: center;
+}
+
+.search-form {
+  width:700px;
 }
 
 .site-titele {
@@ -102,6 +113,7 @@ a {
 .box {
   display: flex;
   flex-flow: row wrap;
+  justify-content: center;
   align-items: flex-start;
   align-content: flex-start;
 }
@@ -109,6 +121,7 @@ a {
 
 .btn-square-shadow {
   display: inline-block;
+  font-size: 10px;
   padding: 0.5em 1em;
   text-decoration: none;
   color: white;
@@ -144,6 +157,44 @@ a {
   box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.2);
   border-bottom: none;
 }
+
+.btn-delete-shadow {
+  display: inline-block;
+  padding: 0.5em 1em;
+  text-decoration: none;
+  color: white;
+  background-color: #DB5E59;
+  cursor: pointer;
+  border-bottom: solid 4px #aa5e59;
+  border-radius: 3px;
+  margin: 5px;
+}
+
+.btn-delete-shadow:active {
+  -webkit-transform: translateY(4px);
+  transform: translateY(4px);
+  box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.2);
+  border-bottom: none;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -217,65 +268,10 @@ li {
   width: auto;
 }
 
-.review-big-box {
-  display: flex;
-  flex-flow: row wrap;
-}
-
-.user-review {
-  border: 2px solid #EEEEEE;
-  margin: 20px;
-  width: 700px;
-}
-
-.review {
-  border: 2px solid #EEEEEE;
-  margin: 20px 80px;
-}
-
-.review-box {
-  width: 100%;
-  height: 550px;
-  border-bottom: 2px solid #EEEEEE;
-}
-
-.review-mini-box {
-  display: inline-block;
-  text-align: center;
-  height: auto;
-  width: auto;
-  vertical-align: top;
-}
-
-.comment-destroy-box {
-  display: flex;
-  justify-content: flex-end;
-}
-
-.favorite-layouts {
-  margin: 5px;
-  padding: 5px;
-}
-
-.comment-layouts {
-  margin: 5px;
-  padding: 5px;
-}
-
-.is_spoil_message-color {
-  color: red;
-}
-
-.is_spoil_content-wrappper {
-  display: none;
-}
 
 
 
-.genre-bar {
-  border-color: #333333;
-  border: 1px solid;
-}
+
 
 input[type=checkbox] {
 display: none; /* checkboxを非表示にする */
