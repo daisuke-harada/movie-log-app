@@ -2,82 +2,77 @@
   <%= render 'review_new', review: @review_new, movie: @movie %>
 </div>
 
-<div class="container">
-  <div class="row">
-    <h1>映画詳細</h1>
-
-    <div class="col-md-5">
-      <%= attachment_image_tag @movie, :movie_image, size: "300x420", format: "jpg", fallback: "no_image.jpg" %><br/>
-      総合スコア<br/>
-      <p id='star-average-rate-<%= @movie.id %>'></p><%= @movie.reviews.average(:rate).to_f.round(1) %><br/>
-        登録数<%= @movie.reviews.count %> 件<br/>
-      <% if user_signed_in? %>
-        <div id="review-link">
-          <% if current_user.reviews.find_by(movie_id: @movie) %>
-            <%= link_to '映画の登録を編集する', edit_user_movie_review_path(@movie, @review) %><br/>
-          <% else %>
-            <div class="btn btn-info" id="new-review-show">映画を登録する。</div>
-          <% end %>
-        </div>
+<div class= "movie-show-box">
+  <div class="movie-status">
+  <%= attachment_image_tag @movie, :movie_image, size: "350x470", format: "jpg", fallback: "no_image.jpg" %><br/>
+  総合スコア<br/>
+  <p id='star-average-rate-<%= @movie.id %>'></p><%= @movie.reviews.average(:rate).to_f.round(1) %><br/>
+    登録数<%= @movie.reviews.count %> 件<br/>
+  <% if user_signed_in? %>
+    <div id="review-link">
+      <% if current_user.reviews.find_by(movie_id: @movie) %>
+        <%= link_to '映画の登録を編集する', edit_user_movie_review_path(@movie, @review), class: "btn-square-shadow show-review-btn" %><br/>
       <% else %>
+        <div class="btn-square-shadow show-review-btn" id="new-review-show">映画を登録する。</div>
       <% end %>
     </div>
-    <div class="col-md-7">
-      <h2><%= @movie.title %></h2><br/>
-
-      <div class="box" >
-        <h4>上映日:</h4><div class="text"><%= @movie.a_movie_released %></div><h4>上映時間:</h4><div class="text"><%= @movie.show_time %></div>
-      </div><br/>
-
-      <div class="box">
-        <h4>ジャンル</h4>
-        <% @movie.movie_genres.each do |movie_genre| %>
-          <div class="text">:<%= movie_genre.genre.name %></div>
-        <% end %>
-      </div><br/>
-
-      <h4>あらすじ</h4>
-      <div><%= @movie.summary %></div><br/>
-
-      <h4>監督</h4>
-      <% @movie.supervisers.each do |superviser| %>
-        <div><%= superviser.superviser_name %></div>
-      <% end %><br/>
-
-      <h4>脚本</h4>
-      <% @movie.writers.each do |writer| %>
-        <div><%= writer.writer_name %></div>
-      <% end %><br/>
-
-      <h4>キャスト</h4>
-      <% @movie.actors.each do |actor| %>
-        <div><%= actor.actor_name %></div>
-      <% end %><br/>
-    </div>
-
-
-    <div class= "col-md-12">
-      <h2 class="title-box">「<%= @movie.title %>」に投稿されたネタバレ・内容・結末</h2><br/>
-      <div class="movie-review-box">
-        <p class="movie-review-mini-box btn-border" id="all-reviews-show">すべて</p>
-        <p class="movie-review-mini-box btn-border" id="movie-reviews-show">ネタバレなし</p>
-        <p class="movie-review-mini-box btn-border" id="spoil-reviews-show">ネタバレあり</p>
-      </div>
-
-      <div class=""id='all-reviews-modal'>
-        <%= render 'all_reviews' %>
-      </div>
-
-      <div class="movie_reviews_wrapper" id='movie-reviews-modal'>
-        <%= render 'no_spoil_reviews' %>
-      </div>
-
-      <div class="spoil_reviews_wrapper" id='spoil-reviews-modal'>
-        <%= render 'spoil_reviews' %>
-      </div>
-    </div>
-
+  <% else %>
+  <% end %>
   </div>
+
+  <div class="movie-profile">
+    <h1><%= @movie.title %></h1><br/>
+
+    <div class="box" >
+      <h4>上映日:</h4><div class="text"><%= @movie.a_movie_released %></div><h4>上映時間:</h4><div class="text"><%= @movie.show_time %></div>
+    </div><br/>
+
+    <div class="box">
+      <h4>ジャンル</h4>
+      <% @movie.movie_genres.each do |movie_genre| %>
+        <div class="text">:<%= movie_genre.genre.name %></div>
+      <% end %>
+    </div><br/>
+
+    <h4>あらすじ</h4>
+    <div><%= @movie.summary %></div><br/>
+
+    <h4>監督</h4>
+    <% @movie.supervisers.each do |superviser| %>
+      <div><%= superviser.superviser_name %></div>
+    <% end %><br/>
+
+    <h4>脚本</h4>
+    <% @movie.writers.each do |writer| %>
+      <div><%= writer.writer_name %></div>
+    <% end %><br/>
+
+    <h4>キャスト</h4>
+    <% @movie.actors.each do |actor| %>
+      <div><%= actor.actor_name %></div>
+    <% end %><br/>
+  </div>
+</div>
+
+<div class="movie-show-title-box">
+  「<%= @movie.title %>」に投稿された感想・内容
+</div>
+<div class="movie-review-choice">
+  <p class="movie-review-mini-box movie-btn-border" id="all-reviews-show">すべて</p>
+  <p class="movie-review-mini-box movie-btn-border" id="movie-reviews-show">ネタバレなし</p>
+  <p class="movie-review-mini-box movie-btn-border" id="spoil-reviews-show">ネタバレあり</p>
+</div>
+
+<div class=""id='all-reviews-modal'>
+  <%= render 'all_reviews' %>
+</div>
+
+<div class="movie_reviews_wrapper" id='movie-reviews-modal'>
+  <%= render 'no_spoil_reviews' %>
+</div>
+
+<div class="spoil_reviews_wrapper" id='spoil-reviews-modal'>
+  <%= render 'spoil_reviews' %>
 </div>
 
 <script>
@@ -133,7 +128,7 @@
 
     $('#star-average-rate-<%= @movie.id %>').raty({
       score: '<%= "#{@movie.reviews.average(:rate).to_f.round(1)}" %>',
-      size: 36,
+      size: 60,
       starOff: '<%= "#{asset_path('star-off.png')}" %>',
       starOn: '<%= "#{asset_path('star-on.png')}" %>',
       starHalf: '<%= "#{asset_path('star-half.png')}" %>',
