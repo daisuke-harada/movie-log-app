@@ -40,10 +40,10 @@ $(function(){
   var $ranking_show = $('#user-ranking-show');
   var $ranking_modal = $('#user-ranking-modal');
 
-  $reviews_show.css('background-color', '#FF8C00');
+  $reviews_show.css('background-color', '#4A44F2');
 
   $reviews_show.click(function(){
-    $reviews_show.css('background-color', '#FF8C00');
+    $reviews_show.css('background-color', '#4A44F2');
     $followers_show.css('background-color', '');
     $following_show.css('background-color', '');
     $ranking_show.css('background-color', '');
@@ -54,7 +54,7 @@ $(function(){
   });
 
   $followers_show.click(function(){
-    $followers_show.css('background-color', '#FF8C00');
+    $followers_show.css('background-color', '#4A44F2');
     $reviews_show.css('background-color', '');
     $following_show.css('background-color', '');
     $ranking_show.css('background-color', '');
@@ -65,7 +65,7 @@ $(function(){
   });
 
   $following_show.click(function(){
-    $following_show.css('background-color', '#FF8C00');
+    $following_show.css('background-color', '#4A44F2');
     $ranking_show.css('background-color', '');
     $followers_show.css('background-color', '');
     $reviews_show.css('background-color', '');
@@ -76,7 +76,7 @@ $(function(){
   });
 
   $ranking_show.click(function(){
-    $ranking_show.css('background-color', '#FF8C00');
+    $ranking_show.css('background-color', '#4A44F2');
     $following_show.css('background-color', '');
     $followers_show.css('background-color', '');
     $reviews_show.css('background-color', '');
@@ -96,10 +96,10 @@ $(function(){
   var $spoil_reviews_show = $('#spoil-reviews-show');
   var $spoil_reviews_modal = $('#spoil-reviews-modal');
 
-  $all_reviews_show.css('background-color', '#FF8C00');
+  $all_reviews_show.css('background-color', '#4A44F2');
 
   $all_reviews_show.click(function(){
-    $all_reviews_show.css('background-color', '#FF8C00');
+    $all_reviews_show.css('background-color', '#4A44F2');
     $movie_reviews_show.css('background-color', '');
     $spoil_reviews_show .css('background-color', '');
     $all_reviews_modal.fadeIn();
@@ -108,7 +108,7 @@ $(function(){
   });
 
   $movie_reviews_show.click(function(){
-    $movie_reviews_show.css('background-color', '#FF8C00');
+    $movie_reviews_show.css('background-color', '#4A44F2');
     $all_reviews_show.css('background-color', '');
     $spoil_reviews_show .css('background-color', '');
     $movie_reviews_modal.fadeIn();
@@ -117,7 +117,7 @@ $(function(){
   });
 
   $spoil_reviews_show.click(function(){
-    $spoil_reviews_show.css('background-color', '#FF8C00');
+    $spoil_reviews_show.css('background-color', 'red');
     $all_reviews_show.css('background-color', '');
     $movie_reviews_show.css('background-color', '');
     $spoil_reviews_modal.fadeIn();

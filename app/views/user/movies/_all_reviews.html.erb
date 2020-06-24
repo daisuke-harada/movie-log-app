@@ -1,22 +1,22 @@
 <% @movie.reviews.each do |review| %>
   <div class="review" id="review-<%= review.id %>">
-    <div class="review-box">
+    <div class="movie-review-box">
       <ul class="review-mini-box">
-        <li><%= attachment_image_tag review.user, :profile_image, size: "150x150", format: "jpg", fallback: "no_image.jpg" %></li>
+        <li><%= attachment_image_tag review.user, :profile_image, size: "180x180", format: "jpg", fallback: "no_image.jpg" %></li>
         <li>
           <% if user_signed_in? %>
             <% if review.user.id == current_user.id %>
-              <%= link_to '映画の登録を編集する', edit_user_movie_review_path(@movie, review) %><br/>
-              <%= link_to 'マイページへいく', user_user_path(current_user.id) %>
+              <%= link_to 'マイページへいく', user_user_path(current_user.id), class: "btn-square-shadow show-review-btn" %><br/>
+              <%= link_to '映画の登録を編集する', edit_user_movie_review_path(@movie, review), class: "btn-square-shadow2 show-review-btn" %>
             <% else %>
-              <%= link_to user_user_path(review.user.id) do %>
+              <%= link_to user_user_path(review.user.id), class: "btn-square-shadow show-review-btn" do %>
                 <%= review.user.name %>さんのページへ行く
               <% end %><br/>
-              <%= link_to 'コメントを投稿する', new_user_movie_review_comment_path(@movie, review) %>
+              <%= link_to 'コメントを投稿する', new_user_movie_review_comment_path(@movie, review), class: "btn-square-shadow2 show-review-btn" %>
             <% end %>
           <% else %>
-            <%= link_to user_user_path(review.user.id) do %>
-              <%= review.user.name %>さんのページへ行く
+            <%= link_to user_user_path(review.user.id), class: "btn-square-shadow show-review-btn" do %>
+              <%= review.user.name %>さんのページへ行く</p>
             <% end %>
           <% end %>
         </li>
@@ -33,7 +33,7 @@
       　<% end %>
       </ul>
     </div>
-    <div class= "favorite-and-comments-box">
+    <div class= "movie-favorite-and-comments-box">
       <% if user_signed_in? %>
         <div class="favorite-layouts" id="favorite-<%= review.id%>">
           <%= render 'user/favorites/favorite', review: review %>
