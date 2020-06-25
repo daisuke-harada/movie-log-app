@@ -16,7 +16,7 @@
                       <%= f.select :rank_status, rank %>
                       <%= f.hidden_field :user_id, value: current_user.id %>
                       <%= f.hidden_field :reveiw_id, value: review.id %>
-                      <%= f.submit '登録する' %>
+                      <%= f.submit '登録する', class: "btn-square-shadow" %>
                     <% end %>
                   <% end %><br/>
                 <% end %>
