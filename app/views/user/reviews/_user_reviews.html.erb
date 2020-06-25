@@ -3,12 +3,10 @@
     <div class="user-review" id="review-<%= review.id %>">
       <div class="review-box">
         <ul class="review-mini-box">
-          <li><%= attachment_image_tag review.movie, :movie_image, size: "270x400", format: "jpg", fallback: "no_image.jpg" %></li>
+          <li><%= attachment_image_tag review.movie, :movie_image, size: "135x200", format: "jpg", fallback: "no_image.jpg" %></li>
           <li>
             <% if user_signed_in? %>
               <% if review.user.id == current_user.id %>
-                <%= link_to '映画の登録を編集する', edit_user_movie_review_path(review.movie, review) %><br/>
-
                 <% if review.movie_rank %>
                   <h2><%= review.user.name %>さんの<%= review.movie_rank.rank_status %></h2>
                 <% else %>
@@ -22,18 +20,19 @@
                     <% end %>
                   <% end %><br/>
                 <% end %>
+                <%= link_to '映画の登録を編集する', edit_user_movie_review_path(review.movie, review), class: "show-review-btn btn-square-shadow2" %><br/>
               <% else %>
                 <% if review.movie_rank %>
                   <h1><%= review.user.name %>さんの<%= review.movie_rank.rank_status %></h1>
                 <% end %>
-                <%= link_to 'コメントを投稿する', new_user_movie_review_comment_path(review.movie, review) %><br/>
+                <%= link_to 'コメントを投稿する', new_user_movie_review_comment_path(review.movie, review),class: "show-review-btn btn-square-shadow2"%><br/>
               <% end %>
             <% end %>
-            <%= link_to 'check', user_movie_path(review.movie), data: {"turbolinks" => false} %>
+            <%= link_to '映画をcheck', user_movie_path(review.movie), data: {"turbolinks" => false}, class: "show-review-btn btn-square-shadow" %>
           </li>
         </ul>
         <ul class="review-mini-box">
-          <h3><%= review.movie.title%></h3>
+          <li><%= review.movie.title%></li>
           <li>レビュー登録日：<%= review.created_at.to_s(:datetime_jp) %></li>
           <li id="star-rate-<%= review.id %>"></li>
           <% if review.is_spoil == true %>
@@ -45,7 +44,7 @@
         </ul>
       </div>
 
-      <div class= "favorite-and-comments-box">
+      <div class= "movie-favorite-and-comments-box">
         <% if user_signed_in? %>
           <div class="favorite-layouts" id="favorite-<%= review.id%>">
             <%= render 'user/favorites/favorite', review: review %>
@@ -55,11 +54,9 @@
               コメント<%= review.comments.count  %>件
             <% end %>
           </div>
-          <div class="favorite-layouts">
-            <% if current_user.id == review.user.id %>
-              <%= link_to "削除",user_movie_review_path(review.movie_id, review.id), method: :delete, data: {confirm: "本当に削除してもよろしいですか？"}, class: "btn-sm btn-danger"%>
-            <% end %>
-          </div>
+          <% if current_user.id == review.user.id %>
+            <%= link_to "削除",user_movie_review_path(review.movie_id, review.id), method: :delete, data: {confirm: "本当に削除してもよろしいですか？"}, class: "btn-delete-shadow" %>
+          <% end %>
         <% else %>
           <% if review.favorites.count == 0 %>
             <div class="favorite-layouts">

@@ -11,7 +11,7 @@
   <% if user_signed_in? %>
     <div id="review-link">
       <% if current_user.reviews.find_by(movie_id: @movie) %>
-        <%= link_to '映画の登録を編集する', edit_user_movie_review_path(@movie, @review), class: "btn-square-shadow show-review-btn" %><br/>
+        <%= link_to '映画の登録を編集する', edit_user_movie_review_path(@movie, @review), class: "btn-square-shadow2 show-review-btn" %><br/>
       <% else %>
         <div class="btn-square-shadow show-review-btn" id="new-review-show">映画を登録する。</div>
       <% end %>

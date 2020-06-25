@@ -2,8 +2,68 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.genre-bar {
-  border-color: #333333;
-  border: 1px solid;
+.genre-show-area {
+  display: flex;
 }
 
+.genre-box {
+  border: 2px solid #F2F2F2;
+  background-color: white;
+  font-size:25px;
+  margin-left: 200px;
+  margin-right: 200px;
+}
+
+.genre-mini-box {
+  display: flex;
+  flex-flow: row wrap;
+  color: #0D0D0D;
+  align-items: flex-start;
+  align-content: flex-start;
+}
+
+.genre-bar {
+  margin-top: 60px;
+  margin-left: 100px;
+  margin-right: 40px;
+  background-color: #7278F2;
+  width: 300px;
+  height: 80%;
+  text-align: center;
+  font-size: 25px;
+}
+.genre-bar-title {
+  font-size: 30px;
+  margin-top :20px;
+  padding-bottom : 20px;
+}
+
+.genre-menu:first-child {
+  padding-bottom : 10px;
+}
+
+.genre-menu {
+  padding-top : 10px;
+  padding-bottom : 10px;
+  border-top: 1px solid #F2F2F2;
+}
+
+.genre-bar > div >a {
+  color: #0D0D0D;
+}
+
+.genre-title {
+  border-bottom: 2px solid #ddd;
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+  text-align: center;
+}
+
+.genre-movies-box {
+  margin-top: 60px;
+  display: flex;
+  flex-flow: row wrap;
+  align-items: flex-start;
+  align-content: flex-start;
+  width: 720px;
+}
