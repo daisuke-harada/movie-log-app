@@ -2,6 +2,45 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+.comment-new-form {
+  margin: 40px 80px;
+}
+
 .comment-form {
-  width: 80%;
+  width: 200px;
+}
+
+.comment-layout {
+  background-color: white;
+  margin-top: 30px;
+  position: relative;
+  height: 230px;
+}
+
+.comment-user-profile {
+  position: absolute;
+  height: 230px;
+  width: 200px;
+  text-align: center;
+  margin: 10px;
+}
+
+.comment-user-name {
+  margin-top: 0;
+  font-size: 25px;
+  padding: 0;
+}
+
+.comment-user-status {
+  position: absolute;
+  left: 200px;
+  margin-top: 20px;
+}
+
+.comment-destroy-box {
+  position: absolute;
+  right: 40px;
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 180px;
 }

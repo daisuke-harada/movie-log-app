@@ -1,28 +1,28 @@
 <% @movie.reviews.where(is_spoil: true).each do |review| %>
   <div class="review" id="review-<%= review.id %>">
-    <div class="review-box">
-      <ul class="review-mini-box">
-        <li><%= attachment_image_tag review.user, :profile_image, size: "150x150", format: "jpg", fallback: "no_image.jpg" %></li>
+    <div class="movie-review-box">
+      <ul class="movie-review-profile">
+        <li><%= attachment_image_tag review.user, :profile_image, size: "180x180", format: "jpg", fallback: "no_image.jpg" %></li>
         <li>
           <% if user_signed_in? %>
             <% if review.user.id == current_user.id %>
-              <%= link_to '映画の登録を編集する', edit_user_movie_review_path(@movie, review) %><br/>
-              <%= link_to 'マイページへいく', user_user_path(current_user.id) %>
+              <%= link_to 'マイページへいく', user_user_path(current_user.id), class: "btn-square-shadow show-review-btn" %><br/>
+              <%= link_to '映画の登録を編集する', edit_user_movie_review_path(@movie, review), class: "btn-square-shadow2 show-review-btn" %>
             <% else %>
-              <%= link_to user_user_path(review.user.id) do %>
+              <%= link_to user_user_path(review.user.id), class: "btn-square-shadow show-review-btn" do %>
                 <%= review.user.name %>さんのページへ行く
               <% end %><br/>
-              <%= link_to 'コメントを投稿する', new_user_movie_review_comment_path(@movie, review) %>
+              <%= link_to 'コメントを投稿する', new_user_movie_review_comment_path(@movie, review), class: "btn-square-shadow2 show-review-btn" %>
             <% end %>
           <% else %>
-            <%= link_to user_user_path(review.user.id) do %>
-              <%= review.user.name %>さんのページへ行く
+            <%= link_to user_user_path(review.user.id), class: "btn-square-shadow show-review-btn" do %>
+              <%= review.user.name %>さんのページへ行く</p>
             <% end %>
           <% end %>
         </li>
       </ul>
-      <ul class="review-mini-box">
-        <li><%= review.user.name%>さんの感想と評価。</li>
+      <ul class="movie-review-status">
+        <li class="user-review-name"><%= review.user.name%>さんの感想と評価。</li>
         <li><%= review.updated_at.to_s(:datetime_jp) %></li>
         <li id="star-rate-spoil-<%= review.id %>"></li>
         <% if review.is_spoil == true %>
@@ -33,7 +33,7 @@
       　<% end %>
       </ul>
     </div>
-    <div class= "favorite-and-comments-box">
+    <div class= "movie-favorite-and-comments-box">
       <% if user_signed_in? %>
         <div class="favorite-layouts" id="favorite-<%= review.id%>">
           <%= render 'user/favorites/favorite', review: review %>
@@ -43,11 +43,9 @@
             コメント<%= review.comments.count  %>件
           <% end %>
         </div>
-        <div class="favorite-layouts">
           <% if current_user.id == review.user.id %>
-            <%= link_to "削除",user_movie_review_path(@movie.id, review.id), method: :delete, data: {confirm: "本当に削除してもよろしいですか？"}, class: "btn-sm btn-danger" %>
+            <%= link_to "削除",user_movie_review_path(@movie.id, review.id), method: :delete, data: {confirm: "本当に削除してもよろしいですか？"}, class: "btn-delete-shadow" %>
           <% end %>
-        </div>
       <% else %>
         <% if review.favorites.count == 0 %>
           <div class="favorite-layouts">

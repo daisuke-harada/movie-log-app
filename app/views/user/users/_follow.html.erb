@@ -1,4 +1,6 @@
 <%= form_with(model: current_user, url: user_relationships_path, method: :post) do |f| %>
   <%= hidden_field_tag :following_id, user.id %>
-  <%= f.submit "フォローする", class: "my-mini-box btn btn-primary" %>
+  <%= f.button :type => "submit", class: "my-mini-box btn btn-square-shadow" do %>
+    フォロー <i class="fas fa-plus"></i>
+  <% end %>
 <% end %>

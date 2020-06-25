@@ -11,7 +11,7 @@ class User::MovieRanksController < ApplicationController
   def destroy
     @movie_rank = MovieRank.find(params[:id])
     @movie_rank.destroy
-    redirect_to user_user_path(current_user)
+    redirect_to user_user_path(@movie_rank.user_id)
   end
 
   private

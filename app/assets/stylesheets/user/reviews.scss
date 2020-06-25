@@ -1,3 +1,170 @@
 // Place all the styles related to the user/reviews controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+// movieのshowページ
+
+.new-review-modal-wrapper {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  z-index: 100;
+  text-align: center;
+  display: none;
+}
+
+#modal {
+  position: absolute;
+  top: 20%;
+  left: 20%;
+  right: 20%;
+  background-color: #f5f5f5;
+  padding: 30px;
+  border-radius: 10px;
+  width: 1000px;
+  height: auto;
+  text-align: left;
+}
+
+.close {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+}
+
+.movie_reviews_wrapper {
+  display: none;
+}
+
+.spoil_reviews_wrapper {
+  display: none;
+}
+
+.movie-review-choice {
+  display: flex;
+  text-align: center;
+  margin-left: 80px;
+  margin-right: 80px;
+  background-color: #BBBDF2;
+  justify-content: center;
+  align-items: center;
+}
+
+.movie-review-mini-choice {
+  text-align: center;
+  background-color: #F2F2F2;
+  padding: 20px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.movie-review-box {
+  width: 100%;
+  height: 320px;
+  background-color: white;
+  border-bottom: 2px solid #EEEEEE;
+}
+
+.movie-review-profile {
+  display: inline-block;
+  text-align: center;
+  height: auto;
+  padding: 10px;
+  width: auto;
+  vertical-align: top;
+}
+
+.movie-review-status {
+  display: inline-block;
+  text-align: left;
+  height: auto;
+  padding: 10px;
+  width: auto;
+  vertical-align: top;
+}
+
+.show-review-btn {
+  width: 180px;
+  text-align: center;
+}
+
+.user-review-name{
+  font-size: 20px;
+}
+
+.review-content {
+  width: 600px;
+}
+
+.review-big-box {
+  display: flex;
+  flex-flow: row wrap;
+}
+
+.user-review {
+  border: 2px solid #EEEEEE;
+  background-color: white;
+  margin: 20px;
+  width: 650px;
+}
+
+.review {
+  border: 2px solid #EEEEEE;
+  margin: 20px 80px;
+}
+
+.review-box {
+  width: 100%;
+  height: 400px;
+  border-bottom: 2px solid #EEEEEE;
+}
+
+.text-content {
+  width: 700px;
+  haight: 100px;
+}
+
+.review-mini-box {
+  display: inline-block;
+  text-align: left;
+  height: auto;
+  padding: 10px;
+  width: auto;
+  vertical-align: top;
+}
+
+.favorite-and-comments-box {
+  background-color: white;
+  display: flex;
+  height: 40px;
+  justify-content: flex-end;
+}
+
+.favorite-layouts {
+  margin: 5px;
+  padding: 5px;
+}
+
+.favorite-layouts > a {
+  color: black;
+}
+
+.comment-layouts {
+  margin: 5px;
+  padding: 5px;
+}
+
+.comment-layouts > a {
+  color: black
+}
+
+.is_spoil_message-color {
+  color: red;
+}
+
+.is_spoil_content-wrappper {
+  display: none;
+}
