@@ -3,7 +3,7 @@ class CreateMovieRanks < ActiveRecord::Migration[5.2]
     create_table :movie_ranks do |t|
       t.integer :review_id, foreign_key: true
       t.integer :user_id, foreign_key: true
-      t.integer :rank_status, default: 0
+      t.integer :rank_status, null: false
       t.timestamps
     end
   end

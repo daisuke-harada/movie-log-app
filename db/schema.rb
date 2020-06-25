@@ -63,7 +63,7 @@ ActiveRecord::Schema.define(version: 2020_06_20_102555) do
   create_table "movie_ranks", force: :cascade do |t|
     t.integer "review_id"
     t.integer "user_id"
-    t.integer "rank_status", default: 0
+    t.integer "rank_status", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

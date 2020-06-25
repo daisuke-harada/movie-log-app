@@ -11,9 +11,9 @@ class User::UsersController < ApplicationController
     @omit_first = MovieRank.rank_statuses.except(:"1位").keys
     @omit_second = MovieRank.rank_statuses.except(:"2位").keys
     @omit_third = MovieRank.rank_statuses.except(:"3位").keys
-    @only_first = MovieRank.rank_statuses.slice(:"Myランキングに登録する。", :"1位").keys
-    @only_second = MovieRank.rank_statuses.slice(:"Myランキングに登録する。", :"2位").keys
-    @only_third = MovieRank.rank_statuses.slice(:"Myランキングに登録する。", :"3位").keys
+    @only_first = MovieRank.rank_statuses.slice(:"1位").keys
+    @only_second = MovieRank.rank_statuses.slice(:"2位").keys
+    @only_third = MovieRank.rank_statuses.slice(:"3位").keys
     # binding.pry
     if current_user.movie_ranks.find_by(rank_status: "1")
       @rank = @omit_first
