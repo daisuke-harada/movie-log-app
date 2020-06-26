@@ -1,6 +1,22 @@
+<h1 class="site-title">ユーザー編集ページ</h1>
 <div class="container">
   <div class="row">
-    <h1>User::Users#edit</h1>
-    <p>Find me in app/views/user/users/edit.html.erb</p>
+    <%= form_with(model: @user, url: user_user_path(@user.id), method: :patch, local:true) do |f| %>
+      <div class="col-md-5">
+        <%= image_tag attachment_url(@user, :profile_image, :fill, 300, 300, format: "jpg", fallback: "no_image.jpg") %>
+        <%= f.attachment_field :profile_image %>
+      </div>
+      <div class="col-md-7">
+        <div>
+          <%= f.label :name %><br />
+          <%= f.text_field :name, autofocus: true, autocomplete: "name", class: "user-edit-text-area" %>
+        </div>
+        <div>
+          <%= f.label :email %><br />
+          <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "user-edit-text-area" %>
+        </div>
+        <%= f.submit "更新する。", class: "btn-square-shadow" %>
+      </div>
+    <% end %>
   </div>
 </div>
