@@ -4,7 +4,7 @@
     <h2><%= @user.name %><%= render "follow_form", user: @user %></h2><br/>
     <% if user_signed_in? %>
       <% if @user.id == current_user.id %>
-        <%= link_to 'マイページを編集する。', edit_user_user_path(@user) %>
+        <%= link_to 'マイページを編集する。', edit_user_user_path(@user), class: "btn-square-shadow" %>
       <% end %>
     <% end %>
 </div>
@@ -15,7 +15,7 @@
   <p class="my-mini-box btn-border user-followers-show" id="follower">
     <%= render "followers_count", user: @user %>
   </p>
-  <p class="follow my-mini-box btn-border" id="user-following-show">
+  <p class="my-mini-box btn-border" id="user-following-show">
     Following<br/><%= @user.following.count %>
   </p>
 </div>

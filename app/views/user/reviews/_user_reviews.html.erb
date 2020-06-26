@@ -13,10 +13,10 @@
                   <%= form_with model: movie_rank, url:user_movie_review_movie_ranks_path(review.movie_id, review.id), method: :post, local: :true do |f| %>
                     <% if current_user.movie_ranks.find_by(rank_status: "1位") && current_user.movie_ranks.find_by(rank_status: "2位") && current_user.movie_ranks.find_by(rank_status: "3位") %>
                     <% else %>
-                      <%= f.select :rank_status, rank %>
+                      <%= f.select :rank_status, rank,{prompt: "Myランキング選択"}, class: "rank-form" %>
                       <%= f.hidden_field :user_id, value: current_user.id %>
                       <%= f.hidden_field :reveiw_id, value: review.id %>
-                      <%= f.submit '登録する' %>
+                      <%= f.submit '登録する', class: "btn-square-shadow" %>
                     <% end %>
                   <% end %><br/>
                 <% end %>
