@@ -9,7 +9,7 @@ class User::CommentsController < ApplicationController
     @comment = @review.comments.build(comment_params)
     @comment.user_id = current_user.id
     @comment.save
-    redirect_to user_movie_path(@review.movie.id)
+    redirect_to user_movie_review_path(@review.movie.id, @review.id)
   end
 
   def destroy

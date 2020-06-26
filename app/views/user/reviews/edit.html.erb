@@ -2,21 +2,18 @@
   <div class="row">
     <h1>レビュー編集ページ</h1>
 
-    <%= form_with(model: @review, url:user_movie_review_path, local:true) do |f| %>
-
-      <div id="star-rate-<%= @review.id %>">
-      </div><br/>
-
-      <% if @review.is_spoil = false %>
+    <%= form_with(model: @review, url:user_movie_review_path, local: :true) do |f| %>
+      <div id="star-rate-<%= @review.id %>"></div><br/>
+      <% if @review.is_spoil == false %>
         <%= f.check_box( :is_spoil, {:checked => false}, checked_value = "true", unchecked_value = "false") %>
         <%= f.label :is_spoil, "⚠︎ネタバレあり", class: 'check_box_label' %><br/>
-      <% else %>
+      <% elsif @review.is_spoil == true %>
         <%= f.check_box( :is_spoil, {:checked => true}, checked_value = "true", unchecked_value = "false") %>
         <%= f.label :is_spoil, "⚠︎ネタバレあり", class: 'check_box_label' %><br/>
       <% end %>
 
-      <%= f.text_area :content %>
-      <%= f.submit class: 'btn btn-primary' %>
+      <%= f.text_area :content, class: 'text-content', style: "height: 140px" %><br/>
+      <%= f.submit "更新する。", class: 'btn-square-shadow' %>
 
     <% end %>
   </div>

@@ -1,5 +1,5 @@
 class User::UsersController < ApplicationController
-  before_action :set_users, only: [:show, :edit, :following, :followers]
+  before_action :set_users, only: [:show, :edit, :update, :following, :followers]
   def index
     @users = User.all
   end
@@ -11,9 +11,9 @@ class User::UsersController < ApplicationController
     @omit_first = MovieRank.rank_statuses.except(:"1位").keys
     @omit_second = MovieRank.rank_statuses.except(:"2位").keys
     @omit_third = MovieRank.rank_statuses.except(:"3位").keys
-    @only_first = MovieRank.rank_statuses.slice(:"Myランキングに登録する。", :"1位").keys
-    @only_second = MovieRank.rank_statuses.slice(:"Myランキングに登録する。", :"2位").keys
-    @only_third = MovieRank.rank_statuses.slice(:"Myランキングに登録する。", :"3位").keys
+    @only_first = MovieRank.rank_statuses.slice(:"1位").keys
+    @only_second = MovieRank.rank_statuses.slice(:"2位").keys
+    @only_third = MovieRank.rank_statuses.slice(:"3位").keys
     # binding.pry
     if current_user.movie_ranks.find_by(rank_status: "1")
       @rank = @omit_first
@@ -44,6 +44,11 @@ class User::UsersController < ApplicationController
   def edit
   end
 
+  def update
+      @user.update(user_params)
+      redirect_to user_user_path(@user)
+  end
+
   def following
     # @userがフォローしているユーザー
     @user.following
@@ -63,7 +68,7 @@ class User::UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:name, :profile_image_id, :email)
+    params.require(:user).permit(:name, :profile_image, :email)
   end
 
   def set_users

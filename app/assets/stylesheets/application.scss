@@ -27,7 +27,22 @@ body {
 }
 
 a {
-  color: black;
+  color: white;
+}
+
+ul {
+  list-style: none;
+}
+
+li {
+  padding: 5px;
+}
+
+input, button, select, textarea {
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  height: 30px;
 }
 
 .mainbar {
@@ -57,7 +72,7 @@ a {
 }
 
 .searchbar {
-  height: 40px;
+  height: 50px;
   background-color: #BBBDF2;
   border-bottom: solid 1px #0D0D0D;
   color: black;
@@ -65,7 +80,11 @@ a {
   text-align: center;
 }
 
-.site-titele {
+.search-form {
+  width:700px;
+}
+
+.site-title {
   text-align: center;
   margin-top: 0;
   padding-top: 20px;
@@ -102,6 +121,7 @@ a {
 .box {
   display: flex;
   flex-flow: row wrap;
+  justify-content: center;
   align-items: flex-start;
   align-content: flex-start;
 }
@@ -109,6 +129,7 @@ a {
 
 .btn-square-shadow {
   display: inline-block;
+  font-size: 10px;
   padding: 0.5em 1em;
   text-decoration: none;
   color: white;
@@ -145,43 +166,85 @@ a {
   border-bottom: none;
 }
 
+.btn-delete-shadow {
+  display: inline-block;
+  padding: 0.5em 1em;
+  text-decoration: none;
+  color: white;
+  background-color: #DB5E59;
+  cursor: pointer;
+  border-bottom: solid 4px #aa5e59;
+  border-radius: 3px;
+  margin: 5px;
+}
 
+.btn-delete-shadow:active {
+  -webkit-transform: translateY(4px);
+  transform: translateY(4px);
+  box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.2);
+  border-bottom: none;
+}
 
+.btn-square-emboss {
+  display: inline-block;
+  padding: 0.5em 1em;
+  text-decoration: none;
+  background: #668ad8;/*ボタン色*/
+  color: #4868ad;/*ボタン色より暗く*/
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.29);
+  border-bottom: solid 3px #627295;
+  border-radius: 3px;
+  font-weight: bold;
+  text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.5);
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
-.genre-box {
-  border: 2px solid #ddd;
+.btn-square-emboss:active  {
+  -webkit-transform: translateY(4px);
+  transform: translateY(4px);
+  box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.2);
+  border-bottom: none;
 }
 
 
 
 
 
-.genre-title {
-  border-bottom: 2px solid #ddd;
-  margin-bottom: 20px;
-  padding-bottom: 20px;
-  text-align: center;
-}
 
-ul {
-  list-style: none;
-}
 
-li {
-  padding: 5px;
-}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -189,93 +252,10 @@ li {
   margin-bottom: 0;
 }
 
-.user-box {
-  border: 1px solid;
-  height: 560px;
-  margin: 20px;
-  padding: 20px;
-}
-
-.users-user-imgage {
-  margin-left: 45px;
-  margin-right: 75px;
-  margin-bottom: 20px;
-}
-
-.movie-rank-box {
-  display: flex;
-  text-align: center;
-  margin-right:auto;
-  margin-left:auto
-}
-
-.movie-mini-rank-box {
-  padding: 5px;
-}
-
-.user-minibox{
-  width: auto;
-}
-
-.review-big-box {
-  display: flex;
-  flex-flow: row wrap;
-}
-
-.user-review {
-  border: 2px solid #EEEEEE;
-  margin: 20px;
-  width: 700px;
-}
-
-.review {
-  border: 2px solid #EEEEEE;
-  margin: 20px 80px;
-}
-
-.review-box {
-  width: 100%;
-  height: 550px;
-  border-bottom: 2px solid #EEEEEE;
-}
-
-.review-mini-box {
-  display: inline-block;
-  text-align: center;
-  height: auto;
-  width: auto;
-  vertical-align: top;
-}
-
-.comment-destroy-box {
-  display: flex;
-  justify-content: flex-end;
-}
-
-.favorite-layouts {
-  margin: 5px;
-  padding: 5px;
-}
-
-.comment-layouts {
-  margin: 5px;
-  padding: 5px;
-}
-
-.is_spoil_message-color {
-  color: red;
-}
-
-.is_spoil_content-wrappper {
-  display: none;
-}
 
 
 
-.genre-bar {
-  border-color: #333333;
-  border: 1px solid;
-}
+
 
 input[type=checkbox] {
 display: none; /* checkboxを非表示にする */

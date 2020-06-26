@@ -1,29 +1,47 @@
-<div class="container">
-  <div class="row">
-    <div class="col-md-3">
-      <table class="table table-responsive genre-bar">
-        <thead>
-          <tr>
-            <th>
-              ジャンル一覧
-            </th>
-          </tr>
-        </thead>
-        <tbody>
-          <% @genres.each do |genre| %>
-            <tr>
-              <td>
-                <%= link_to user_genre_path(genre.id) do%>
-                  <%= genre.name %>
-                <% end %>
-              </td>
-            </tr>
-          <% end %>
-        </tbody>
-      </table>
+<h1 class="site-title">作品一覧</h1>
+
+<div class="genre-show-area">
+  <div class="genre-bar">
+    <div class="genre-bar-title">
+      ジャンル一覧
     </div>
-    <div class="col-md-9">
-      <%= render 'user/movies/movies', movies: @movies %>
-    </div>
+    <% @genres.each do |genre| %>
+      <div class="genre-menu">
+        <%= link_to user_genre_path(genre.id) do%>
+          <%= genre.name %>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+
+  <div>
+    <ul class="genre-movies-box">
+      <% @movies.each do |movie| %>
+        <li class="movie-box">
+          <%= attachment_image_tag movie, :movie_image, size: "270x400", format: "jpg", fallback: "no_image.jpg", class: "image-box" %><br/>
+          <p class="movie-title"><%= movie.title %></p>
+          <p id='star-average-rate-<%= movie.id %>'></p>総合評価<%= movie.reviews.average(:rate).to_f.round(1) %><br/>
+            登録数<%= movie.reviews.count %> 件<br/>
+            <%= link_to '作品をcheck', user_movie_path(movie), data: {"turbolinks" => false}, class: "btn-square-shadow" %>
+        </li>
+      <% end %>
+    </ul>
   </div>
 </div>
+
+<script>
+    $(document).ready(function() {
+      <% @movies.each do |movie| %>
+        $('#star-average-rate-<%= movie.id %>').raty({
+          score: '<%= "#{movie.reviews.average(:rate).to_f.round(1)}" %>',
+          size: 36,
+          starOff: '<%= "#{asset_path('star-off.png')}" %>',
+          starOn: '<%= "#{asset_path('star-on.png')}" %>',
+          starHalf: '<%= "#{asset_path('star-half.png')}" %>',
+          half: true,
+          readOnly: true
+          //注目ポイント↑ 平均点を算出し、round関数で切り上げ
+        });
+      <% end %>
+    });
+  </script>
