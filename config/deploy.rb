@@ -8,29 +8,29 @@ set :rbenv_ruby, '2.5.7'
 set :linked_files, %w{config/master.key .env}
 append :linked_dirs, "log", "tmp/pids", "tmp/cache", "tmp/sockets", "public/system"
 
-namespace :deploy do
+# namespace :deploy do
 
-  task :db_reset do
-    on roles(:app) do
-      within release_path do
-        with rails_env: fetch(:rails_env) do
-          execute :rake, "db:migrate:reset"
-        end
-      end
-    end
-  end
+#   task :db_reset do
+#     on roles(:app) do
+#       within release_path do
+#         with rails_env: fetch(:rails_env) do
+#           execute :rake, "db:migrate:reset"
+#         end
+#       end
+#     end
+#   end
 
-  desc 'db_seed'
-  task :db_seed do
-    on roles(:db) do |host|
-      with rails_env: fetch(:rails_env) do
-        within current_path do
-          execute :bundle, :exec, :rake, 'db:seed'
-        end
-      end
-    end
-  end
-end
+#   desc 'db_seed'
+#   task :db_seed do
+#     on roles(:db) do |host|
+#       with rails_env: fetch(:rails_env) do
+#         within current_path do
+#           execute :bundle, :exec, :rake, 'db:seed'
+#         end
+#       end
+#     end
+#   end
+# end
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
 
