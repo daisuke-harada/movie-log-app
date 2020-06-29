@@ -1,9 +1,12 @@
-<% movie_ranks.each do |movie_rank| %>
-  <h1><%= movie_rank.rank_status %></h1>
-  <%= attachment_image_tag movie_rank.review.movie, :movie_image, size: "270x400", format: "jpg", fallback: "no_image.jpg" %>
-  <% if current_user.id == movie_rank.user_id %>
-    <%= link_to "削除", user_movie_rank_path(movie_rank), method: :delete, data: {confirm: "本当に削除してもよろしいですか？", "turbolinks" => false}, class: "btn-delete-shadow" %>
-  <% end %><br/>
-<% end %>
 
+  <% movie_ranks.each do |movie_rank| %>
+    <div class="movie-rank-layouts">
+      <h1><%= movie_rank.rank_status %></h1>
+      <%= attachment_image_tag movie_rank.review.movie, :movie_image, size: "370x500", format: "jpg", fallback: "no_image.jpg" %><br/>
+      <% if current_user.id == movie_rank.user_id %>
+        <%= link_to "ランキングから外す", user_movie_rank_path(movie_rank), method: :delete, data: {confirm: "本当に削除してもよろしいですか？", "turbolinks" => false}, class: "btn-delete-shadow" %>
+      <% end %><br/>
+      <%= link_to '映画をcheck', user_movie_path(movie_rank.review.movie), data: {"turbolinks" => false}, class: "show-review-btn btn-square-shadow" %>
+    </div>
+  <% end %>
 
