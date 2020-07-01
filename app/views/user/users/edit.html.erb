@@ -5,15 +5,18 @@
       <div class="col-md-5">
         <%= image_tag attachment_url(@user, :profile_image, :fill, 300, 300, format: "jpg", fallback: "no_image.jpg") %>
         <%= f.attachment_field :profile_image %>
+        <% if user_signed_in? && @user.id == current_user.id %>
+          <%= link_to "退会", out_user_user_path(current_user), method: :put, "data-confirm" => "本当に退会しますか？", class: "btn btn-delete-shadow" %>
+  　　　　<% end %>
       </div>
       <div class="col-md-7">
         <div>
           <%= f.label :name %><br />
-          <%= f.text_field :name, autofocus: true, autocomplete: "name", class: "user-edit-text-area" %>
+          <%= f.text_field :name, class: "user-edit-text-area" %>
         </div>
         <div>
           <%= f.label :email %><br />
-          <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "user-edit-text-area" %>
+          <%= f.email_field :email, class: "user-edit-text-area" %>
         </div>
         <%= f.submit "更新する。", class: "btn-square-shadow" %>
       </div>

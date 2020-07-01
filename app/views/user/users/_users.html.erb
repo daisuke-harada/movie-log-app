@@ -1,43 +1,45 @@
 <ul class="user-index-box">
   <% users.each do |user| %>
-    <li class="user-box">
-      <%= attachment_image_tag user, :profile_image, size: "150x150", format: "jpg", fallback: "no_image.jpg", class: "users-user-imgage" %>
-      <div class="users-user-name"><%= user.name %></div>
-      <div class="user-people-box">
-        <p class="user-people-mini-box" id="follower">
-          <%= link_to followers_user_user_path(user) do %>
-            <%= render "user/users/followers_count", user: user %>
-          <% end %>
-        </p>
-        <p class="user-people-mini-box">
-          <%= link_to following_user_user_path(user) do %>
-            <span class="people-status">Following</span></br><%= user.following.count %>
-          <% end %>
-        </p>
-      </div>
-      <% if user.movie_ranks == [] %>
-        <div class="movie-rank-nill-box">ベストムービーが設定されていません。</div>
-      <% else %>
-        <p class="movie-rank-box">
-          <% user.movie_ranks.order(:rank_status).each do |movie_rank| %>
-            <span class="movie-mini-rank-box" >
-              <%= link_to user_movie_path(movie_rank.review.movie.id) do %>
-                <%= attachment_image_tag movie_rank.review.movie, :movie_image, size: "70x100", format: "jpg", fallback: "no_image.jpg" %><br/>
-                <%= movie_rank.rank_status %>
-              <% end %>
-            </span>
-          <% end %>
-        </p>
-      <% end %>
-      <% if user.id == current_user.id %>
-        <p class="users-btn-layouts">
-          <%= link_to 'マイページへいく', user_user_path(user), data: {"turbolinks" => false}, class: "btn-square-shadow show-review-btn" %>
-        </p>
-      <% else %>
-        <p class="users-btn-layouts">
-          <%= link_to '詳細を見る', user_user_path(user), data: {"turbolinks" => false}, class: "btn-square-shadow show-review-btn"  %>
-        </p>
-      <% end %>
-    </li>
+    <% if user.is_withdrawal == false %>
+      <li class="user-box">
+        <%= attachment_image_tag user, :profile_image, size: "150x150", format: "jpg", fallback: "no_image.jpg", class: "users-user-imgage" %>
+        <div class="users-user-name"><%= user.name %></div>
+        <div class="user-people-box">
+          <p class="user-people-mini-box" id="follower">
+            <%= link_to followers_user_user_path(user) do %>
+              <%= render "user/users/followers_count", user: user %>
+            <% end %>
+          </p>
+          <p class="user-people-mini-box">
+            <%= link_to following_user_user_path(user) do %>
+              <span class="people-status">Following</span></br><%= user.following.count %>
+            <% end %>
+          </p>
+        </div>
+        <% if user.movie_ranks == [] %>
+          <div class="movie-rank-nill-box">ベストムービーが設定されていません。</div>
+        <% else %>
+          <p class="movie-rank-box">
+            <% user.movie_ranks.order(:rank_status).each do |movie_rank| %>
+              <span class="movie-mini-rank-box" >
+                <%= link_to user_movie_path(movie_rank.review.movie.id) do %>
+                  <%= attachment_image_tag movie_rank.review.movie, :movie_image, size: "70x100", format: "jpg", fallback: "no_image.jpg" %><br/>
+                  <%= movie_rank.rank_status %>
+                <% end %>
+              </span>
+            <% end %>
+          </p>
+        <% end %>
+        <% if user.id == current_user.id %>
+          <p class="users-btn-layouts">
+            <%= link_to 'マイページへいく', user_user_path(user), data: {"turbolinks" => false}, class: "btn-square-shadow show-review-btn" %>
+          </p>
+        <% else %>
+          <p class="users-btn-layouts">
+            <%= link_to '詳細を見る', user_user_path(user), data: {"turbolinks" => false}, class: "btn-square-shadow show-review-btn"  %>
+          </p>
+        <% end %>
+      </li>
+    <% end %>
   <% end %>
 </ul>

@@ -17,6 +17,16 @@ class User < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :movie_ranks, dependent: :destroy
   attachment :profile_image
+
+  # 値が空の場合はバリデーションを実行しない
+  validates :password, presence: true, allow_blank: true
+  validates :email, :name, presence: true
+
+  # 退会していないユーザーはログインできる。
+  def active_for_authentication?
+    super && (self.is_withdrawal == false)
+  end
+
   # フォローしているかを確認するメソッド
   def following?(user)
     following_relationships.find_by(following_id: user.id)
