@@ -1,3 +1,4 @@
+<%= flash[:alert] %>
 <div class="container">
   <div class="row">
     <h2>ユーザーログイン</h2>
@@ -23,7 +24,6 @@
         <%= f.submit "Log in",  class:"btn-square-shadow"  %>
       </div>
     <% end %>
-
-    <%= render "users/shared/links" %>
   </div>
+  <%= link_to "Sign up", new_registration_path(resource_name) %><br />
 </div>

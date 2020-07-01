@@ -20,8 +20,8 @@ Rails.application.routes.draw do
 
     resources :users, only: [:show, :edit, :update, :index] do
       member do
-        get :quit, :following, :followers
-        patch :out
+        get :following, :followers
+        put :out
       end
     end
 

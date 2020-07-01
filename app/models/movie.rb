@@ -13,11 +13,11 @@ class Movie < ApplicationRecord
   has_many :users, through: :reviews
   attachment :movie_image
 
-  def self.search(method,word)
-      if method == "perfect_match"
-        Movie.where("title LIKE?", "#{word}")
-      else method == "partial_match"
-        Movie.where("title LIKE?","%#{word}%")
-      end
+  def self.search(method, word)
+    if method == "perfect_match"
+      Movie.where("title LIKE?", "#{word}")
+    elsif method == "partial_match"
+      Movie.where("title LIKE?", "%#{word}%")
+    end
   end
 end
