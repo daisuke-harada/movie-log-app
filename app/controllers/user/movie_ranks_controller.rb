@@ -15,6 +15,7 @@ class User::MovieRanksController < ApplicationController
   end
 
   private
+
   def movie_rank_params
     params.require(:movie_rank).permit(:id, :review_id, :user_id, :rank_status)
   end

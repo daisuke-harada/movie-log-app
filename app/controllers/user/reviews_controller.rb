@@ -33,6 +33,7 @@ class User::ReviewsController < ApplicationController
   end
 
   private
+
   def review_params
     params.require(:review).permit(:id, :movie_id, :user_id, :rate, :content, :is_spoil)
   end

@@ -8,32 +8,34 @@ class User::UsersController < ApplicationController
     @movie_rank = MovieRank.new
     @user = User.find(params[:id])
     @movie_ranks = @user.movie_ranks.order(:rank_status)
+    @user_ranks = current_user.movie_ranks
+
     @omit_first = MovieRank.rank_statuses.except(:"1位").keys
     @omit_second = MovieRank.rank_statuses.except(:"2位").keys
     @omit_third = MovieRank.rank_statuses.except(:"3位").keys
     @only_first = MovieRank.rank_statuses.slice(:"1位").keys
     @only_second = MovieRank.rank_statuses.slice(:"2位").keys
     @only_third = MovieRank.rank_statuses.slice(:"3位").keys
-    # binding.pry
-    if current_user.movie_ranks.find_by(rank_status: "1")
+
+    if @user_ranks.find_by(rank_status: "1")
       @rank = @omit_first
-      if current_user.movie_ranks.find_by(rank_status: "1位") && current_user.movie_ranks.find_by(rank_status: "2")
+      if @user_ranks.find_by(rank_status: "1位") && @user_ranks.find_by(rank_status: "2")
         @rank = @only_third
-      elsif current_user.movie_ranks.find_by(rank_status: "1位") && current_user.movie_ranks.find_by(rank_status: "3")
+      elsif @user_ranks.find_by(rank_status: "1位") && @user_ranks.find_by(rank_status: "3")
         @rank = @only_second
       end
-    elsif current_user.movie_ranks.find_by(rank_status: "2")
+    elsif @user_ranks.find_by(rank_status: "2")
       @rank = @omit_second
-      if current_user.movie_ranks.find_by(rank_status: "1位") && current_user.movie_ranks.find_by(rank_status: "2")
+      if @user_ranks.find_by(rank_status: "1位") && @user_ranks.find_by(rank_status: "2")
         @rank = @only_third
-      elsif current_user.movie_ranks.find_by(rank_status: "2位") && current_user.movie_ranks.find_by(rank_status: "3")
+      elsif @user_ranks.find_by(rank_status: "2位") && @user_ranks.find_by(rank_status: "3")
         @rank = @only_first
       end
-    elsif current_user.movie_ranks.find_by(rank_status: "3")
+    elsif @user_ranks.find_by(rank_status: "3")
       @rank = @omit_third
-      if current_user.movie_ranks.find_by(rank_status: "2位") && current_user.movie_ranks.find_by(rank_status: "3")
+      if @user_ranks.find_by(rank_status: "2位") && @user_ranks.find_by(rank_status: "3")
         @rank = @only_first
-      elsif current_user.movie_ranks.find_by(rank_status: "1位") && current_user.movie_ranks.find_by(rank_status: "3")
+      elsif @user_ranks.find_by(rank_status: "1位") && @user_ranks.find_by(rank_status: "3")
         @rank = @only_second
       end
     else
@@ -45,8 +47,8 @@ class User::UsersController < ApplicationController
   end
 
   def update
-      @user.update(user_params)
-      redirect_to user_user_path(@user)
+    @user.update(user_params)
+    redirect_to user_user_path(@user)
   end
 
   def following

@@ -9,7 +9,6 @@ set :linked_files, %w{config/master.key .env}
 append :linked_dirs, "log", "tmp/pids", "tmp/cache", "tmp/sockets", "public/system"
 
 namespace :deploy do
-
   task :db_reset do
     on roles(:app) do
       within release_path do
@@ -30,6 +29,7 @@ namespace :deploy do
     end
   end
 end
+
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
 
