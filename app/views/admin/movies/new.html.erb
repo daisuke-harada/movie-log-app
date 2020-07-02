@@ -1,6 +1,7 @@
 <div class="container">
   <div class="row">
     <h1>作品新規投稿</h1>
+    <%= render 'layouts/error', data: @movie %>
 
     <%= form_with(model: @movie, url:admin_movies_path(@movie), local:true) do |f| %>
       <div class="col-md-5">

@@ -8,7 +8,7 @@
           <%= movie.title %><br/>
           <%= movie.a_movie_released %><br/>
           <%= movie.show_time %><br/>
-          <%= link_to '詳細を見る', admin_movie_path(movie) %>
+          <%= link_to '詳細を見る', admin_movie_path(movie), class: "btn-square-shadow " %>
         </li>
       <% end %>
     </ul>

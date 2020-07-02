@@ -6,12 +6,14 @@ class Users::SessionsController < Devise::SessionsController
   protected
 
   def reject_user
-    @user = User.find_by(email: params[:user][:email])
+    @user = User.find_by(name: params[:user][:name])
     if @user
       if (@user.valid_password?(params[:user][:password]) && (@user.active_for_authentication? == false))
-        flash[:alert] = "退会済みです。"
+        flash[:error] = "このアカウントは退会済みです。"
         redirect_to new_user_session_path
       end
+    else
+      flash[:error] = "必須項目を入力してください"
     end
   end
   # GET /resource/sign_in

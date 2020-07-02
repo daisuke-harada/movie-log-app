@@ -4,7 +4,7 @@
 
     <div class="col-md-5">
       <%= attachment_image_tag @movie, :movie_image, size: "300x420", format: "jpg", fallback: "no_image.jpg" %><br/>
-      <%= link_to '編集ページへいく', edit_admin_movie_path(@movie), class: 'btn btn-primary' %>
+      <%= link_to '編集ページへいく', edit_admin_movie_path(@movie), class: "btn-square-shadow " %>
     </div>
     <div class="col-md-7">
       <h2><%= @movie.title %></h2><br/>

@@ -12,6 +12,10 @@ class Movie < ApplicationRecord
   has_many :reviews, dependent: :destroy
   has_many :users, through: :reviews
   attachment :movie_image
+  validates :title, presence: true
+  validates :summary, presence: true
+  validates :a_movie_released, presence: true
+  validates :show_time, presence: true
 
   def self.search(method, word)
     if method == "perfect_match"

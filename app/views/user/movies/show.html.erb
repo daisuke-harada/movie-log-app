@@ -1,5 +1,5 @@
 <div class='new-review-modal-wrapper' id='new-review-modal'>
-  <%= render 'review_new', review: @review_new, movie: @movie %>
+  <%= render 'user/movies/review_new', review: @review_new, movie: @movie %>
 </div>
 
 <div class= "movie-show-box">
@@ -64,15 +64,15 @@
 </div>
 
 <div class=""id='all-reviews-modal'>
-  <%= render 'all_reviews' %>
+  <%= render 'user/movies/all_reviews' %>
 </div>
 
 <div class="movie_reviews_wrapper" id='movie-reviews-modal'>
-  <%= render 'no_spoil_reviews' %>
+  <%= render 'user/movies/no_spoil_reviews' %>
 </div>
 
 <div class="spoil_reviews_wrapper" id='spoil-reviews-modal'>
-  <%= render 'spoil_reviews' %>
+  <%= render 'user/movies/spoil_reviews' %>
 </div>
 
 <script>

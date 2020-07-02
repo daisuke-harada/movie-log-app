@@ -1,3 +1,4 @@
+<%= render 'layouts/error', data: @movie %>
 <div class="container">
   <div class="row">
     <h1>映画編集ページ</h1>
@@ -6,8 +7,8 @@
       <div class="col-md-5">
         <%= image_tag attachment_url(@movie, :movie_image, :fill, 300, 420, format: "jpg", fallback: "no_image.jpg") %>
         <%= f.attachment_field :movie_image %><br/>
-        <%= link_to '詳細ページへ戻る', admin_movie_path(@movie), class: 'btn btn-info' %>
-        <%= link_to 'この映画を削除する', admin_movie_path(@movie), method: :delete, "data-confirm" => "本当に削除しますか？", class: 'btn btn-danger' %>
+        <%= link_to '詳細ページへ戻る', admin_movie_path(@movie), class: "btn-square-shadow " %>
+        <%= link_to 'この映画を削除する', admin_movie_path(@movie), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn-delete-shadow " %>
       </div>
       <div class="col-md-7">
         <%= f.label "タイトル" %><br />
