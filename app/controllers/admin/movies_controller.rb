@@ -13,8 +13,16 @@ class Admin::MoviesController < ApplicationController
 
   def create
     @movie = Movie.new(movie_params)
-    @movie.save
-    redirect_to admin_movie_path(@movie)
+    if @movie.save
+      redirect_to admin_movie_path(@movie)
+    else
+      @genres = Genre.all
+      @movie.movie_genres.build
+      @movie.supervisers.build
+      @movie.actors.build
+      @movie.writers.build
+      render :new
+    end
   end
 
   def index
@@ -29,8 +37,12 @@ class Admin::MoviesController < ApplicationController
   end
 
   def update
-    @movie.update(movie_params)
-    redirect_to admin_movie_path(@movie)
+    if @movie.update(movie_params)
+      redirect_to admin_movie_path(@movie)
+    else
+      @genres = Genre.all
+      render :edit
+    end
   end
 
   def destroy

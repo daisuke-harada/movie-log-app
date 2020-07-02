@@ -1,3 +1,4 @@
+<%= flash[:alert] %>
 <div class="container">
   <div class="row">
   <h2>管理者ログイン</h2>
@@ -23,6 +24,5 @@
         <%= f.submit "Log in", class:"btn-square-shadow" %>
       </div>
     <% end %>
-    <%= render "devise/shared/links" %>
   </div>
 </div>

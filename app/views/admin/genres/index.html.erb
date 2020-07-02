@@ -1,19 +1,9 @@
-
-<% if @genre.errors.any? %>
-  <div id="error_explanation">
-    <h2><%= @genre.errors.count %> errors prohibited this book from being saved:</h2>
-      <ul>
-        <% @genre.errors.full_messages.each do|message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
-  </div>
-<% end %>
+<%= render 'layouts/error', data: @genre %>
 <div class="genre-form">
   <h2>ジャンル新規登録</h2>
   <%= form_with(model: @genre, url:admin_genres_path, local: true) do |f| %>
       <%= f.text_field :name %>
-      <%= f.submit "登録する", class:"btn-success" %>
+      <%= f.submit "登録する", class: "btn-square-shadow" %>
   <% end %>
 </div>
 

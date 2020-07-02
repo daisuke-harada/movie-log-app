@@ -75,6 +75,8 @@ gem 'jquery-rails'
 gem 'nested_form_fields'
 gem 'pry-byebug'
 gem 'dotenv-rails'
+gem 'devise-i18n'
+gem 'devise-i18n-views'
 
 group :production do
   gem 'mysql2'

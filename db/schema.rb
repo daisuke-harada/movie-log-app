@@ -89,7 +89,7 @@ ActiveRecord::Schema.define(version: 2020_06_20_102555) do
   create_table "reviews", force: :cascade do |t|
     t.integer "movie_id"
     t.integer "user_id"
-    t.float "rate", default: 0.0, null: false
+    t.float "rate", default: 0.0
     t.text "content"
     t.boolean "is_spoil", default: false, null: false
     t.integer "favorites_count"

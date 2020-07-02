@@ -1,5 +1,5 @@
 class User::UsersController < ApplicationController
-  before_action :set_users, only: [:show, :edit, :out, :following, :followers]
+  before_action :set_users, only: [:show, :edit, :following, :followers]
   def index
     @users = User.all
   end
@@ -70,6 +70,7 @@ class User::UsersController < ApplicationController
   end
 
   def out
+    @user = current_user
     @user.update(is_withdrawal: true)
 
     @user.reviews.each do |review|
