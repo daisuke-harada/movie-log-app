@@ -12,18 +12,30 @@ class User::ReviewsController < ApplicationController
   def update
     @movie = Movie.find(params[:movie_id])
     reviews = Review.find(params[:id])
-    @review = @movie.reviews.find_by(movie_id: @movie.id, id: reviews.id)
-    @review.user_id = current_user.id
-    @review.update(review_params)
-    redirect_to user_movie_path(@movie)
+    @review_find = @movie.reviews.find_by(movie_id: @movie.id, id: reviews.id)
+    @review_find.user_id = current_user.id
+    if @review_find.update(review_params)
+      redirect_to user_movie_path(@movie)
+    else
+      @review = Review.find(params[:id])
+      flash.now[:error] = "⚠︎映画の感想の文字が100文字を超えています。感想の文字は100文字以内で書いてください"
+      render :edit
+    end
   end
 
   def create
     @movie = Movie.find(params[:movie_id])
     @review = @movie.reviews.build(review_params)
     @review.user_id = current_user.id
-    @review.save
-    redirect_to user_movie_path(@movie)
+    if @review.save
+      redirect_to user_movie_path(@movie)
+    else
+      @review_new = Review.new
+      @movie = Movie.find(params[:movie_id])
+      @user = current_user
+      flash.now[:error] = "⚠︎映画の感想の文字が100文字を超えています。感想の文字は100文字以内で書いてください"
+      render template: "user/movies/show"
+    end
   end
 
   def destroy

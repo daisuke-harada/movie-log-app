@@ -8,8 +8,11 @@ class User::CommentsController < ApplicationController
     @review = Review.find(params[:review_id])
     @comment = @review.comments.build(comment_params)
     @comment.user_id = current_user.id
-    @comment.save
-    redirect_to user_movie_review_path(@review.movie.id, @review.id)
+    if @comment.save
+      redirect_to user_movie_review_path(@review.movie.id, @review.id)
+    else
+      render :new
+    end
   end
 
   def destroy
