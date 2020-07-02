@@ -2,6 +2,8 @@
   <%= render 'user/movies/review_new', review: @review_new, movie: @movie %>
 </div>
 
+<div id="error_explanation" ><%= flash[:error] %></div>
+
 <div class= "movie-show-box">
   <div class="movie-status">
   <%= attachment_image_tag @movie, :movie_image, size: "350x470", format: "jpg", fallback: "no_image.jpg" %><br/>

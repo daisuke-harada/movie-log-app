@@ -4,7 +4,7 @@
     <i class="fa fa-2x fa-times"></i>
   </div>
 
-  <%= form_with(model: review, url:user_movie_reviews_path(@movie), local:true) do |f| %>
+  <%= form_with(model: review, url:user_movie_reviews_path(movie), local:true) do |f| %>
     <div id="star">
       <%= f.label '評価' %><br/>
       <%= f.hidden_field :rate, id: :review_star %>
