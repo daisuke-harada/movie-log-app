@@ -30,16 +30,22 @@
             <% end %>
           </p>
         <% end %>
-        <% if user.id == current_user.id %>
-          <p class="users-btn-layouts">
-            <%= link_to 'マイページへいく', user_user_path(user), data: {"turbolinks" => false}, class: "btn-square-shadow show-review-btn" %>
-          </p>
+        <% if user_signed_in? %>
+          <% if user.id == current_user.id %>
+            <p class="users-btn-layouts">
+              <%= link_to 'マイページへいく', user_user_path(user), data: {"turbolinks" => false}, class: "btn-square-shadow show-review-btn" %>
+            </p>
+          <% else %>
+            <p class="users-btn-layouts">
+              <%= link_to '詳細を見る', user_user_path(user), data: {"turbolinks" => false}, class: "btn-square-shadow show-review-btn"  %>
+            </p>
+          <% end %>
         <% else %>
           <p class="users-btn-layouts">
             <%= link_to '詳細を見る', user_user_path(user), data: {"turbolinks" => false}, class: "btn-square-shadow show-review-btn"  %>
           </p>
         <% end %>
-      </li>
+        </li>
     <% end %>
   <% end %>
 </ul>

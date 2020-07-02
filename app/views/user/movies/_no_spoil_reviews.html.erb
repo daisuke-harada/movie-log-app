@@ -6,16 +6,16 @@
         <li>
           <% if user_signed_in? %>
             <% if review.user.id == current_user.id %>
-              <%= link_to 'マイページへいく', user_user_path(current_user.id), class: "btn-square-shadow show-review-btn" %><br/>
+              <%= link_to 'マイページへいく', user_user_path(current_user.id), data: {"turbolinks" => false}, class: "btn-square-shadow show-review-btn" %><br/>
               <%= link_to '映画の登録を編集する', edit_user_movie_review_path(@movie, review), class: "btn-square-shadow2 show-review-btn" %>
             <% else %>
-              <%= link_to user_user_path(review.user.id), class: "btn-square-shadow show-review-btn" do %>
+              <%= link_to user_user_path(review.user.id), data: {"turbolinks" => false}, class: "btn-square-shadow show-review-btn" do %>
                 <%= review.user.name %>さんのページへ行く
               <% end %><br/>
               <%= link_to 'コメントを投稿する', new_user_movie_review_comment_path(@movie, review), class: "btn-square-shadow2 show-review-btn" %>
             <% end %>
           <% else %>
-            <%= link_to user_user_path(review.user.id), class: "btn-square-shadow show-review-btn" do %>
+            <%= link_to user_user_path(review.user.id), data: {"turbolinks" => false}, class: "btn-square-shadow show-review-btn" do %>
               <%= review.user.name %>さんのページへ行く
             <% end %>
           <% end %>

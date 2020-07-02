@@ -11,7 +11,7 @@ class User::UsersController < ApplicationController
     # 有効ユーザーの時
     if @user.is_withdrawal == false
       @movie_ranks = @user.movie_ranks.order(:rank_status)
-      @user_ranks = current_user.movie_ranks
+      @user_ranks = @user.movie_ranks
 
       @omit_first = MovieRank.rank_statuses.except(:"1位").keys
       @omit_second = MovieRank.rank_statuses.except(:"2位").keys
