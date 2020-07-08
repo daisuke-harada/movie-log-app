@@ -17,4 +17,4 @@ services:
       - web
 
   db:
-    image: postgres
+    image: mysql2
