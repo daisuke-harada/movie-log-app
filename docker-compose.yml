@@ -3,7 +3,7 @@ services:
   web:
     build: .
     volumes:
-      - /app/log # persist logs
+      - /app/log 
     depends_on:
       - db
 
