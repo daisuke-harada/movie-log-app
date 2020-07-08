@@ -43,10 +43,6 @@ group :development, :test do
   gem 'capybara', '~> 2.13'
   gem 'selenium-webdriver'
   gem 'rspec-rails'
-  gem 'capistrano'
-  gem 'capistrano-rails'
-  gem 'capistrano3-puma'
-  gem 'capistrano-rbenv'
 end
 
 group :development do
@@ -78,6 +74,3 @@ gem 'dotenv-rails'
 gem 'devise-i18n'
 gem 'devise-i18n-views'
 
-group :production do
-  gem 'mysql2'
-end
