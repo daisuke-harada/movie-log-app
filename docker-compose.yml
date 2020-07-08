@@ -13,7 +13,7 @@ services:
     depends_on:
       - local-redis
     env_file:
-      - env_file.env
+      - .env
     container_name:
       rails-rails
     command:
