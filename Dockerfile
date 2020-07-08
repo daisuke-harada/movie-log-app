@@ -1,22 +1,7 @@
 FROM ruby:2.5.7
+RUN curl -sL https://deb.nodesource.com/setup_11.x | bash - && apt-get install -y nodejs
 
-RUN apt-get update -qq && \
-    apt-get install -y build-essential libpq-dev nodejs
-
-# Rails App
-RUN mkdir /app
-WORKDIR /app
-ADD Gemfile /app/Gemfile
-ADD Gemfile.lock /app/Gemfile.lock
-RUN gem install bundler
+COPY docker_sample_rails /var/docker_sample_rails
+WORKDIR /var/docker_sample_rails
+RUN gem update bundler
 RUN bundle install
-ADD . /app
-RUN mkdir -p tmp/sockets
-
-# Expose volumes to frontend
-VOLUME /app/public
-VOLUME /app/tmp
-
-# Start Server
-# TODO: environment
-CMD bundle exec puma
