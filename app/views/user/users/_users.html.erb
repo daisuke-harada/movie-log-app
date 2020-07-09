@@ -23,14 +23,14 @@
             <% user.movie_ranks.order(:rank_status).each do |movie_rank| %>
               <span class="movie-mini-rank-box" >
                 <%= link_to user_movie_path(movie_rank.review.movie.id) do %>
-                  <% if movie_rank.rank_status == "1位" %>
-                    <span class="first-place"><i class="fas fa-crown"></i></span><br/>
-                  <% elsif movie_rank.rank_status == "2位" %>
-                    <span class="second-place"><i class="fas fa-crown"></i></span><br/>
-                  <% elsif movie_rank.rank_status == "3位" %>
-                    <span class="third-place"><i class="fas fa-crown"></i></span><br/>
-                  <% end %>
                   <%= attachment_image_tag movie_rank.review.movie, :movie_image, size: "70x100", format: "jpg", fallback: "no_image.jpg" %><br/>
+                  <% if movie_rank.rank_status == "1位" %>
+                    <span class="first-place"><i class="fas fa-crown"></i></span>
+                  <% elsif movie_rank.rank_status == "2位" %>
+                    <span class="second-place"><i class="fas fa-crown"></i></span>
+                  <% elsif movie_rank.rank_status == "3位" %>
+                    <span class="third-place"><i class="fas fa-crown"></i></span>
+                  <% end %>
                 <% end %>
               </span>
             <% end %>
