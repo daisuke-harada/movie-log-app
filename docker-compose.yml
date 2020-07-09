@@ -1,26 +1,20 @@
-version: '3'
+version: '2'
 services:
-  db:
-    image: mysql:5.7
-    environment:
-      MYSQL_ROOT_PASSWORD: <%= Rails.application.credentials.rds[:password] %>
-      MYSQL_DATABASE: <%= Rails.application.credentials.rds[:username] %>
-    volumes:
-      - mysql-data:/var/lib/mysql    #データの永続化のために必要
-    ports:
-      - "4306:3306"  #両方3306でもok。詳細は下の「番外編：DBをsequel proで可視化したい」へ
-
   web:
     build: .
-    command: bundle exec rails s -p 3000 -b '0.0.0.0'
-
     volumes:
-      - .:/myproject    #ローカルのディレクトリをコンテナ上にマウント
-    ports:
-      - "3000:3000"
-    links:
+      - /app/log # persist logs
+    depends_on:
       - db
 
-volumes:
-  mysql-data:
-  bundle:      #bundle installした後buildし直さなくてよくなる
+  nginx:
+    build: containers/nginx
+    ports:
+      - "80:80"
+    volumes_from:
+      - web
+    depends_on:
+      - web
+
+  db:
+    image: mysql2

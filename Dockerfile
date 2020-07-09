@@ -4,14 +4,17 @@ RUN apt-get update && \
     apt-get install -y mariadb-client nodejs vim --no-install-recommends && \
     rm -rf /var/lib/apt/lists/*
 
-RUN mkdir /myproject
+RUN mkdir /app
 
-WORKDIR /myproject
+WORKDIR /app
 
-ADD Gemfile /myproject/Gemfile
-ADD Gemfile.lock /myproject/Gemfile.lock
+ADD Gemfile /app/Gemfile
+ADD Gemfile.lock /app/Gemfile.lock
 
 RUN gem install bundler
 RUN bundle install
 
-ADD . /myproject
+VOLUME /app/public
+VOLUME /app/tmp
+
+CMD bundle exec puma
