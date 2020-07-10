@@ -16,5 +16,8 @@ services:
     depends_on:
       - web
 
-  # db:
-  #   image: mysql2
+  db:
+    image: mysql2
+    environment:
+      MYSQL_ROOT_PASSWORD: <%= Rails.application.credentials.rds[:password] %>
+      MYSQL_DATABASE: <%= Rails.application.credentials.rds[:username] %>
