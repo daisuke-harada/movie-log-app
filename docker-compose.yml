@@ -1,38 +1,17 @@
-version: '3'
+version: '2'
 services:
-  app:
-    build:
-      context: .
-    environment:
-      MYSQL_ROOT_PASSWORD: <%= Rails.application.credentials.rds[:password] %>
-      MYSQL_DATABASE: <%= Rails.application.credentials.rds[:database] %>
-    command: bundle exec puma -C config/puma.rb
+  web:
+    build: .
     volumes:
-      - .:/app
-      - public-data:/app/public
-      - tmp-data:/app/tmp
-      - log-data:/app/log
+      - /app/log # persist logs
     depends_on:
       - db
-  db:
-    image: mysql:5.7
-    environment:
-      MYSQL_ROOT_PASSWORD: <%= Rails.application.credentials.rds[:password] %>
-      MYSQL_DATABASE: <%= Rails.application.credentials.rds[:database] %>
+
+  nginx:
+    build: containers/nginx
     ports:
-      - "3306:3306"
-  web:
-    build:
-      context: containers/nginx
-    volumes:
-      - public-data:/app/public
-      - tmp-data:/app/tmp
-    ports:
-      - 80:80
+      - "80:80"
+    volumes_from:
+      - web
     depends_on:
-      - app
-volumes:
-  public-data:
-  tmp-data:
-  log-data:
-  db-data:
+      - web
