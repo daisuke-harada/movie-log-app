@@ -2,6 +2,9 @@ version: '2'
 services:
   web:
     build: .
+    environment:
+      MYSQL_ROOT_PASSWORD: <%= Rails.application.credentials.rds[:password] %>
+      MYSQL_DATABASE: <%= Rails.application.credentials.rds[:username] %>
     volumes:
       - /app/log # persist logs
     depends_on:
@@ -21,3 +24,5 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: <%= Rails.application.credentials.rds[:password] %>
       MYSQL_DATABASE: <%= Rails.application.credentials.rds[:username] %>
+    ports:
+      - "3306:3306"
