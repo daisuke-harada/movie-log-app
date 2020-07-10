@@ -18,6 +18,3 @@ services:
 
   db:
     image: mysql:5.7
-    environment:
-      MYSQL_ROOT_PASSWORD: <%= Rails.application.credentials.rds[:password] %>
-      MYSQL_DATABASE: <%= Rails.application.credentials.rds[:username] %>
