@@ -15,3 +15,11 @@ RUN gem install bundler
 RUN bundle install
 
 ADD . /myproject
+
+# デプロイ
+RUN mkdir /myproject/tmp/sockets
+
+VOLUME /app/public
+VOLUME /app/tmp
+CMD bundle exec puma
+
