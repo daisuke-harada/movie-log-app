@@ -17,10 +17,7 @@ services:
     command: bundle exec puma -C config/puma.rb
     volumes:
       - .:/app   #ローカルのディレクトリをコンテナ上にマウント
-      #ソケット通信用ファイルをnginxコンテナと共有
-      - tmp-data:/app/tmp/sockets
-      #画像データとかをnginxと共有
-      - public-data:/app/public
+      - log-data:/app/log
     ports:
       - "3000:3000"
     depends_on:
