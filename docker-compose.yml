@@ -29,6 +29,7 @@ services:
 
   nginx:
     build: containers/nginx
+    volumes:
     - public-data:/app/public
     - tmp-data:/app/tmp
     ports:
