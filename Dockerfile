@@ -17,7 +17,7 @@ RUN bundle install
 ADD . /myproject
 
 # デプロイ
-RUN mkdir /myproject/tmp/sockets
+RUN mkdir -p tmp/sockets
 
 VOLUME /app/public
 VOLUME /app/tmp
