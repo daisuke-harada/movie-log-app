@@ -6,9 +6,9 @@ require 'rails/all'
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
-Rails.application.config.assets.paths << Rails.root.join("vendor", "original_assets", "images")
-Rails.application.config.assets.paths << Rails.root.join("vendor", "original_assets", "stylesheets")
-Rails.application.config.assets.paths << Rails.root.join("vendor", "original_assets", "javascripts")
+Rails.application.config.assets.paths << Rails.root.join("app", "assets", "images")
+Rails.application.config.assets.paths << Rails.root.join("app", "assets", "stylesheets")
+Rails.application.config.assets.paths << Rails.root.join("app", "assets", "javascripts")
 
 module MovieLogApp
   class Application < Rails::Application
