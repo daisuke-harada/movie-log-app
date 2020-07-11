@@ -14,6 +14,8 @@ services:
     # tty: true          #コンテナ上でbinding.pryするために必要
     # stdin_open: true   #コンテナ上でbinding.pryするために必要
     build: .
+    environment:
+      - RAILS_SERVE_STATIC_FILES=true
     command: bundle exec puma -C config/puma.rb
     volumes:
       - .:/app   #ローカルのディレクトリをコンテナ上にマウント
@@ -38,4 +40,4 @@ volumes:
   public-data:
   tmp-data:
   log-data:
-  db-data:     
+  db-data:
