@@ -1,0 +1,44 @@
+version: '3'
+services:
+  db:
+    image: mysql:5.7
+    environment:
+      MYSQL_ROOT_PASSWORD: D0403g1099
+      MYSQL_DATABASE: root
+    volumes:
+      - db-data:/var/lib/mysql    #データの永続化のために必要
+    ports:
+      - "4306:3306"  #両方3306でもok。詳細は下の「番外編：DBをsequel proで可視化したい」へ
+
+  app:
+    # tty: true          #コンテナ上でbinding.pryするために必要
+    # stdin_open: true   #コンテナ上でbinding.pryするために必要
+    build: .
+    environment:
+      - RAILS_SERVE_STATIC_FILES=true
+    command: bundle exec puma -C config/puma.rb
+    volumes:
+      - .:/app   #ローカルのディレクトリをコンテナ上にマウント
+      - public-data:/app/public
+      - tmp-data:/app/tmp
+      - log-data:/app/log #！   #bundle installした後buildし直さなくてよくなる
+    ports:
+      - "3000:3000"
+    depends_on:
+      - db
+
+  nginx:
+    build: containers/nginx
+    volumes:
+    - public-data:/app/public
+    - tmp-data:/app/tmp
+    ports:
+      - "80:80"
+    depends_on:
+      - app
+
+volumes:
+  public-data:
+  tmp-data:
+  log-data:
+  db-data:

@@ -1,7 +1,13 @@
 <% movie_ranks.each do |movie_rank| %>
   <div class="movie-rank-layouts">
-    <h1><%= movie_rank.rank_status %></h1>
-    <%= attachment_image_tag movie_rank.review.movie, :movie_image, size: "370x500", format: "jpg", fallback: "no_image.jpg" %><br/>
+    <% if movie_rank.rank_status == "1位" %>
+      <h1 class="first-place"><i class="fas fa-crown"></i>1位</h1><br/>
+    <% elsif movie_rank.rank_status == "2位" %>
+      <h1 class="second-place"><i class="fas fa-crown"></i>2位</h1><br/>
+    <% elsif movie_rank.rank_status == "3位" %>
+      <h1 class="third-place"><i class="fas fa-crown"></i>3位</h1><br/>
+    <% end %>
+    <%= attachment_image_tag movie_rank.review.movie, :movie_image, size: "270x400", format: "jpg", fallback: "no_image.jpg" %><br/>
     <% if user_signed_in? %>
       <% if current_user.id == movie_rank.user_id %>
         <%= link_to "ランキングから外す", user_movie_rank_path(movie_rank), method: :delete, data: {confirm: "本当に削除してもよろしいですか？", "turbolinks" => false}, class: "btn-delete-shadow" %>

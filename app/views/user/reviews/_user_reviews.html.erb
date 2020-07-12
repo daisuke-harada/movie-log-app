@@ -8,7 +8,13 @@
             <% if user_signed_in? %>
               <% if review.user.id == current_user.id %>
                 <% if review.movie_rank %>
-                  <h2><%= review.user.name %>さんの<%= review.movie_rank.rank_status %></h2>
+                  <% if review.movie_rank.rank_status == "1位" %>
+                    <h2 class="first-place"><i class="fas fa-crown"></i>1位</h2><br/>
+                  <% elsif review.movie_rank.rank_status == "2位" %>
+                    <h2 class="second-place"><i class="fas fa-crown"></i>2位</h2><br/>
+                  <% elsif review.movie_rank.rank_status == "3位" %>
+                    <h2 class="third-place"><i class="fas fa-crown"></i>3位</h2><br/>
+                  <% end %>
                 <% else %>
                   <%= form_with model: movie_rank, url:user_movie_review_movie_ranks_path(review.movie_id, review.id), method: :post, local: :true do |f| %>
                     <% if current_user.movie_ranks.find_by(rank_status: "1位") && current_user.movie_ranks.find_by(rank_status: "2位") && current_user.movie_ranks.find_by(rank_status: "3位") %>
