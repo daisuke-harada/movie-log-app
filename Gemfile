@@ -73,4 +73,3 @@ gem 'pry-byebug'
 gem 'dotenv-rails'
 gem 'devise-i18n'
 gem 'devise-i18n-views'
-

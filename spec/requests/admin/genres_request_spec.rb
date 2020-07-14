@@ -14,6 +14,10 @@ RSpec.describe "Admin::Genres", type: :request do
       it 'タイトルが正しく表示されていること' do
         expect(response.body).to include("ジャンル一覧")
       end
+
+      it 'ジャンル新規登録が表示されていること' do
+        expect(response.body).to include("ジャンル新規登録")
+      end
     end
   end
 
