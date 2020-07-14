@@ -12,14 +12,14 @@
 
 ActiveRecord::Schema.define(version: 2020_06_20_102555) do
 
-  create_table "actors", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "actors", force: :cascade do |t|
     t.integer "movie_id"
     t.string "actor_name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "admins", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
@@ -32,7 +32,7 @@ ActiveRecord::Schema.define(version: 2020_06_20_102555) do
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
   end
 
-  create_table "comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "comments", force: :cascade do |t|
     t.integer "review_id"
     t.integer "user_id"
     t.text "body"
@@ -40,27 +40,27 @@ ActiveRecord::Schema.define(version: 2020_06_20_102555) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "favorites", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "favorites", force: :cascade do |t|
     t.integer "review_id"
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "genres", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "genres", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "movie_genres", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "movie_genres", force: :cascade do |t|
     t.integer "movie_id"
     t.integer "genre_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "movie_ranks", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "movie_ranks", force: :cascade do |t|
     t.integer "review_id"
     t.integer "user_id"
     t.integer "rank_status", null: false
@@ -68,7 +68,7 @@ ActiveRecord::Schema.define(version: 2020_06_20_102555) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "movies", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "movies", force: :cascade do |t|
     t.string "title"
     t.text "summary"
     t.string "movie_image_id"
@@ -78,7 +78,7 @@ ActiveRecord::Schema.define(version: 2020_06_20_102555) do
     t.string "show_time"
   end
 
-  create_table "relationships", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "relationships", force: :cascade do |t|
     t.integer "follower_id"
     t.integer "following_id"
     t.datetime "created_at", null: false
@@ -86,7 +86,7 @@ ActiveRecord::Schema.define(version: 2020_06_20_102555) do
     t.index ["follower_id", "following_id"], name: "index_relationships_on_follower_id_and_following_id", unique: true
   end
 
-  create_table "reviews", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "reviews", force: :cascade do |t|
     t.integer "movie_id"
     t.integer "user_id"
     t.float "rate", default: 0.0
@@ -97,14 +97,14 @@ ActiveRecord::Schema.define(version: 2020_06_20_102555) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "supervisers", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "supervisers", force: :cascade do |t|
     t.integer "movie_id"
     t.string "superviser_name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
@@ -119,7 +119,7 @@ ActiveRecord::Schema.define(version: 2020_06_20_102555) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  create_table "writers", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "writers", force: :cascade do |t|
     t.integer "movie_id"
     t.string "writer_name"
     t.datetime "created_at", null: false
