@@ -18,14 +18,12 @@ RSpec.describe "Admin::Genres", type: :request do
       it 'ジャンル新規登録が表示されていること' do
         expect(response.body).to include("ジャンル新規登録")
       end
-
-      it
     end
   end
 
   describe "管理者/ジャンル編集ページ" do
     context "管理者/ジャンル編集ページが正しく表示される。" do
-      let(:params) { {id: 1, name: 'test'} }
+      let(:params) { {id: 1, name: 'アクション'} }
 
       before do
         @genre = Genre.create(params)
