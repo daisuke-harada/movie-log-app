@@ -7,7 +7,6 @@ RSpec.describe "User::Reviews", type: :request do
       let(:review) { {id: 1, movie_id: 1, user_id: 1, content: 'test1' } }
 
       before do
-        @movie = Movie.create(movie)
         @review = Review.create(review)
         get user_movie_review_path(@movie.id, @review.id)
       end
