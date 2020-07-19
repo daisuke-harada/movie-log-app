@@ -20,9 +20,9 @@ RSpec.describe Genre, type: :model do
       @genre.save
     end
 
-    it "titleが入力されていないので保存されない" do
+    it "nameが入力されていないので保存されない" do
       expect(@genre).to be_invalid
-      expect(@genre.errors[:name]).to include("can't be blank")
+      expect(@genre.errors[:name]).to include("を入力してください")
     end
   end
 end
