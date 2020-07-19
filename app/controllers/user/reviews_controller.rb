@@ -7,7 +7,6 @@ class User::ReviewsController < ApplicationController
     @movie = Movie.find(params[:movie_id])
     @review = Review.find(params[:id])
     @comments = @review.comments
-    binding.pry
   end
 
   def update

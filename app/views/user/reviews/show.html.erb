@@ -15,8 +15,8 @@
                 <% end %><br/>
               <% end %>
             <% else %>
-              <%= link_to user_user_path(review.user.id), class: "btn-square-shadow show-review-btn" do %>
-                <%= review.user.name %>さんのページへ行く</p>
+              <%= link_to user_user_path(@review.user.id), class: "btn-square-shadow show-review-btn" do %>
+                <%= @review.user.name %>さんのページへ行く</p>
               <% end %>
             <% end %>
           </li>
@@ -42,7 +42,7 @@
               コメント<%= @review.comments.count  %>件
           </div>
         <% else %>
-          <% if review.favorites.count == 0 %>
+          <% if @review.favorites.count == 0 %>
             <div class="favorite-layouts">
               <%= link_to new_user_registration_path do %>
                 <i class="fa fa-heart-o" aria-hidden="true"></i>
