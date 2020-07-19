@@ -6,7 +6,7 @@ class User::ReviewsController < ApplicationController
   def show
     @movie = Movie.find(params[:movie_id])
     @review = Review.find(params[:id])
-    @comments = @review.comments.all
+    @comments = @review.comments
   end
 
   def update

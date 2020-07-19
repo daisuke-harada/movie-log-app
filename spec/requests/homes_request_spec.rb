@@ -1,17 +1,10 @@
 require 'rails_helper'
 
 RSpec.describe "Homes", type: :request do
-  describe "GET /top" do
-    it "returns http success" do
-      get "/homes/top"
-      expect(response).to have_http_status(:success)
-    end
-  end
-
-  describe "GET /about" do
-    it "returns http success" do
-      get "/homes/about"
-      expect(response).to have_http_status(:success)
+  describe "homes/topページが表示される" do
+    it "リクエストは200okとなること" do
+      get root_path
+      expect(response.status).to eq 200
     end
   end
 end

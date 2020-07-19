@@ -1,4 +1,4 @@
-<%= render 'layouts/error', data: @genre %>
+<%= render partial: 'layouts/error', locals: { data: @genre } %>
 <div class="genre-form">
   <h2>ジャンル新規登録</h2>
   <%= form_with(model: @genre, url:admin_genres_path, local: true) do |f| %>
@@ -7,4 +7,4 @@
   <% end %>
 </div>
 
-<%= render 'user/genres/genres', genres: @genres %>
+<%= render partial: 'user/genres/genres', locals: { genres: @genres } %>
