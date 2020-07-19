@@ -23,8 +23,6 @@ RSpec.describe "Admin::Genres", type: :request do
 
   describe "管理者/ジャンル編集ページ" do
     context "管理者/ジャンル編集ページが正しく表示される。" do
-      let(:params) { {id: 1, name: 'アクション'} }
-
       before do
         @genre = Genre.create(params)
         get edit_admin_genre_path(@genre)
