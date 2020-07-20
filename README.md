@@ -28,10 +28,11 @@
 他の人の映画の感想を知りたい場合。
 
 ### ネットワーク構成
-[ネットワーク構成図](images/ネットワーク構成図.pdf "ネットワーク構成図")
+![ネットワーク構成図](https://user-images.githubusercontent.com/59969400/87900197-9d36c300-ca8e-11ea-8c98-9e2b247243bd.png)
 
 ### ER図
-[ER図](images/movie-log-app-ER図.pdf "ER図")
+![movie-log-app ER図](https://user-images.githubusercontent.com/59969400/87900344-19310b00-ca8f-11ea-987a-92aee42e3811.png)
+
 
 ### 機能一覧
 <https://docs.google.com/spreadsheets/d/1M4XeZ0kt7uCihE128pJFCk9TRG_HDsjc3r_7B-guCro/edit#gid=147803766>
