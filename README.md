@@ -28,7 +28,10 @@
 他の人の映画の感想を知りたい場合。
 
 ### ネットワーク構成
-https://github.com/daisuke-harada/movieslog/files/4945472/default.pdf
+[ネットワーク構成図](images/ネットワーク構成図.pdf "ネットワーク構成図")
+
+### ER図
+[ER図](images/movie-log-app-ER図.pdf "ER図")
 
 ### 機能一覧
 <https://docs.google.com/spreadsheets/d/1M4XeZ0kt7uCihE128pJFCk9TRG_HDsjc3r_7B-guCro/edit#gid=147803766>
