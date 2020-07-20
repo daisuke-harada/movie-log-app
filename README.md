@@ -27,7 +27,8 @@
 映画鑑賞後に他の人がどのような印象を持ったのか調べる。
 他の人の映画の感想を知りたい場合。
 
-## 設計書
+### ネットワーク構成
+https://github.com/daisuke-harada/movieslog/files/4945472/default.pdf
 
 ### 機能一覧
 <https://docs.google.com/spreadsheets/d/1M4XeZ0kt7uCihE128pJFCk9TRG_HDsjc3r_7B-guCro/edit#gid=147803766>
