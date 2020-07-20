@@ -31,7 +31,7 @@
 ![ネットワーク構成図](https://user-images.githubusercontent.com/59969400/87900197-9d36c300-ca8e-11ea-8c98-9e2b247243bd.png)
 
 ### ER図
-![movie-log-app ER図](https://user-images.githubusercontent.com/59969400/87900344-19310b00-ca8f-11ea-987a-92aee42e3811.png)
+![movie-log-app ER図](https://user-images.githubusercontent.com/59969400/87900877-88f3c580-ca90-11ea-9c85-eabff7114e7d.png)
 
 
 ### 機能一覧
