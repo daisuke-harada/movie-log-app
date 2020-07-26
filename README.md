@@ -31,7 +31,7 @@
 http://54.248.45.54/
 
 ### ネットワーク構成
-![ネットワーク構成図](https://user-images.githubusercontent.com/59969400/87900197-9d36c300-ca8e-11ea-8c98-9e2b247243bd.png)
+![ネットワーク構成図](https://user-images.githubusercontent.com/59969400/88476774-0c705380-cf76-11ea-80a0-d1dcb7ef2255.png)
 
 ### ER図
 ![movie-log-app ER図](https://user-images.githubusercontent.com/59969400/87900877-88f3c580-ca90-11ea-9c85-eabff7114e7d.png)
