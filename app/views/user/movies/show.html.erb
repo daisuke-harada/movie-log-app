@@ -32,12 +32,15 @@
     <div class="movie-genre-info">
       <h4>ジャンル</h4>
       <% @movie.movie_genres.each do |movie_genre| %>
-        <div class="text">:<%= movie_genre.genre.name %></div>
+        <div class="text"><%= movie_genre.genre.name %></div>
       <% end %>
     </div><br/>
 
-    <h4>あらすじ</h4>
-    <div><%= @movie.summary %></div><br/>
+    <% if @movie.summary == "" %>
+    <% else %>
+      <h4>あらすじ</h4>
+      <div><%= @movie.summary %></div><br/>
+    <% end %>
 
     <h4>監督</h4>
     <% @movie.supervisers.each do |superviser| %>
