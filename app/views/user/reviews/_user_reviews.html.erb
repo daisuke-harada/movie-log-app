@@ -45,7 +45,7 @@
             <li class="is_spoil_message-color" id="is_spoil_message-<%= review.id %>" >⚠︎このレビューはネタバレを含みます。</li>
             <li class="is_spoil_content-wrappper" id="is_spoil_content-<%= review.id %>" ><%= safe_join(review.content.split("\n"), tag(:br)) %></li>
           <% elsif review.is_spoil == false  %>
-            <li><%= safe_join(review.content.split("\n"), tag(:br)) %></li>
+            <li class="review_content"><%= safe_join(review.content.split("\n"), tag(:br)) %></li>
           <% end %>
         </ul>
       </div>
