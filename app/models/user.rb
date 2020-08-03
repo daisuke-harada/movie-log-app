@@ -24,7 +24,7 @@ class User < ApplicationRecord
 
   # 退会していないユーザーはログインできる。
   def active_for_authentication?
-    super && (self.is_withdrawal == false)
+    super && (is_withdrawal == false)
   end
 
   # フォローしているかを確認するメソッド
