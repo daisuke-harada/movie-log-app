@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe "User::Users", type: :request do
-
   describe "ユーザー/ユーザー一覧ページ" do
     context "ユーザー/ユーザー一覧ページを正しく表示する"
     before do

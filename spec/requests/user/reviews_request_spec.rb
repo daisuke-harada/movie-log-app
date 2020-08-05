@@ -16,7 +16,7 @@ RSpec.describe "User::Reviews", type: :request do
     end
   end
 
-    describe "ユーザー/レビュー編集ページ" do
+  describe "ユーザー/レビュー編集ページ" do
     context "ユーザー/レビュー編集ページを正しく表示する" do
       before do
         @user = FactoryBot.create(:user)

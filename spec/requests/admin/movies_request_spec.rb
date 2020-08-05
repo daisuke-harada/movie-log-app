@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe "Admin::Movies", type: :request do
-  let(:movie1) { { id: 1, movie_image: "no_image.jpg", title: 'test1', summary: 'test1', a_movie_released: 'test1', show_time: 'test1' } }
+  let(:movie1) { { id: 1, movie_image: "no_image.jpg", title: 'アベンジャーズ', summary: 'test1', a_movie_released: '2012年8月14日', show_time: '120分' } }
   let(:movie2) { { id: 2, movie_image: "no_image.jpg", title: 'test2', summary: 'test2', a_movie_released: 'test2', show_time: 'test2' } }
 
   describe "管理者作品新規投稿ページ" do
@@ -156,15 +156,15 @@ RSpec.describe "Admin::Movies", type: :request do
       end
 
       it '映画のタイトルが正しく表示されていること' do
-        expect(response.body).to include("test1")
+        expect(response.body).to include("アベンジャーズ")
       end
 
       it '映画の公開日が正しく表示されていること' do
-        expect(response.body).to include("test1")
+        expect(response.body).to include("2012年8月14日")
       end
 
       it '映画の上映時間が正しく表示されていること' do
-        expect(response.body).to include("test1")
+        expect(response.body).to include("120分")
       end
 
       it '詳細ページへのリンクが正しく表示されていること' do
