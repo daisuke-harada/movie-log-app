@@ -10,7 +10,7 @@
     <%= attachment_image_tag movie_rank.review.movie, :movie_image, size: "270x400", format: "jpg", fallback: "no_image.jpg" %><br/>
     <% if user_signed_in? %>
       <% if current_user.id == movie_rank.user_id %>
-        <%= link_to "ランキングから外す", user_movie_rank_path(movie_rank), method: :delete, data: {confirm: "本当に削除してもよろしいですか？", "turbolinks" => false}, class: "btn-delete-shadow" %>
+        <%= link_to "ランキングから外す", user_movie_rank_path(movie_rank), method: :delete, data: {confirm: "本当にランキングから外してもよろしいですか？", "turbolinks" => false}, class: "btn-delete-shadow" %>
       <% end %>
     <% end %><br/>
     <%= link_to '映画をcheck', user_movie_path(movie_rank.review.movie), data: {"turbolinks" => false}, class: "show-review-btn btn-square-shadow" %>
