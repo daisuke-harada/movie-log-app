@@ -29,7 +29,13 @@
                 <%= link_to '映画の登録を編集する', edit_user_movie_review_path(review.movie, review), class: "show-review-btn btn-square-shadow2" %><br/>
               <% else %>
                 <% if review.movie_rank %>
-                  <h1><%= review.user.name %>さんの<%= review.movie_rank.rank_status %></h1>
+                  <% if review.movie_rank.rank_status == "1位" %>
+                    <h2 class="first-place"><i class="fas fa-crown"></i>1位</h2><br/>
+                  <% elsif review.movie_rank.rank_status == "2位" %>
+                    <h2 class="second-place"><i class="fas fa-crown"></i>2位</h2><br/>
+                  <% elsif review.movie_rank.rank_status == "3位" %>
+                    <h2 class="third-place"><i class="fas fa-crown"></i>3位</h2><br/>
+                  <% end %>
                 <% end %>
                 <%= link_to 'コメントを投稿する', new_user_movie_review_comment_path(review.movie, review),class: "show-review-btn btn-square-shadow2"%><br/>
               <% end %>
