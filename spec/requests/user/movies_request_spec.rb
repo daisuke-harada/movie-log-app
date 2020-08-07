@@ -34,7 +34,7 @@ RSpec.describe "User::Movies", type: :request do
 
   describe "ユーザー/映画詳細ページ" do
     before do
-      @movie = Movie.create(movie)
+      @movie = FactoryBot.create(:movie)
       get user_movie_path(@movie)
     end
 

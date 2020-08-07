@@ -1,12 +1,10 @@
 require 'rails_helper'
 
 RSpec.describe "Admin::Movies", type: :request do
-  let(:movie1) { { id: 1, movie_image: "no_image.jpg", title: 'アベンジャーズ', summary: 'test1', a_movie_released: '2012年8月14日', show_time: '120分' } }
-  let(:movie2) { { id: 2, movie_image: "no_image.jpg", title: 'test2', summary: 'test2', a_movie_released: 'test2', show_time: 'test2' } }
-
   describe "管理者作品新規投稿ページ" do
     context "作品新規投稿ページが正しく表示される。" do
       before do
+        @movie = FactoryBot.create(:movie)
         get new_admin_movie_path
       end
 
@@ -51,7 +49,7 @@ RSpec.describe "Admin::Movies", type: :request do
   describe "管理者作品詳細ページ" do
     context "管理者作品詳細ページが正しく表示される。" do
       before do
-        @movie = Movie.create(movie1)
+        @movie = FactoryBot.create(:movie)
         get admin_movie_path(@movie)
       end
 
@@ -92,7 +90,7 @@ RSpec.describe "Admin::Movies", type: :request do
   describe "管理者作品編集ページ" do
     context "管理者作品編集ページが正しく表示される。" do
       before do
-        @movie = Movie.create(movie1)
+        @movie = FactoryBot.create(:movie)
         get edit_admin_movie_path(@movie)
       end
 
@@ -141,8 +139,7 @@ RSpec.describe "Admin::Movies", type: :request do
   describe "管理者作品一覧ページ" do
     context "管理者作品一覧ページが正しく表示される。" do
       before do
-        @movie1 = Movie.create(movie1)
-        @movie2 = Movie.create(movie2)
+        @movie = FactoryBot.create(:movie)
         @movies = Movie.all
         get admin_movies_path
       end
