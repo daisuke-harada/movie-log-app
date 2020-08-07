@@ -1,12 +1,11 @@
 require 'rails_helper'
 
 RSpec.describe "User::Movies", type: :request do
-  let(:movie) { {id: 1, movie_image: "no_image.jpg", title: 'test1', summary: 'test1', a_movie_released: 'test1', show_time: 'test1'} }
 
   describe "ユーザー/映画一覧ページ" do
     context "ユーザー/映画一覧ページが正しく表示される" do
       before do
-        @movie = Movie.create(movie)
+        @movie = FactoryBot.create(:movie)
         @movies = Movie.all
         get user_movies_path
       end
