@@ -34,4 +34,12 @@ FactoryBot.define do
     created_at { "2020-07-02 15:04:16" }
     updated_at { "2020-07-02 15:04:16" }
   end
+
+  factory :movie_genres do
+    id { "1" }
+    movie_id { "1" }
+    genre_id { "1" }
+    created_at { "2020-07-02 15:04:16" }
+    updated_at { "2020-07-02 15:04:16" }
+  end
 end
