@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe "User::Movies", type: :request do
-
   describe "ユーザー/映画一覧ページ" do
     context "ユーザー/映画一覧ページが正しく表示される" do
       before do
@@ -78,5 +77,4 @@ RSpec.describe "User::Movies", type: :request do
       end
     end
   end
-
 end
