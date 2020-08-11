@@ -1,5 +1,6 @@
 class User::FavoritesController < ApplicationController
   before_action :set_reviews
+  before_action :authenticate_member!
 
   def favorite
     favorite = current_user.favorites.new(review_id: @review.id)
