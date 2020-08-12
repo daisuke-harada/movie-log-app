@@ -1,4 +1,6 @@
 class User::CommentsController < ApplicationController
+  before_action :authenticate_member!
+
   def new
     @comment = Comment.new
   end
