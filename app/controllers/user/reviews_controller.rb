@@ -1,6 +1,10 @@
 class User::ReviewsController < ApplicationController
   def edit
-    @review = Review.find(params[:id])
+    if current_user
+      @review = Review.find(params[:id])
+    else
+      redirect_back(fallback_location: root_path)
+    end
   end
 
   def show
