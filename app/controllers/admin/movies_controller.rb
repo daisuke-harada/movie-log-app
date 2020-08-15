@@ -1,6 +1,5 @@
 class Admin::MoviesController < ApplicationController
   before_action :set_movies, only: [:show, :edit, :update, :destroy]
-   before_action :authenticate_admin!
 
   def new
     @movie = Movie.new
