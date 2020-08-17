@@ -25,8 +25,8 @@ RSpec.describe "User::Reviews", type: :request do
         get edit_user_movie_review_path(id: @review, movie_id: @review)
       end
 
-      it "リクエストは200okとなること" do
-        expect(response.status).to eq 200
+      it "リクエストは302okとなること" do
+        expect(response.status).to eq 302
       end
 
       it "タイトルが正しく表示されていること" do

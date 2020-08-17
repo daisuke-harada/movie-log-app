@@ -61,6 +61,10 @@ RSpec.describe "Admin::Movies", type: :request do
         expect(response.body).to include("映画詳細")
       end
 
+      it 'タイトル名が正しく表示されていること' do
+        expect(response.body).to include("アベンジャーズ")
+      end
+
       it '編集ページへのリンクが正しく表示されているこ' do
         expect(response.body).to include("編集ページへ行く")
       end
