@@ -28,14 +28,6 @@ RSpec.describe "User::Reviews", type: :request do
       it "リクエストは302okとなること" do
         expect(response.status).to eq 302
       end
-
-      it "タイトルが正しく表示されていること" do
-        expect(response.body).to include("レビュー編集ページ")
-      end
-
-      it "更新ボタンが正しく表示されていること" do
-        expect(response.body).to include("更新する")
-      end
     end
   end
 end
