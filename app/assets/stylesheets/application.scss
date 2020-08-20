@@ -99,7 +99,6 @@ input, button, select, textarea {
 .btn-border:first-child {
   display: inline-block;
   border-left: 1px solid #BBBDF2;
-  border-right: 1px solid #BBBDF2;
   font-size: 20px;
   text-decoration: none;
   font-weight: bold;
@@ -262,26 +261,19 @@ input[type="checkbox"]:checked + .check_box_label {
   right: 20px;
 }
 
-nav {
-  display: -webkit-flex;
-  display: flex;
-  -ms-align-items: center;
-      align-items: center;
-}
-
 @media screen and (max-width:1024px) {
   .right-mainbar-box {
-  right: 0px;
+  right: 5px;
   }
 
   .right-mainbar-box > .btn-border > a {
-  font-size: 20x;
+  font-size: 15px;
   }
 }
 
 @media screen and (max-width:768px) {
   .right-mainbar-box {
-  right: 0px;
+  right: 5px;
   }
 
   .right-mainbar-box > .btn-border {
@@ -309,15 +301,29 @@ nav {
 
 @media screen and (max-width:425px) {
   .right-mainbar-box {
-  right: 0px;
+    right: 0px;
   }
 
   .right-mainbar-box > .btn-border {
-  padding: 8px 3px;
+    padding: 8px 3px;
+    display: inline-block;
+    border-right: none;
+    text-decoration: none;
+    font-weight: bold;
+    transition: .4s;
+  }
+
+  .right-mainbar-box > .btn-border:first-child {
+    padding: 8px 3px;
+    display: inline-block;
+    border-left: none;
+    text-decoration: none;
+    font-weight: bold;
+    transition: .4s;
   }
 
   .right-mainbar-box > .btn-border > a {
-  font-size: 10px;
+    font-size: 10px;
   }
 
   .movie-logo {
