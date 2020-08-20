@@ -1,42 +1,26 @@
 <header class="mainbar">
   <div class="mainbar-box">
-      <span class="logo-bar"><span class="movie-logo"><i class="fas fa-film"></i> </span>Movies-Log</span>
-      <ul class="right-mainbar-box">
-        <!--if文でサインインとアウト時の表示を変更-->
-        <% if admin_signed_in? %>
-          <li class="btn-border"><%= link_to '作品一覧', admin_movies_path %></li>
-          <li class="btn-border"><%= link_to '作品新規投稿', new_admin_movie_path %></li>
-          <li class="btn-border"><%= link_to 'ジャンル一覧', admin_genres_path %></li>
-          <li class="btn-border"><%= link_to 'ログアウト', destroy_admin_session_path, method: :delete %></li>
-        <% elsif user_signed_in? %>
-          <li class="btn-border"><%= link_to '作品一覧', user_movies_path %></li>
-          <li class="btn-border"><%= link_to 'ジャンル一覧', user_genres_path %></li>
-          <li class="btn-border"><%= link_to 'ユーザー一覧', user_users_path %></li>
-          <li class="btn-border"><%= link_to 'マイページ', user_user_path(current_user), data: {"turbolinks" => false} %></li>
-          <li class="btn-border"><%= link_to 'ログアウト', destroy_user_session_path, method: :delete %></li>
-        <% else %>
-          <li class="btn-border"><%= link_to '作品一覧', root_path %></li>
-          <li class="btn-border"><%= link_to 'ユーザー一覧', user_users_path %></li>
-          <li class="btn-border"><%= link_to '新規登録', new_user_registration_path %></li>
-          <li class="btn-border"><%= link_to 'ユーザーログイン', new_user_session_path %></li>
-          <li class="btn-border"><%= link_to '管理者ログイン', new_admin_session_path %></li>
-        <% end %>
-      </ul>
-
-      <nav>
-        <h1>Panda Custom</h1>
-        <ul>
-        <li><a href="#">menu 1</a></li>
-        <li><a href="#">menu 2</a></li>
-        <li><a href="#">menu 3</a></li>
-        <li><a href="#">menu 4</a></li>
-        </ul>
-        <div class="nav__icon">
-        <span></span>
-        <span></span>
-        <span></span>
-        </div>
-      </nav>
-
+    <span class="logo-bar"><span class="movie-logo"><i class="fas fa-film"></i> </span>Movies-Log</span>
+    <ul class="right-mainbar-box">
+      <!--if文でサインインとアウト時の表示を変更-->
+      <% if admin_signed_in? %>
+        <li class="btn-border"><%= link_to '作品一覧', admin_movies_path %></li>
+        <li class="btn-border"><%= link_to '作品新規投稿', new_admin_movie_path %></li>
+        <li class="btn-border"><%= link_to 'ジャンル一覧', admin_genres_path %></li>
+        <li class="btn-border"><%= link_to 'ログアウト', destroy_admin_session_path, method: :delete %></li>
+      <% elsif user_signed_in? %>
+        <li class="btn-border"><%= link_to '作品一覧', user_movies_path %></li>
+        <li class="btn-border"><%= link_to 'ジャンル一覧', user_genres_path %></li>
+        <li class="btn-border"><%= link_to 'ユーザー一覧', user_users_path %></li>
+        <li class="btn-border"><%= link_to 'マイページ', user_user_path(current_user), data: {"turbolinks" => false} %></li>
+        <li class="btn-border"><%= link_to 'ログアウト', destroy_user_session_path, method: :delete %></li>
+      <% else %>
+        <li class="btn-border"><%= link_to '作品一覧', root_path %></li>
+        <li class="btn-border"><%= link_to 'ユーザー一覧', user_users_path %></li>
+        <li class="btn-border"><%= link_to '新規登録', new_user_registration_path %></li>
+        <li class="btn-border"><%= link_to 'ユーザーログイン', new_user_session_path %></li>
+        <li class="btn-border"><%= link_to '管理者ログイン', new_admin_session_path %></li>
+      <% end %>
+    </ul>
   </div>
 </header>
