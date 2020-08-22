@@ -1,7 +1,7 @@
 <header>
   <nav class="mainbar">
     <span class="logo-bar"><span class="movie-logo"><i class="fas fa-film"></i> </span>Movies-Log</span>
-    <ul>
+    <ul class= "right-mainbar-box">
       <!--if文でサインインとアウト時の表示を変更-->
       <% if admin_signed_in? %>
         <li class="btn-border"><%= link_to '作品一覧', admin_movies_path %></li>
