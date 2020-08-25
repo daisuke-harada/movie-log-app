@@ -21,6 +21,31 @@
         <li class="btn-border"><%= link_to 'ユーザーログイン', new_user_session_path %></li>
         <li class="btn-border"><%= link_to '管理者ログイン', new_admin_session_path %></li>
       <% end %>
+      <div class="icon">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
     </ul>
   </nav>
 </header>
+
+<script>
+  $(function(){
+    $(".icon").on("click", function() {
+      $(this).toggleClass("active");
+      $("nav ul").slideToggle();
+    });
+
+  $(window).resize(function(){
+    var w = $(window).width();
+    var h = $(window).height();
+    var x = 700;
+    if (w >= x) {
+      $('nav ul').css({ display: 'flex',height: 'auto' });
+    }else {
+    $('nav ul').css({ display: 'none',height: h + 'px'});
+    }
+   });
+  });
+</script>
