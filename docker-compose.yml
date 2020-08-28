@@ -11,8 +11,8 @@ services:
       - "4306:3306"
 
   app:
-    # tty: true          #コンテナ上でbinding.pryするために必要
-    # stdin_open: true   #コンテナ上でbinding.pryするために必要
+    tty: true          #コンテナ上でbinding.pryするために必要
+    stdin_open: true   #コンテナ上でbinding.pryするために必要
     build: .
     environment:
       - RAILS_SERVE_STATIC_FILES=true
