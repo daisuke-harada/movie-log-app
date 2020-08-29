@@ -28,7 +28,7 @@
 他の人の映画の感想を知りたい場合。
 
 ## サイトURL
-http://54.248.45.54/
+http://movies-log.com/
 
 ## ネットワーク構成
 ![ネットワーク構成図](https://user-images.githubusercontent.com/59969400/88476774-0c705380-cf76-11ea-80a0-d1dcb7ef2255.png)
