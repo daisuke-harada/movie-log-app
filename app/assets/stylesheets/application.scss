@@ -269,6 +269,7 @@ input[type="checkbox"]:checked + .check_box_label {
   .logo-bar {
     writing-mode: vertical-rl;
     text-orientation: upright;
+    font-size: 30px;
   }
 
   .btn-border {
@@ -304,6 +305,7 @@ input[type="checkbox"]:checked + .check_box_label {
   .logo-bar {
     writing-mode: vertical-rl;
     text-orientation: upright;
+    font-size: 30px;
   }
 
   .btn-border {
@@ -318,7 +320,7 @@ input[type="checkbox"]:checked + .check_box_label {
   }
 
   .btn-border > a {
-    padding: 2px;
+    padding: 0px;
   }
 
   .right-mainbar-box {
