@@ -7,15 +7,17 @@
 }
 
 .genre-box {
-  border: 2px solid #F2F2F2;
   background-color: white;
-  font-size:25px;
-  margin-left: 200px;
-  margin-right: 200px;
+  border: 1px solid #4A44F2;
+  border-radius: 8px;
+  margin-left: 50px;
+  margin-right: 50px;
+  margin-top: 40px;
 }
 
 .genre-mini-box {
   display: flex;
+  padding: 20px;
   flex-flow: row wrap;
   color: #0D0D0D;
   align-items: flex-start;
@@ -54,9 +56,11 @@
 
 .genre-title {
   border-bottom: 2px solid #ddd;
-  margin-bottom: 20px;
-  padding-bottom: 20px;
+  padding: 20px;
   text-align: center;
+  color: white;
+  font-size : 80px;
+  background-color: #4A44F2;
 }
 
 .genre-movies-box {
@@ -66,4 +70,24 @@
   align-items: flex-start;
   align-content: flex-start;
   width: 720px;
+}
+
+.genre-border {
+  display: inline-block;
+  font-size: 40px;
+  text-decoration: none;
+  font-weight: bold;
+  transform: skewX(150deg);
+  transition: .4s;
+  padding: 10px;
+}
+
+.genre-border:hover {
+  background-color: #4A44F2;
+  cursor: pointer;
+}
+
+.genre-border > a {
+  display: inline-block;
+  color: #0D0D0D;
 }

@@ -2,8 +2,9 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.user-index-box{
+.user-index-box {
   margin-top: 60px;
+  padding: 0 75px;
   display: flex;
   flex-flow: row wrap;
   align-items: flex-start;
@@ -137,4 +138,29 @@
 .user-ranking-modal-wrappper {
   display: none;
 }
+
+@media (max-width:1024px){
+  .user-index-box {
+    padding: 0 145px;
+  }
+}
+
+@media (max-width:768px){
+  .user-index-box {
+    padding: 0 35px;
+  }
+}
+
+@media (max-width:425px){
+  .user-index-box {
+    padding: 0 40px;
+  }
+}
+
+@media (max-width:375px){
+  .user-index-box {
+    padding: 0 15px;
+  }
+}
+
 
