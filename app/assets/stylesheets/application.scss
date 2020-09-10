@@ -61,17 +61,25 @@ input, button, select, textarea {
 }
 
 .btn-border:first-child {
+  border-left: 1px solid #0D0D0D;
+}
+
+.btn-border {
   display: inline-block;
-  border-left: 1px solid #BBBDF2;
+  border-right: 1px solid #0D0D0D;
   font-size: 20px;
   text-decoration: none;
   font-weight: bold;
   transition: .4s;
 }
 
-.btn-border {
+.right-mainbar-box > .btn-border:first-child {
+  border-left: 1px solid #4A44F2;
+}
+
+.right-mainbar-box > .btn-border {
   display: inline-block;
-  border-right: 1px solid #BBBDF2;
+  border-right: 1px solid #4A44F2;
   font-size: 20px;
   text-decoration: none;
   font-weight: bold;
