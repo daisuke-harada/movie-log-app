@@ -5,7 +5,7 @@
         <% genres.each do |genre| %>
           <li class=" gerne-border">
             <%= link_to edit_admin_genre_path(genre.id) do%>
-              <%= genre.name %>
+              <%= genre.name %>/
             <% end %>
           </li>
         <% end %>
