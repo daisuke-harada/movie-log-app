@@ -149,6 +149,16 @@
   .user-index-box {
     padding: 0 35px;
   }
+
+  .my-box > .btn-border {
+    font-size: 10px;
+    margin-bottom: 0px;
+  }
+
+  .my-box > .btn-border:first-child {
+    font-size: 10px;
+    margin-bottom: 0px;
+  }
 }
 
 @media (max-width:425px){
