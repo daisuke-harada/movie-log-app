@@ -1,5 +1,5 @@
 <% @movie.reviews.where(is_spoil: false).each do |review| %>
-  <div class="review" id="review-<%= review.id %>">
+  <div class="movies-reviews" id="review-<%= review.id %>">
     <div class="movie-review-box">
       <ul class="movie-review-profile">
         <li><%= attachment_image_tag review.user, :profile_image, size: "150x150", format: "jpg", fallback: "no_image.jpg" %></li>
