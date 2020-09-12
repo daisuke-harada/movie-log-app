@@ -135,12 +135,12 @@
       $('#is_spoil_where_message-<%= review.id %>').click(function(){
         var result = window.confirm('ネタバレの内容を表示しても宜しいですか？');
           if( result ) {
-            $('#is_spoil_content-<%= review.id %>').fadeIn();
-            $('#is_spoil_message-<%= review.id %>').fadeOut();
+            $('#is_spoil_where_content-<%= review.id %>').fadeIn();
+            $('#is_spoil_where_message-<%= review.id %>').fadeOut();
           }
           else {
-            $('#is_spoil_content-<%= review.id %>').fadeOut();
-            $('#is_spoil_message-<%= review.id %>').fadeIn();
+            $('#is_spoil_where_content-<%= review.id %>').fadeOut();
+            $('#is_spoil_where_message-<%= review.id %>').fadeIn();
           }
       });
     <% end %>
