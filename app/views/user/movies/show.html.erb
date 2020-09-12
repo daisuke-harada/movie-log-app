@@ -6,7 +6,7 @@
 
 <div class= "movie-show-box">
   <div class="movie-status">
-  <%= attachment_image_tag @movie, :movie_image, size: "350x470", format: "jpg", fallback: "no_image.jpg" %><br/>
+  <%= attachment_image_tag @movie, :movie_image, format: "jpg", fallback: "no_image.jpg", class: "movie-image" %><br/>
   総合スコア<br/>
   <p id='star-average-rate-<%= @movie.id %>'></p><%= @movie.reviews.average(:rate).to_f.round(1) %><br/>
     登録数<%= @movie.reviews.count %> 件<br/>

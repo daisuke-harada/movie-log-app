@@ -109,6 +109,23 @@
   margin-left: 160px;
 }
 
+.movie-image {
+  width: 350px;
+  height: 470px;
+}
+
+.movies-reviews {
+  border: 2px solid #EEEEEE;
+  margin: 20px 80px;
+}
+
+.movie-review-box {
+  display: flex;
+  width: 100%;
+  background-color: white;
+  border-bottom: 2px solid #EEEEEE;
+}
+
 @media (max-width:768px){
   .movie-show-box {
     background-color: white;
@@ -126,6 +143,28 @@
     margin-right: 80px;
     text-align: center;
     background-color: #BBBDF2;
+  }
+
+  .movie-image {
+    width: 400px;
+    height: 570px;
+  }
+}
+
+@media (max-width:690px){
+  .movie-review-box {
+    display: flex;
+    flex-direction: column;
+    height: 600px;
+    width: 100%;
+    background-color: white;
+    border-bottom: 2px solid #EEEEEE;
+  }
+
+  .movies-reviews {
+    border: 2px solid #EEEEEE;
+    margin: 20px 80px;
+    height: 640px
   }
 }
 
