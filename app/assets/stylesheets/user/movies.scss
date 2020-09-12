@@ -109,6 +109,26 @@
   margin-left: 160px;
 }
 
+@media (max-width:768px){
+  .movie-show-box {
+    background-color: white;
+    flex-direction: column;
+    display: flex;
+    margin-right: 80px;
+    margin-left: 80px;
+  }
+  .middle-box {
+    font-size: 23px;
+    border-bottom: 1px solid #F2F2F2;
+    width: auto;
+    margin-top: 30px;
+    margin-left: 80px;
+    margin-right: 80px;
+    text-align: center;
+    background-color: #BBBDF2;
+  }
+}
+
 
 
 
