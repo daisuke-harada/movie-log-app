@@ -126,6 +126,24 @@
   border-bottom: 2px solid #EEEEEE;
 }
 
+.movie-review-profile {
+  display: inline-block;
+  text-align: center;
+  height: auto;
+  padding: 10px;
+  width: auto;
+  vertical-align: top;
+}
+
+.movie-review-status {
+  display: inline-block;
+  text-align: left;
+  height: auto;
+  padding: 10px;
+  width: 300px;
+  vertical-align: top;
+}
+
 @media (max-width:768px){
   .movie-show-box {
     background-color: white;
@@ -148,6 +166,15 @@
   .movie-image {
     width: 400px;
     height: 570px;
+  }
+
+  .movie-review-profile {
+    display: inline-block;
+    text-align: left;
+    height: auto;
+    padding: 10px;
+    width: auto;
+    vertical-align: top;
   }
 }
 
