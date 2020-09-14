@@ -12,7 +12,7 @@ RSpec.describe "User::Genres", type: :request do
       end
 
       it "タイトルが正しく表示されていること" do
-        expect(response.body).to include("ジャンル一覧")
+        expect(response.body).to include("ジャンル")
       end
     end
   end
@@ -35,7 +35,7 @@ RSpec.describe "User::Genres", type: :request do
       end
 
       it "サイドバーのタイトルが正しく表示されていること" do
-        expect(response.body).to include("ジャンル一覧")
+        expect(response.body).to include("ジャンル")
       end
     end
   end
