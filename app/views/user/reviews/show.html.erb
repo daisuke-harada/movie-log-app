@@ -2,7 +2,7 @@
   <div class="row">
     <div class="review" id="review-<%= @review.id %>">
       <div class="movie-review-box">
-        <ul class="movie-review-profile"><
+        <ul class="movie-review-profile">
           <li><%= attachment_image_tag @review.user, :profile_image, size: "180x180", format: "jpg", fallback: "no_image.jpg" %></li>
           <li>
             <% if user_signed_in? %>
