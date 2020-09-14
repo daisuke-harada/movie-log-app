@@ -30,6 +30,15 @@
 ## サイトURL
 http://movies-log.com/
 
+## ログインID
+###ユーザー
+名前: daisuke<br/>
+パスワード: 04030403<br/>
+
+###管理者
+名前: admin<br/>
+パスワード: 10991099<br/>
+
 ## ネットワーク構成
 ![ネットワーク構成図](https://user-images.githubusercontent.com/59969400/88476774-0c705380-cf76-11ea-80a0-d1dcb7ef2255.png)
 
