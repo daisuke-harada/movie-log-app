@@ -144,6 +144,16 @@
   vertical-align: top;
 }
 
+.movie-review-choice {
+  display: flex;
+  text-align: center;
+  margin-left: 80px;
+  margin-right: 80px;
+  background-color: #BBBDF2;
+  justify-content: center;
+  align-items: center;
+}
+
 @media (max-width:768px){
   .movie-show-box {
     background-color: white;
@@ -179,6 +189,11 @@
 }
 
 @media (max-width:690px){
+  .movie-image {
+    width: 330px;
+    height: 500px;
+  }
+
   .movie-review-box {
     display: flex;
     flex-direction: column;
@@ -192,6 +207,48 @@
     border: 2px solid #EEEEEE;
     margin: 20px 80px;
     height: 640px
+  }
+}
+
+@media (max-width:425px){
+
+  .movie-show-box {
+    margin-right: 10px;
+    margin-left: 10px;
+  }
+
+  .middle-box {
+    font-size: 20px;
+    border-bottom: 1px solid #F2F2F2;
+    width: auto;
+    margin-top: 30px;
+    margin-left: 10px;
+    margin-right: 10px;
+    text-align: center;
+    background-color: #BBBDF2;
+  }
+
+  .movie-review-choice {
+    display: flex;
+    text-align: center;
+    margin-left: 10px;
+    margin-right: 10px;
+    background-color: #BBBDF2;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .movies-reviews {
+    margin: 20px 10px;
+  }
+}
+
+@media (max-width:375px){
+  .movie-image {
+    width: 250px;
+    height: 500px;
+    margin-left: auto;
+    margin-right: auto;
   }
 }
 
