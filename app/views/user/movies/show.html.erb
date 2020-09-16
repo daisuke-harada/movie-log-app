@@ -81,7 +81,7 @@
 </div>
 
 <script>
-  $(document).ready(function() {
+  $(document).on('turbolinks:load',function() {
     <% @movie.reviews.each do |review| %>
       console.log(<%= review.id %>);
       $('#star-rate-<%= review.id %>').raty({

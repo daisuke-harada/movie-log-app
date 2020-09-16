@@ -19,7 +19,7 @@
 //= require nested_form_fields
 //= require jquery_raty.js
 
-$(function(){
+$(document).on('turbolinks:load',function(){
   $('#new-review-show').click(function(){
     $('#new-review-modal').fadeIn();
   });
@@ -29,7 +29,7 @@ $(function(){
   });
 });
 
-$(function(){
+$(document).on('turbolinks:load',function(){
 
   var $reviews_show = $('#user-reviews-show');
   var $reviews_modal = $('#user-reviews-modal');
@@ -87,7 +87,7 @@ $(function(){
   });
 });
 
-$(function(){
+$(document).on('turbolinks:load',function(){
 
   var $all_reviews_show = $('#all-reviews-show');
   var $all_reviews_modal = $('#all-reviews-modal');

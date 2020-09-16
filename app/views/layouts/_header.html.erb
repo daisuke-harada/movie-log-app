@@ -4,44 +4,44 @@
     <ul class= "right-mainbar-box">
       <!--if文でサインインとアウト時の表示を変更-->
       <% if admin_signed_in? %>
-        <li class="btn-border"><%= link_to '作品一覧', admin_movies_path, data: {"turbolinks" => false} %></li>
-        <li class="btn-border"><%= link_to '作品新規投稿', new_admin_movie_path, data: {"turbolinks" => false} %></li>
-        <li class="btn-border"><%= link_to 'ジャンル一覧', admin_genres_path, data: {"turbolinks" => false} %></li>
-        <li class="btn-border"><%= link_to 'ログアウト', destroy_admin_session_path, method: :delete, data: {"turbolinks" => false}%></li>
+        <li class="btn-border"><%= link_to '登録済作品一覧', admin_movies_path %></li>
+        <li class="btn-border"><%= link_to '作品新規投稿', new_admin_movie_path %></li>
+        <li class="btn-border"><%= link_to 'ジャンル一覧', admin_genres_path %></li>
+        <li class="btn-border"><%= link_to 'ログアウト', destroy_admin_session_path, method: :delete %></li>
       <% elsif user_signed_in? %>
-        <li class="btn-border"><%= link_to '作品一覧', user_movies_path, data: {"turbolinks" => false} %></li>
-        <li class="btn-border"><%= link_to 'ジャンル一覧', user_genres_path, data: {"turbolinks" => false} %></li>
-        <li class="btn-border"><%= link_to 'ユーザー一覧', user_users_path, data: {"turbolinks" => false} %></li>
-        <li class="btn-border"><%= link_to 'マイページ', user_user_path(current_user), data: {"turbolinks" => false} %></li>
+        <li class="btn-border"><%= link_to '作品一覧', user_movies_path %></li>
+        <li class="btn-border"><%= link_to 'ジャンル一覧', user_genres_path %></li>
+        <li class="btn-border"><%= link_to 'ユーザー一覧', user_users_path %></li>
+        <li class="btn-border"><%= link_to 'マイページ', user_user_path(current_user) %></li>
         <li class="btn-border"><%= link_to 'ログアウト', destroy_user_session_path, method: :delete %></li>
       <% else %>
-        <li class="btn-border"><%= link_to '作品一覧', root_path, data: {"turbolinks" => false} %></li>
-        <li class="btn-border"><%= link_to 'ユーザー一覧', user_users_path, data: {"turbolinks" => false} %></li>
-        <li class="btn-border"><%= link_to '新規登録', new_user_registration_path, data: {"turbolinks" => false} %></li>
-        <li class="btn-border"><%= link_to 'ユーザーログイン', new_user_session_path, data: {"turbolinks" => false}%></li>
-        <li class="btn-border"><%= link_to '管理者ログイン', new_admin_session_path, data: {"turbolinks" => false} %></li>
+        <li class="btn-border"><%= link_to '作品一覧', root_path %></li>
+        <li class="btn-border"><%= link_to 'ユーザー一覧', user_users_path %></li>
+        <li class="btn-border"><%= link_to '新規登録', new_user_registration_path %></li>
+        <li class="btn-border"><%= link_to 'ユーザーログイン', new_user_session_path %></li>
+        <li class="btn-border"><%= link_to '管理者ログイン', new_admin_session_path %></li>
       <% end %>
     </ul>
   </nav>
   <nav class="sidebar" id="sidebar_f">
     <ul>
       <% if admin_signed_in? %>
-        <li class="btn-border"><%= link_to '作品一覧', admin_movies_path, data: {"turbolinks" => false} %></li>
-        <li class="btn-border"><%= link_to '作品新規投稿', new_admin_movie_path, data: {"turbolinks" => false} %></li>
-        <li class="btn-border"><%= link_to 'ジャンル一覧', admin_genres_path, data: {"turbolinks" => false} %></li>
+        <li class="btn-border"><%= link_to '登録済作品一覧', admin_movies_path %></li>
+        <li class="btn-border"><%= link_to '作品新規投稿', new_admin_movie_path %></li>
+        <li class="btn-border"><%= link_to 'ジャンル一覧', admin_genres_path %></li>
         <li class="btn-border"><%= link_to 'ログアウト', destroy_admin_session_path, method: :delete %></li>
       <% elsif user_signed_in? %>
-        <li class="btn-border"><%= link_to '作品一覧', user_movies_path, data: {"turbolinks" => false} %></li>
-        <li class="btn-border"><%= link_to 'ジャンル一覧', user_genres_path, data: {"turbolinks" => false} %></li>
-        <li class="btn-border"><%= link_to 'ユーザー一覧', user_users_path, data: {"turbolinks" => false} %></li>
-        <li class="btn-border"><%= link_to 'マイページ', user_user_path(current_user), data: {"turbolinks" => false} %></li>
+        <li class="btn-border"><%= link_to '作品一覧', user_movies_path %></li>
+        <li class="btn-border"><%= link_to 'ジャンル一覧', user_genres_path %></li>
+        <li class="btn-border"><%= link_to 'ユーザー一覧', user_users_path %></li>
+        <li class="btn-border"><%= link_to 'マイページ', user_user_path(current_user) %></li>
         <li class="btn-border"><%= link_to 'ログアウト', destroy_user_session_path, method: :delete %></li>
       <% else %>
-        <li class="btn-border"><%= link_to '作品一覧', root_path, data: {"turbolinks" => false} %></li>
-        <li class="btn-border"><%= link_to 'ユーザー一覧', user_users_path, data: {"turbolinks" => false} %></li>
-        <li class="btn-border"><%= link_to '新規登録', new_user_registration_path, data: {"turbolinks" => false} %></li>
-        <li class="btn-border"><%= link_to 'ユーザーログイン', new_user_session_path, data: {"turbolinks" => false} %></li>
-        <li class="btn-border"><%= link_to '管理者ログイン', new_admin_session_path, data: {"turbolinks" => false} %></li>
+        <li class="btn-border"><%= link_to '作品一覧', root_path %></li>
+        <li class="btn-border"><%= link_to 'ユーザー一覧', user_users_path %></li>
+        <li class="btn-border"><%= link_to '新規登録', new_user_registration_path %></li>
+        <li class="btn-border"><%= link_to 'ユーザーログイン', new_user_session_path %></li>
+        <li class="btn-border"><%= link_to '管理者ログイン', new_admin_session_path %></li>
       <% end %>
     </ul>
   </nav>
@@ -53,23 +53,25 @@
 </header>
 
 <script>
-  function hamburger() {
-　　document.getElementById('line1').classList.toggle('linea');
-　　document.getElementById('line2').classList.toggle('lineb');
-　　document.getElementById('line3').classList.toggle('linec');
-　　document.getElementById('target').classList.toggle('slidex');
-　　document.getElementById('sidebar_f').classList.toggle('fadein');
-  }
+  $(document).ready(function() {
+     function hamburger() {
+    　　document.getElementById('line1').classList.toggle('linea');
+    　　document.getElementById('line2').classList.toggle('lineb');
+    　　document.getElementById('line3').classList.toggle('linec');
+    　　document.getElementById('target').classList.toggle('slidex');
+    　　document.getElementById('sidebar_f').classList.toggle('fadein');
+      }
 
-  document.getElementById('target').addEventListener('click', function () {
-  　　hamburger();
-  });
-
-  let list = document.getElementsByClassName('list');
-
-  for (let i = 0; i < list.length; i++) {
-  　　list[i].addEventListener('click', function () {
-  　　　　hamburger();
+      document.getElementById('target').addEventListener('click', function () {
+      　　hamburger();
       });
-  }
+
+      let list = document.getElementsByClassName('list');
+
+      for (let i = 0; i < list.length; i++) {
+      　　list[i].addEventListener('click', function () {
+      　　　　hamburger();
+          });
+      }
+  });
 </script>

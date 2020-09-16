@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
   # ログインした後のルートパス
   def after_sign_in_path_for(resource)
     if user_signed_in?
-      user_movies_path(resource)
+      user_user_path(resource)
     else
       admin_movies_path
     end
