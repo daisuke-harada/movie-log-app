@@ -85,6 +85,7 @@
   width: 800px;
   height: 400px;
   border-bottom: 2px solid #EEEEEE;
+  display: flex;
 }
 
 .text-content {
@@ -136,4 +137,12 @@
 
 .review_content {
   width: 350px;
+}
+
+@media (max-width:425px){
+  .review-box {
+    width: 350px;
+    height: auto;
+    flex-direction: column;
+  }
 }
