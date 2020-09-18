@@ -12,14 +12,14 @@
 
 .comment-layout {
   background-color: white;
-  margin-top: 30px;
+  margin-top: 5px;
   position: relative;
-  height: 230px;
+  height: 180px;
 }
 
 .comment-user-profile {
   position: absolute;
-  height: 230px;
+  height: 180px;
   width: 200px;
   text-align: center;
   margin: 10px;
@@ -42,9 +42,25 @@
   right: 40px;
   display: flex;
   justify-content: flex-end;
-  margin-top: 180px;
+  margin-top: 140px;
 }
 
 .comment-box {
   border: solid 2px #320cc7;
+}
+
+.review-comment-middle-box {
+  font-size: 50px;
+  width: auto;
+  margin-top: 30px;
+  margin-left: 80px;
+  margin-right: 80px;
+  text-align: center;
+  color: white;
+  background-color: #4a44f2;
+}
+
+.comments-group {
+  overflow: auto;
+  height: 720px;
 }
