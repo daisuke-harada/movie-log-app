@@ -9,6 +9,7 @@ class User::ReviewsController < ApplicationController
 
   def show
     @movie = Movie.find(params[:movie_id])
+    @comment = Comment.new
     @review = Review.find(params[:id])
     @comments = @review.comments
   end

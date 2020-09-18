@@ -1,8 +1,4 @@
 class User::CommentsController < ApplicationController
-  def new
-    @comment = Comment.new
-  end
-
   def create
     @review = Review.find(params[:review_id])
     @comment = @review.comments.build(comment_params)
