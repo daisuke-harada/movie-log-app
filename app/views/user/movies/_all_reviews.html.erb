@@ -12,7 +12,7 @@
               <%= link_to user_user_path(review.user.id), data: {"turbolinks" => false}, class: "btn-square-shadow show-review-btn" do %>
                 <%= review.user.name %>さんのページへ行く
               <% end %><br/>
-              <%= link_to 'コメントを投稿する', new_user_movie_review_comment_path(@movie, review), class: "btn-square-shadow2 show-review-btn" %>
+              <%= link_to 'コメントを投稿する', user_movie_review_path(@movie, review), class: "btn-square-shadow2 show-review-btn" %>
             <% end %>
           <% else %>
             <%= link_to user_user_path(review.user.id), data: {"turbolinks" => false}, class: "btn-square-shadow show-review-btn" do %>
