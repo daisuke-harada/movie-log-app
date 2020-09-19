@@ -62,8 +62,28 @@
     </div>
 
     <% if @comments.count == 0 %>
+    <div class=comment-new-form>
+      <%= render 'layouts/error', data: @comment %>
+      <%= form_with model:@comment, url:user_movie_review_comments_path(@movie.id, @review.id), local:true do |f| %>
+        <p>コメント入力</p>
+        <div>
+          <%= f.text_area :body, class: "comment-form", style: "height: 60px"  %>
+          <%= f.submit "投稿する", class: "btn-square-shadow" %>
+        </div>
+      <% end %>
+    </div>
     <% else %>
       <div class="review-comment-middle-box ">コメント一覧</div>
+      <%= render 'layouts/error', data: @comment %>
+      <div class=comment-new-form>
+        <%= form_with model:@comment, url:user_movie_review_comments_path(@movie.id, @review.id), local:true do |f| %>
+          <p>コメント入力</p>
+          <div>
+            <%= f.text_area :body, class: "comment-form", style: "height: 60px"  %>
+            <%= f.submit "投稿する", class: "btn-square-shadow" %>
+          </div>
+        <% end %>
+      </div>
       <div class="comments-group">
         <% @comments.each do |comment| %>
           <div class="comment-layout" id="comment-<%= comment.id %>">

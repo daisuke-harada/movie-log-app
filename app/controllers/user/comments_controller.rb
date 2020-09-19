@@ -6,7 +6,11 @@ class User::CommentsController < ApplicationController
     if @comment.save
       redirect_to user_movie_review_path(@review.movie.id, @review.id)
     else
-      render :new
+      @comment = Comment.new
+      @review = Review.find(params[:review_id])
+      @movie = Movie.find(params[:movie_id])
+      @comments = @review.comments
+      render template: "user/reviews/show"
     end
   end
 
