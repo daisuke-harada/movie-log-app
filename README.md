@@ -28,6 +28,7 @@
 他の人の映画の感想を知りたい場合。<br/>
 
 ## サイトURL
+(https://user-images.githubusercontent.com/59969400/93737801-0964ad00-fc1f-11ea-98a9-417d5f977552.png")
 http://movies-log.com/
 
 ## ログインID
