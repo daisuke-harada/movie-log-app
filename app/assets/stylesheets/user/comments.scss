@@ -65,3 +65,9 @@
   overflow: auto;
   height: 500px;
 }
+
+@media (max-width:768px){
+  .comment-form {
+    width: 450px;
+  }
+}
