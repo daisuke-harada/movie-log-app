@@ -8,6 +8,7 @@ class User::ReviewsController < ApplicationController
   end
 
   def show
+    @user = current_user
     @movie = Movie.find(params[:movie_id])
     @comment = Comment.new
     @review = Review.find(params[:id])

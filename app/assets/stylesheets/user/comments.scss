@@ -8,7 +8,7 @@
 }
 
 .comment-form {
-  width: 750px;
+  width: 650px;
 }
 
 .comment-layout {
@@ -64,4 +64,10 @@
 .comments-group {
   overflow: auto;
   height: 500px;
+}
+
+@media (max-width:768px){
+  .comment-form {
+    width: 300px;
+  }
 }
