@@ -63,8 +63,8 @@
 
     <% if @comments.count == 0 %>
     <div class=comment-new-form>
-      <%= render 'layouts/error', data: @comment %>
       <%= attachment_image_tag current_user, :profile_image, size: "150x150", format: "jpg", fallback: "no_image.jpg", class: "users-user-imgage" %>
+      <%= render "users/shared/error_messages", resource: @comment %>
       <%= form_with model:@comment, url:user_movie_review_comments_path(@movie.id, @review.id), local:true do |f| %>
         <p>コメント入力</p>
         <div>
@@ -75,9 +75,9 @@
     </div>
     <% else %>
       <div class="review-comment-middle-box ">コメント一覧</div>
-      <%= render 'layouts/error', data: @comment %>
       <div class=comment-new-form>
         <%= attachment_image_tag current_user, :profile_image, size: "150x150", format: "jpg", fallback: "no_image.jpg", class: "users-user-imgage" %>
+        <%= render "users/shared/error_messages", resource: @comment %>
         <%= form_with model:@comment, url:user_movie_review_comments_path(@movie.id, @review.id), local:true do |f| %>
           <p>コメント入力</p>
           <div>
