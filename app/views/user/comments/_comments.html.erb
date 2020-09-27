@@ -1,0 +1,17 @@
+<% comments.each do |comment| %>
+  <div class="comment-layout" id="comment-<%= comment.id %>">
+    <ul class="comment-user-profile">
+      <li><%= attachment_image_tag comment.user, :profile_image, size: "100x100", format: "jpg", fallback: "no_image.jpg" %></li><br/>
+      <li class="comment-user-name"><%= comment.user.name %></li><br/>
+    </ul>
+    <ul class="comment-user-status">
+      <li><%= comment.created_at.to_s(:datetime_jp) %></li><br/>
+      <li><%= comment.body %></li>
+    </ul>
+    <ul class= "comment-destroy-box">
+      <% if current_user.id == comment.user.id %>
+      <%= link_to "削除",user_movie_review_comment_path(@review.movie_id, comment.review_id, comment), method: :delete, remote: true , data: {confirm: "本当に削除してもよろしいですか？"}, class: "btn-delete-shadow"%>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
