@@ -12,7 +12,7 @@
               <%= link_to user_user_path(review.user.id), data: {"turbolinks" => false}, class: "btn-square-shadow show-review-btn" do %>
                 <%= review.user.name %>さんのページへ行く
               <% end %><br/>
-              <%= link_to 'コメントを投稿する', user_movie_review_path(@movie, review), class: "btn-square-shadow2 show-review-btn" %>
+              <%= link_to 'コメントを投稿する', user_movie_review_comments_path(@movie, review), class: "btn-square-shadow2 show-review-btn" %>
             <% end %>
           <% else %>
             <%= link_to user_user_path(review.user.id), data: {"turbolinks" => false}, class: "btn-square-shadow show-review-btn" do %>
@@ -39,7 +39,7 @@
           <%= render 'user/favorites/favorite', review: review %>
         </div>
         <div class="comment-layouts">
-          <%= link_to user_movie_review_path(@movie, review) do %>
+          <%= link_to user_movie_review_comments_path(@movie, review) do %>
             コメント<%= review.comments.count  %>件
           <% end %>
         </div>

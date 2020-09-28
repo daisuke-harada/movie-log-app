@@ -48,7 +48,7 @@
                       <h2 class="third-place"><i class="fas fa-crown"></i>3位</h2><br/>
                     <% end %>
                   <% end %>
-                  <%= link_to 'コメントを投稿する', new_user_movie_review_comment_path(review.movie, review),class: "show-review-btn btn-square-shadow2"%><br/>
+                  <%= link_to 'コメントを投稿する', user_movie_review_comments_path(review.movie_id, review.id),class: "show-review-btn btn-square-shadow2"%><br/>
                 <% end %>
               <% end %>
               <%= link_to '映画をcheck', user_movie_path(review.movie), data: {"turbolinks" => false}, class: "show-review-btn btn-square-shadow" %>

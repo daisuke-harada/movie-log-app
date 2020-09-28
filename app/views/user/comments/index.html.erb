@@ -1,0 +1,115 @@
+<div class="container">
+  <div class="row">
+    <div class="review" id="review-<%= @review.id %>">
+      <div class="movie-review-box">
+        <ul class="movie-review-profile">
+          <li><%= attachment_image_tag @review.user, :profile_image, size: "180x180", format: "jpg", fallback: "no_image.jpg" %></li>
+          <li>
+            <% if user_signed_in? %>
+              <% if @review.user.id == current_user.id %>
+                <%= link_to 'マイページへいく', user_user_path(current_user.id), class: "btn-square-shadow show-review-btn" %><br/>
+                <%= link_to '映画の登録を編集する', edit_user_movie_review_path(@movie, @review), class: "btn-square-shadow2 show-review-btn" %>
+              <% else %>
+                <%= link_to user_user_path(@review.user.id), class: "btn-square-shadow show-review-btn" do %>
+                  <%= @review.user.name %>さんのページへ行く
+                <% end %><br/>
+              <% end %>
+            <% else %>
+              <%= link_to user_user_path(@review.user.id), class: "btn-square-shadow show-review-btn" do %>
+                <%= @review.user.name %>さんのページへ行く</p>
+              <% end %>
+            <% end %>
+          </li>
+        </ul>
+        <ul class="movie-review-status">
+          <li class="user-review-name"><%= @review.user.name%>さんの感想と評価。</li>
+          <li><%= @review.updated_at.to_s(:datetime_jp) %></li>
+          <li id="star-rate-<%= @review.id %>"></li>
+          <% if @review.is_spoil == true %>
+            <li class="is_spoil_message-color" id="is_spoil_message-<%= @review.id %>" >⚠︎このレビューはネタバレを含みます。</li>
+            <li class="is_spoil_content-wrappper" id="is_spoil_content-<%= @review.id %>" ><%= safe_join(@review.content.split("\n"), tag(:br)) %></li>
+          <% elsif @review.is_spoil == false  %>
+            <li><%= safe_join(@review.content.split("\n"), tag(:br)) %></li>
+          <% end %>
+        </ul>
+      </div>
+      <div class= "movie-favorite-and-comments-box">
+        <% if user_signed_in? %>
+          <div class="favorite-layouts" id="favorite-<%= @review.id%>">
+            <%= render 'user/favorites/favorite', review: @review %>
+          </div>
+          <div class="comment-layouts">
+              コメント<%= @review.comments.count  %>件
+          </div>
+        <% else %>
+          <% if @review.favorites.count == 0 %>
+            <div class="favorite-layouts">
+              <%= link_to new_user_registration_path do %>
+                <i class="fa fa-heart-o" aria-hidden="true"></i>
+                <%= @review.favorites.count %> いいね
+              <% end %>
+            </div>
+          <% else %>
+            <div class="favorite-layouts">
+              <%= link_to new_user_registration_path do %>
+                <i class="fa fa-heart" aria-hidden="true" style="color: red;"></i>
+                <%= @review.favorites.count %>いいね
+              <% end %>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+
+    <% if @comments.count == 0 %>
+    <div class="comment-new-form">
+      <%= attachment_image_tag current_user, :profile_image, size: "150x150", format: "jpg", fallback: "no_image.jpg", class: "users-user-imgage" %>
+      <%= form_with model: @comment, url: user_movie_review_comments_path(@review.movie_id, @review.id), method: :post do |f| %>
+        <p>コメント入力</p>
+        <div>
+          <div id="comment_body">
+            <%= f.text_area :body, class: "comment-form", style: "height: 60px"  %><br/>
+          </div>
+          <%= f.submit "投稿する", class: "btn-square-shadow", data: {"turbolinks" => false} %>
+        </div>
+      <% end %>
+    </div>
+    <% else %>
+      <div class="review-comment-middle-box ">コメント一覧</div>
+      <div class="comment-new-form">
+        <%= attachment_image_tag current_user, :profile_image, size: "150x150", format: "jpg", fallback: "no_image.jpg", class: "users-user-imgage" %>
+        <%= form_with model: @comment, url: user_movie_review_comments_path(@review.movie_id, @review.id), method: :post do |f| %>
+          <p>コメント入力</p>
+          <div>
+            <div id="comment_body">
+              <%= f.text_area :body, class: "comment-form", style: "height: 60px" %><br/>
+            </div>
+            <%= f.submit "投稿する", class: "btn-square-shadow", data: {"turbolinks" => false} %>
+          </div>
+        <% end %>
+      </div>
+      <div class="comments-group" id="comments-area">
+        <%= render 'user/comments/comments', comments: @comments %>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<script>
+  $(document).on('turbolinks:load',function() {
+    $('#star-rate-<%= @review.id %>').raty({
+      score: <%= @review.rate %>,
+      size: 36,
+      starOff: '<%= "#{asset_path('star-off.png')}" %>',
+      starOn: '<%= "#{asset_path('star-on.png')}" %>',
+      starHalf: '<%= "#{asset_path('star-half.png')}" %>',
+      half: true,
+      readOnly: true,
+    });
+
+    $('#is_spoil_message-<%= @review.id %>').click(function(){
+      $('#is_spoil_content-<%= @review.id %>').fadeIn();
+      $('#is_spoil_message-<%= @review.id %>').fadeOut();
+    });
+  });
+</script>

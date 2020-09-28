@@ -9,8 +9,15 @@ class User::CommentsController < ApplicationController
       @review = Review.find(params[:review_id])
       @movie = Movie.find(params[:movie_id])
       @comments = @review.comments
-      render template: "user/reviews/show"
+      render "index"
     end
+  end
+
+  def index
+    @user = current_user
+    @review = Review.find(params[:review_id])
+    @comment = Comment.new
+    @comments = @review.comments
   end
 
   def destroy
