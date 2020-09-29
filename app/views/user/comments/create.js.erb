@@ -1,4 +1,2 @@
-$(document).ready(function(){
-  $("#comments-area").html("<%= j(render ("user/comments/comments", comments: @comments)) %>")
-  $("#comment_body").val('')
-});
+$("#comments_area").html("<%= j(render 'user/comments/comments', { comments: @comments }) %>");
+$("textarea").val('');

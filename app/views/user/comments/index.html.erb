@@ -8,7 +8,7 @@
             <% if user_signed_in? %>
               <% if @review.user.id == current_user.id %>
                 <%= link_to 'マイページへいく', user_user_path(current_user.id), class: "btn-square-shadow show-review-btn" %><br/>
-                <%= link_to '映画の登録を編集する', edit_user_movie_review_path(@movie, @review), class: "btn-square-shadow2 show-review-btn" %>
+                <%= link_to '映画の登録を編集する', edit_user_movie_review_path(@review.movie, @review), class: "btn-square-shadow2 show-review-btn" %>
               <% else %>
                 <%= link_to user_user_path(@review.user.id), class: "btn-square-shadow show-review-btn" do %>
                   <%= @review.user.name %>さんのページへ行く
@@ -64,32 +64,30 @@
     <% if @comments.count == 0 %>
     <div class="comment-new-form">
       <%= attachment_image_tag current_user, :profile_image, size: "150x150", format: "jpg", fallback: "no_image.jpg", class: "users-user-imgage" %>
-      <%= form_with model: @comment, url: user_movie_review_comments_path(@review.movie_id, @review.id), method: :post do |f| %>
+      <%= form_with model: @comment, url: user_movie_review_comments_path(@review.movie_id, @review.id) do |f| %>
         <p>コメント入力</p>
         <div>
           <div id="comment_body">
-            <%= f.text_area :body, class: "comment-form", style: "height: 60px"  %><br/>
+            <%= f.text_area :body, class: "comment-form", style: "height: 60px" %><br/>
           </div>
-          <%= f.submit "投稿する", class: "btn-square-shadow", data: {"turbolinks" => false} %>
+          <%= f.submit "投稿する", class: "btn-square-shadow" %>
         </div>
       <% end %>
     </div>
     <% else %>
-      <div class="review-comment-middle-box ">コメント一覧</div>
+      <div class="review-comment-middle-box">コメント一覧</div>
       <div class="comment-new-form">
         <%= attachment_image_tag current_user, :profile_image, size: "150x150", format: "jpg", fallback: "no_image.jpg", class: "users-user-imgage" %>
-        <%= form_with model: @comment, url: user_movie_review_comments_path(@review.movie_id, @review.id), method: :post do |f| %>
+        <%= form_with model: @comment, url: user_movie_review_comments_path(@review.movie_id, @review.id) do |f| %>
           <p>コメント入力</p>
           <div>
-            <div id="comment_body">
-              <%= f.text_area :body, class: "comment-form", style: "height: 60px" %><br/>
-            </div>
-            <%= f.submit "投稿する", class: "btn-square-shadow", data: {"turbolinks" => false} %>
+            <%= f.text_area :body, class: "comment-form", style: "height: 60px" %><br/>
+            <%= f.submit "投稿する", class: "btn-square-shadow" %>
           </div>
         <% end %>
       </div>
-      <div class="comments-group" id="comments-area">
-        <%= render 'user/comments/comments', comments: @comments %>
+      <div id="comments_area">
+         <%= render partial: 'user/comments/comments', locals: { comments: @comments} %>
       </div>
     <% end %>
   </div>
