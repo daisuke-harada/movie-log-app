@@ -64,25 +64,25 @@
     <% if @comments.count == 0 %>
     <div class="comment-new-form">
       <%= attachment_image_tag current_user, :profile_image, size: "150x150", format: "jpg", fallback: "no_image.jpg", class: "users-user-imgage" %>
-      <%= form_with model: @comment, url: user_movie_review_comments_path(@review.movie_id, @review.id), method: :post do |f| %>
+      <%= form_with model: @comment, url: user_movie_review_comments_path(@review.movie_id, @review.id) do |f| %>
         <p>コメント入力</p>
         <div>
           <div id="comment_body">
             <%= f.text_area :body, class: "comment-form", style: "height: 60px" %><br/>
           </div>
-          <%= f.submit "投稿する", class: "btn-square-shadow", data: {"turbolinks" => false} %>
+          <%= f.submit "投稿する", class: "btn-square-shadow" %>
         </div>
       <% end %>
     </div>
     <% else %>
-      <div class="review-comment-middle-box ">コメント一覧</div>
+      <div class="review-comment-middle-box">コメント一覧</div>
       <div class="comment-new-form">
         <%= attachment_image_tag current_user, :profile_image, size: "150x150", format: "jpg", fallback: "no_image.jpg", class: "users-user-imgage" %>
-        <%= form_with model: @comment, url: user_movie_review_comments_path(@review.movie_id, @review.id), method: :post do |f| %>
+        <%= form_with model: @comment, url: user_movie_review_comments_path(@review.movie_id, @review.id) do |f| %>
           <p>コメント入力</p>
           <div>
             <%= f.text_area :body, class: "comment-form", style: "height: 60px" %><br/>
-            <%= f.submit "投稿する", class: "btn-square-shadow", data: {"turbolinks" => false} %>
+            <%= f.submit "投稿する", class: "btn-square-shadow" %>
           </div>
         <% end %>
       </div>
