@@ -22,7 +22,7 @@
 </div>
 
 <script>
-  $(document).ready(function() {
+  $(document).on('turbolinks:load',function() {
     $('#star-rate-<%= @review.id %>').raty({
       score: <%= @review.rate %>,
       size: 36,
