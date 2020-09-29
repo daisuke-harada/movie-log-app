@@ -3,14 +3,7 @@ class User::CommentsController < ApplicationController
     @review = Review.find(params[:review_id])
     @comment = @review.comments.build(comment_params)
     @comment.user_id = current_user.id
-    if @comment.save
-    else
-      @comment = Comment.new
-      @review = Review.find(params[:review_id])
-      @movie = Movie.find(params[:movie_id])
-      @comments = @review.comments
-      render "index"
-    end
+    @comment.save
   end
 
   def index
