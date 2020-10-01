@@ -62,16 +62,7 @@
     </div>
 
     <% if @comments.count == 0 %>
-      <% if @comment.errors.any? %>
-        <div id="error_explanation">
-          <h2><%= @comment.errors.count %> errors prohibited this book from being saved:</h2>
-            <ul>
-              <% @comment.errors.full_messages.each do|message| %>
-                <li><%= message %></li>
-              <% end %>
-            </ul>
-        </div>
-      <% end %>
+      <div id="error"><%= render partial: 'layouts/errors', locals: { data: @comment} %></div>
       <div class="comment-new-form">
         <%= attachment_image_tag current_user, :profile_image, size: "150x150", format: "jpg", fallback: "no_image.jpg", class: "users-user-imgage" %>
         <%= form_with model: @comment, url: user_movie_review_comments_path(@review.movie_id, @review.id) do |f| %>
@@ -86,16 +77,9 @@
       </div>
     <% else %>
       <div class="review-comment-middle-box">コメント一覧</div>
-        <% if @comment.errors.any? %>
-          <div id="error_explanation">
-            <h2><%= @comment.errors.count %> errors prohibited this book from being saved:</h2>
-              <ul>
-                <% @comment.errors.full_messages.each do|message| %>
-                  <li><%= message %></li>
-                <% end %>
-              </ul>
-          </div>
-        <% end %>
+
+      <div id="error"><%= render partial: 'layouts/errors', locals: { data: @comment} %></div>
+
       <div class="comment-new-form">
         <%= attachment_image_tag current_user, :profile_image, size: "150x150", format: "jpg", fallback: "no_image.jpg", class: "users-user-imgage" %>
         <%= form_with model: @comment, url: user_movie_review_comments_path(@review.movie_id, @review.id) do |f| %>

@@ -6,6 +6,7 @@ class User::CommentsController < ApplicationController
     if @comment.save
       @comments = @review.comments
     else
+      render :error, status: :unprocessable_entity
     end
   end
 

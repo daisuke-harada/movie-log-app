@@ -1,2 +1,3 @@
 $("#comments_area").html("<%= j(render 'user/comments/comments', { comments: @comments }) %>");
+$('#error_explanation').remove();
 $("textarea").val('');
