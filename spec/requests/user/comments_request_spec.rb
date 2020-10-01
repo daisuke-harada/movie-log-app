@@ -1,13 +1,17 @@
 require 'rails_helper'
 
 RSpec.describe "User::Comments", type: :request do
-  describe "ユーザー/一覧" do
-    context "ユーザー/コメント新規登録ページが正しく表示される" do
+  describe "ユーザー/コメント一覧ページ" do
+    context "ユーザー/コメント一覧ページが正しく表示される" do
       before do
         @user = FactoryBot.create(:user)
         @movie = FactoryBot.create(:movie)
         @review = FactoryBot.create(:review)
         get user_movie_review_comments_path(movie_id: @movie.id, review_id: @review.id)
+      end
+
+      it "レビューのユーザーの名前が正しく表示されていること" do
+        expect(response.body).to include("daisuke")
       end
 
       it "リクエストは200okとなること" do
