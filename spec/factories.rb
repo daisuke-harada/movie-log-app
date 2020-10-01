@@ -22,7 +22,7 @@ FactoryBot.define do
     movie_id { "1" }
     user_id { "1" }
     rate { "4.0" }
-    content { "test1" }
+    content { "アクションシーンが興奮しました。" }
     is_spoil { "false" }
     created_at { "2020-07-02 15:04:16" }
     updated_at { "2020-07-02 15:04:16" }
