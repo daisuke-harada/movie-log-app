@@ -72,25 +72,11 @@ class User::UsersController < ApplicationController
   def out
     @user = current_user
     @user.update(is_withdrawal: true)
-
-    @user.includes(:review).destroy
-
-    # @user.reviews.each do |review|
-    #   review.destroy
-    # end
-    @user.comments.each do |comment|
-      comment.destroy
-    end
-    @user.favorites.each do |favorite|
-      favorite.destroy
-    end
-    @user.followers.each do |follower|
-      follower.unfollow(@user)
-    end
-    @user.following.each do |follow|
-      @user.unfollow(follow)
-    end
-
+    @user.reviews.destroy_all
+    @user.comments.destroy_all
+    @user.favorites.destroy_all
+    @user.followers.destroy_all
+    @user.following.destroy_all
     reset_session
     flash[:notice] = "ありがとうございました。またのご利用を心よりお待ちしております。"
     redirect_to root_path
