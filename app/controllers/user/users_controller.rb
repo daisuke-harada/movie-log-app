@@ -10,8 +10,8 @@ class User::UsersController < ApplicationController
 
     # 有効ユーザーの時
     if @user.is_withdrawal == false
-      @movie_ranks = @user.movie_ranks.order(:rank_status)
       @user_ranks = @user.movie_ranks
+      @movie_ranks = @user_ranks.order(:rank_status)
 
       @omit_first = MovieRank.rank_statuses.except(:"1位").keys
       @omit_second = MovieRank.rank_statuses.except(:"2位").keys
@@ -73,9 +73,11 @@ class User::UsersController < ApplicationController
     @user = current_user
     @user.update(is_withdrawal: true)
 
-    @user.reviews.each do |review|
-      review.destroy
-    end
+    @user.includes(:review).destroy
+
+    # @user.reviews.each do |review|
+    #   review.destroy
+    # end
     @user.comments.each do |comment|
       comment.destroy
     end
