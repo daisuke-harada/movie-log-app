@@ -55,6 +55,8 @@ group :development do
   gem 'spring-watcher-listen', '~> 2.0.0'
   # 静的解析ツール
   gem 'rubocop-airbnb'
+  # N+1問題のクエリを警告
+  gem 'bullet'
 end
 
 group :test do
