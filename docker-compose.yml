@@ -21,7 +21,7 @@ services:
       - .:/app
       - public-data:/app/public
       - tmp-data:/app/tmp
-      - log-data:/app/log #！
+      - log-data:/app/log
     ports:
       - "3000:3000"
     depends_on:
