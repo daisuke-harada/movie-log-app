@@ -6,22 +6,22 @@ services:
       MYSQL_ROOT_PASSWORD: ENV['DB_PASSWORD']
       MYSQL_DATABASE: ENV['DB_DATABASE']
     volumes:
-      - db-data:/var/lib/mysql    #データの永続化のために必要
+      - db-data:/var/lib/mysql
     ports:
       - "4306:3306"
 
   app:
-    tty: true          #コンテナ上でbinding.pryするために必要
-    stdin_open: true   #コンテナ上でbinding.pryするために必要
+    tty: true
+    stdin_open: true
     build: .
     environment:
       - RAILS_SERVE_STATIC_FILES=true
     command: bundle exec puma -C config/puma.rb
     volumes:
-      - .:/app   #ローカルのディレクトリをコンテナ上にマウント
+      - .:/app
       - public-data:/app/public
       - tmp-data:/app/tmp
-      - log-data:/app/log #！   #bundle installした後buildし直さなくてよくなる
+      - log-data:/app/log #！
     ports:
       - "3000:3000"
     depends_on:
