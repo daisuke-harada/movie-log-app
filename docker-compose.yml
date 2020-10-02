@@ -13,6 +13,7 @@ services:
   app:
     tty: true
     stdin_open: true
+    build: .
     environment:
       - RAILS_SERVE_STATIC_FILES=true
     command: bundle exec puma -C config/puma.rb
@@ -20,7 +21,7 @@ services:
       - .:/app
       - public-data:/app/public
       - tmp-data:/app/tmp
-      - log-data:/app/log
+      - log-data:/app/log #！
     ports:
       - "3000:3000"
     depends_on:
