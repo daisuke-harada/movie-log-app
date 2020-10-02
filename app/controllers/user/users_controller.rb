@@ -78,7 +78,7 @@ class User::UsersController < ApplicationController
     @user.followers.destroy_all
     @user.following.destroy_all
     reset_session
-    flash[:notice] = "ありがとうございました。またのご利用を心よりお待ちしております。"
+    flash[:alert] = "ありがとうございました。またのご利用を心よりお待ちしております。"
     redirect_to root_path
   end
 
