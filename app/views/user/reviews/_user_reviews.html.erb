@@ -1,5 +1,5 @@
 <div class="review-big-box">
-  <% if user.reviews == [] %>
+  <% if reviews == [] %>
     <div class ="welcome-message">
       <h1>自分の好きな映画を見つけて登録しましょう!!</h1><br/>
       <h1>ここをクリック↓</h1><br/>
@@ -10,7 +10,7 @@
       </div>
     </div>
   <% else %>
-    <% user.reviews.each do |review| %>
+    <% reviews.each do |review| %>
       <div class="user-review" id="review-<%= review.id %>">
         <div class="review-box">
           <ul class="review-mini-box">
@@ -105,7 +105,7 @@
 
 <script>
   $(document).on('turbolinks:load',function() {
-    <% @user.reviews.each do |review| %>
+    <% reviews.each do |review| %>
       $('#star-rate-<%= review.id %>').raty({
         score: <%= review.rate %>,
         size: 36,
