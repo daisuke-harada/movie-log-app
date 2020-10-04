@@ -63,12 +63,12 @@ class User::UsersController < ApplicationController
 
   def following
     # @userがフォローしているユーザー
-    @following = @user.following
+    @user.following
   end
 
   def followers
     # @userをフォローしているユーザー
-    @followers = @user.followers
+    @user.followers
   end
 
   def out
