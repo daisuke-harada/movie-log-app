@@ -1,7 +1,7 @@
 class User::UsersController < ApplicationController
   before_action :set_users, only: [:show, :edit, :following, :followers]
   def index
-    @users = User.includes(:movie_ranks).all
+    @users = User.all.includes(movie_ranks: :review)
   end
 
   def show
