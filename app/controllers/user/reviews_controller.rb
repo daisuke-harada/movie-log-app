@@ -30,6 +30,7 @@ class User::ReviewsController < ApplicationController
     else
       @review_new = Review.new
       @movie = Movie.find(params[:movie_id])
+      @reviews = @movie.reviews.includes(:user)
       @user = current_user
       flash.now[:error] = "⚠︎映画の感想の文字が100文字を超えています。感想の文字は100文字以内で書いてください"
       render template: "user/movies/show"
