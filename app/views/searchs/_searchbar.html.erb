@@ -1,4 +1,16 @@
-<header class="searchbar">
+<% if admin_signed_in? %>
+  <header class="searchbar">
+    <div>
+      <%= form_tag(searchs_search_path , method: :get) do %>
+        <%= text_field(@search_content, :search_word, class: "search-form") %>
+        <%= select(@search_content, :search_model, [["作品","movie"]]) %>
+        <%= select(@search_content, :search_method, [["部分一致","partial_match"],["完全一致","perfect_match"]]) %>
+        <%= submit_tag "検索" %>
+      <% end %>
+    </div>
+  </header>
+<% elsif user_signed_in? %>
+  <header class="searchbar">
     <div>
       <%= form_tag(searchs_search_path , method: :get) do %>
         <%= text_field(@search_content, :search_word, class: "search-form") %>
@@ -7,4 +19,16 @@
         <%= submit_tag "検索" %>
       <% end %>
     </div>
-</header>
+  </header>
+<% else %>
+  <header class="searchbar">
+    <div>
+      <%= form_tag(searchs_search_path , method: :get) do %>
+        <%= text_field(@search_content, :search_word, class: "search-form") %>
+        <%= select(@search_content, :search_model, [["作品","movie"],["ユーザー","user"]]) %>
+        <%= select(@search_content, :search_method, [["部分一致","partial_match"],["完全一致","perfect_match"]]) %>
+        <%= submit_tag "検索" %>
+      <% end %>
+    </div>
+  </header>
+<% end %>
