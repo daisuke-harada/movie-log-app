@@ -14,7 +14,7 @@ class User::CommentsController < ApplicationController
     @user = current_user
     @review = Review.find(params[:review_id])
     @comment = Comment.new
-    @comments = @review.comments
+    @comments = @review.comments.includes(:user)
   end
 
   def destroy

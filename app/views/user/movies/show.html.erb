@@ -69,15 +69,15 @@
 </div>
 
 <div class=""id='all-reviews-modal'>
-  <%= render 'user/movies/all_reviews' %>
+  <%= render 'user/movies/all_reviews', reviews: @reviews %>
 </div>
 
 <div class="movie_reviews_wrapper" id='movie-reviews-modal'>
-  <%= render 'user/movies/no_spoil_reviews' %>
+  <%= render 'user/movies/no_spoil_reviews', reviews: @reviews %>
 </div>
 
 <div class="spoil_reviews_wrapper" id='spoil-reviews-modal'>
-  <%= render 'user/movies/spoil_reviews' %>
+  <%= render 'user/movies/spoil_reviews', reviews: @reviews %>
 </div>
 
 <script>
