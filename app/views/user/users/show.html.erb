@@ -21,15 +21,15 @@
 </div>
 
 <div id="user-reviews-modal">
-  <%= render 'user/reviews/user_reviews', user: @user, movie_rank: @movie_rank, rank: @rank %>
+  <%= render 'user/reviews/user_reviews', reviews: @reviews, movie_rank: @movie_rank, rank: @rank %>
 </div>
 
 <div class="user-followers-modal-wrappper" id="user-followers-modal">
-  <%= render 'user/users/followers', users: @user.followers %>
+  <%= render 'user/users/followers', users: @followers %>
 </div>
 
 <div class="user-following-modal-wrappper" id="user-following-modal">
-  <%= render 'user/users/following', users: @user.following %>
+  <%= render 'user/users/following', users: @following %>
 </div>
 
 <div class="user-ranking-modal-wrappper" id="user-ranking-modal">

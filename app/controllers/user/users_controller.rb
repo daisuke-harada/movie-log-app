@@ -1,12 +1,14 @@
 class User::UsersController < ApplicationController
   before_action :set_users, only: [:show, :edit, :following, :followers]
   def index
-    @users = User.all
+    @users = User.includes(:movie_ranks).all
   end
 
   def show
     @movie_rank = MovieRank.new
-    @user = User.find(params[:id])
+    @reviews = @user.reviews.includes(:movie, :movie_rank)
+    @followers = @user.followers.includes(:movie_ranks)
+    @following = @user.following.includes(:movie_ranks)
 
     # 有効ユーザーの時
     if @user.is_withdrawal == false
