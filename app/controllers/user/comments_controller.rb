@@ -4,7 +4,7 @@ class User::CommentsController < ApplicationController
     @comment = @review.comments.build(comment_params)
     @comment.user_id = current_user.id
     if @comment.save
-      @comments = @review.comments
+    @comments = @review.comments.includes(:user)
     else
       render :error, status: :unprocessable_entity
     end
